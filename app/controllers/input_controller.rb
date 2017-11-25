@@ -1,5 +1,5 @@
 class InputController < ApplicationController
-  before_action :set_input, only: [:edit, :update, :destroy]
+  before_action :set_input, only: %i[edit update destroy]
 
   def index
     @inputs = Input.all

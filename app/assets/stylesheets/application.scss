@@ -1,6 +1,6 @@
 @import 'materialize/components/color';
 $primary-color: color("blue", "lighten-2") !default;
-$secondary-color: color("yellow", "base") !default;
+$secondary-color: color("green", "base") !default;
 @import 'materialize';
 
 #slide-out {
@@ -10,4 +10,12 @@ $secondary-color: color("yellow", "base") !default;
 .login {
   width: 400px;
   margin: 0 auto;
+}
+
+main {
+  margin: 10px;
+}
+
+#content {
+  margin-left: 300px;
 }
