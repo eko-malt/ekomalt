@@ -11,8 +11,3 @@ module Ekomalt
     config.i18n.default_locale = :uk
   end
 end
-
-
-
-
-
