@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title = t('application.title')
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  body
+    header
+      = render 'nav' if current_user
+    main#main
+      = render 'menu' if current_user
+      section#content
+        = yield
+    footer#footer
+      = render 'footer'

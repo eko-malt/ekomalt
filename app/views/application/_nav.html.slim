@@ -1,0 +1,7 @@
+.navbar-fixed
+  nav
+    .nav-wrapper
+      = link_to t('application.title'), root_path, class:'brand-logo'
+      ul.right.hide-on-med-and-down
+        li = current_user.name
+        li = link_to t('application.logout'), logout_path, method: :delete

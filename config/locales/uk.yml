@@ -1,0 +1,22 @@
+uk:
+  login_form:
+    title: 'Авторизація'
+    login: 'Логін'
+    password: 'Пароль'
+    login_button: 'Увійти'
+  application:
+    title: 'Еко-малт'
+    logout: 'Вийти'
+  leftnav:
+    main: 'Головна'
+    storage_raw: 'Склад сировини'
+    old_maltose: 'Стара солодовня'
+    new_maltose: 'Нова солодовня'
+    storage_malt: 'Склад солоду'
+    shipment: 'Відвантаження'
+    clients: 'Клієнти'
+    orders: 'Замовлення'
+    providers: 'Постачальники'
+    plan: 'План виробництва'
+    settings: 'Натлаштування'
+    calc: 'Калькуляція'
