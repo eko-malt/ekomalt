@@ -7,7 +7,7 @@
       .logo.hide-on-med-and-down
         = link_to t('application.title'), root_path, class:'brand-logo'
       .col.l3.offset-l3
-        h4= t("#{controller.controller_name.singularize}.title")
+        h4= t("leftnav.#{controller.controller_name.singularize}")
       ul.right
         li = current_user.name
         li = link_to t('application.logout'), logout_path, method: :delete

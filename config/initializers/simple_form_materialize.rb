@@ -3,14 +3,14 @@ SimpleForm.setup do |config|
   config.button_class = 'waves-effect waves-light btn'
   config.boolean_label_class = nil
 
-  config.wrappers tag: 'div', class: 'input-field', error_class: 'has-error' do |b|
+  config.wrappers tag: 'div', class: 'InputBags-field', error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
     b.optional :pattern
     b.optional :min_max
     b.optional :readonly
-    b.use :input
+    b.use :InputBags
     b.use :label
     b.use :error, wrap_with: { tag: 'span', class: 'error-block' }
     b.use :hint,  wrap_with: { tag: 'span', class: 'help-block' }
@@ -20,7 +20,7 @@ SimpleForm.setup do |config|
     b.use :html5
     b.optional :readonly
 
-    b.use :input
+    b.use :InputBags
     b.use :label
     b.use :error, wrap_with: { tag: 'span', class: 'error-block' }
     b.use :hint,  wrap_with: { tag: 'span', class: 'help-block' }
@@ -29,7 +29,7 @@ SimpleForm.setup do |config|
   config.wrappers :vertical_radio_and_checkboxes, tag: 'p', error_class: 'has-error' do |b|
     b.use :html5
     b.optional :readonly
-    b.use :input
+    b.use :InputBags
     b.use :label
     b.use :error, wrap_with: { tag: 'span', class: 'error-block' }
     b.use :hint,  wrap_with: { tag: 'span', class: 'help-block' }
