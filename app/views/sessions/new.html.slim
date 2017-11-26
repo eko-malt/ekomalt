@@ -3,5 +3,5 @@
   h2.center = t('login_form.title')
   = simple_form_for :user, url: { controller: 'sessions', action: 'create'}, class: 'form-horizontal' do |f|
     = f.input :login, label: t('login_form.login')
-    = f.input_bags :password, label: t('login_form.password')
+    = f.input :password, label: t('login_form.password')
     = f.submit t('login_form.login_button'), class: 'btn btn-success'
