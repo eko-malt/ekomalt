@@ -23,13 +23,16 @@ ul.collection.menu
 ul.collection.menu
   = link_to '', class: 'collection-item'
     i.material-icons.secondary-content people
-    = t('leftnav.clients')
+    = t('leftnav.client')
   = link_to '', class: 'collection-item'
     i.material-icons.secondary-content shopping_cart
-    = t('leftnav.orders')
+    = t('leftnav.order')
   = link_to providers_path, class: 'collection-item'
     i.material-icons.secondary-content contacts
-    = t('leftnav.providers')
+    = t('leftnav.provider')
+  = link_to inputs_path, class: 'collection-item'
+    i.material-icons.secondary-content file_download
+    = t('leftnav.input')
 ul.collection.menu
   = link_to '', class: 'collection-item'
     i.material-icons.secondary-content event
