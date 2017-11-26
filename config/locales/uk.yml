@@ -22,11 +22,16 @@ uk:
     calc: 'Калькуляція'
   form:
     save: 'Зберегти'
-  providers:
+  provider:
+    title: 'Постачальники'
     name: 'Назва'
     grain-list: 'Постачальники жита'
     bags-list: 'Постачальники мішків'
     create: 'Додати нового постачальника'
+    delete: 'Видалити'
+    inputs_list: 'Список поставок'
     types:
       grain: 'Жито'
       bags: 'Мішки'
+  inputs:
+    future_list: 'Тут буде перелік поставок цього постачальника'

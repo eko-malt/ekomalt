@@ -1,9 +1,13 @@
 .navbar-fixed
   nav
-    .nav-wrapper
-      //= link_to '', class: 'btn-floating btn-medium waves-effect waves-light gradient-shadow', data: {activates: 'slide-out'}
-        i.material-icons menu
-      = link_to t('application.title'), root_path, class:'brand-logo'
+    .nav-wrapper.row
+      .col.s2.hide-on-large-only
+        = link_to '', class: 'btn-floating btn-large waves-effect waves-light gradient-shadow'
+          i.material-icons menu
+      .logo.hide-on-med-and-down
+        = link_to t('application.title'), root_path, class:'brand-logo'
+      .col.l3.offset-l3
+        h4= t("#{controller.controller_name.singularize}.title")
       ul.right
         li = current_user.name
         li = link_to t('application.logout'), logout_path, method: :delete

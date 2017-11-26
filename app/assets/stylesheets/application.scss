@@ -1,7 +1,17 @@
+/*
+ *= require sweet-alert
+ */
+
 @import 'materialize/components/color';
-$primary-color: color("blue", "lighten-2") !default;
-$secondary-color: color("green", "base") !default;
+$primary-color: color('blue', 'lighten-2') !default;
+$secondary-color: color('teal', 'lighten-2') !default;
 @import 'materialize';
+
+body {
+  background-image: url('/background.jpg');
+}
+
+.logo { margin-left: 10px; }
 
 #slide-out {
   top: auto;
@@ -12,10 +22,9 @@ $secondary-color: color("green", "base") !default;
   margin: 0 auto;
 }
 
-main {
-  margin: 10px;
-}
+main {  margin: 10px; }
 
-#content {
-  margin-left: 300px;
+.menu .secondary-content {
+  float: left;
+  margin-right: 15px;
 }
