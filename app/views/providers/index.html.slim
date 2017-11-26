@@ -5,9 +5,9 @@ ul.collapsible
       = t('provider.create')
     .collapsible-body
       = simple_form_for @provider, remote: true do |f|
-        => f.input :name, label: t('provider.name')
+        => f.input_bags :name, label: t('provider.name')
         => f.collection_radio_buttons :gtype, [['grain', t('provider.types.grain')], ['bags', t('provider.types.bags')]], :first, :last
-        //=> f.input :gtype, as: :radio_buttons, collection: Provider.gtypes.keys.map{ |x| t("providers.types.#{x}") }.zip(Provider.gtypes.keys), include_blank: false, label: false
+        //=> f.InputBags :gtype, as: :radio_buttons, collection: Provider.gtypes.keys.map{ |x| t("providers.types.#{x}") }.zip(Provider.gtypes.keys), include_blank: false, label: false
         br
         br
         => f.submit t('form.save'), class: 'btn waves-effect waves-light'
