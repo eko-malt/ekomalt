@@ -18,6 +18,11 @@ class ProvidersController < ApplicationController
     render :new unless @provider.save
   end
 
+  def destroy
+    @provider.destroy
+    redirect_to providers_path
+  end
+
   private
 
   def set_provider
