@@ -1,5 +1,1 @@
-li.collection-item
-  .provider
-    = provider.name
-    = link_to provider_path(provider), class: 'secondary-content'
-      i.material-icons send
+= link_to provider.name, provider_path(provider.id), class: 'collection-item'

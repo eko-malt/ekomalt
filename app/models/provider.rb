@@ -2,9 +2,8 @@ class Provider < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :gtype, presence: true
 
-  enum gtype: { grain: 1, bags: 2 }
+  has_many :grain_inputs
+  has_many :bag_inputs
 
-  def gtypes
-    [grain => 1, bags => 2]
-  end
+  enum gtype: { grain: 1, bag: 2 }
 end

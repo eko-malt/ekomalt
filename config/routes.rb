@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
+  get '/inputs', to: 'inputs#index'
   resource :sessions, only: %i[new create destroy]
   resources :providers
-  resources :inputs
+  resources :bag_inputs, only: %i[show edit create destroy]
+  resources :grain_inputs, only: %i[show edit create destroy]
 end

@@ -1,13 +1,12 @@
-ul.collapsible
+ul.collapsible*{'data-collapsible'=>'expandable'}
   li
     .collapsible-header
       i.material-icons add_circle_outline
       = t('provider.create')
     .collapsible-body
       = simple_form_for @provider, remote: true do |f|
-        => f.input_bags :name, label: t('provider.name')
-        => f.collection_radio_buttons :gtype, [['grain', t('provider.types.grain')], ['bags', t('provider.types.bags')]], :first, :last
-        //=> f.InputBags :gtype, as: :radio_buttons, collection: Provider.gtypes.keys.map{ |x| t("providers.types.#{x}") }.zip(Provider.gtypes.keys), include_blank: false, label: false
+        => f.input :name, label: t('provider.name')
+        => f.collection_radio_buttons :gtype, [['grain', t('provider.types.grain')], ['bag', t('provider.types.bags')]], :first, :last
         br
         br
         => f.submit t('form.save'), class: 'btn waves-effect waves-light'
@@ -17,31 +16,13 @@ ul.collapsible
       = t('provider.title')
     .collapsible-body
       .row
-        .col.s12
-          ul.tabs
-            li.tab.col.s6
-              = link_to t('provider.grain-list'), '#grain-list', class: 'active'
-            li.tab.col.s6
-              = link_to t('provider.bags-list'), '#bags-list'
-        .col.s12#bags-list
-          ul.collection
-            = render @providers_bags
-        .col.s12#grain-list
-          ul.collection
-            = render @providers_grain
-  li
-    .collapsible-header
-      i.material-icons assignment
-      = t('provider.title')
-    .collapsible-body
-      .row
-        .col.s6#bags-list-link
-          .collection.with-header
+        .col.s6
+          .collection.with-header#grain-list
             .collection-header
               h5 = t('provider.grain-list')
-            = render partial: 'provider_link', collection: @providers_grain
-        .col.s6#grain-list-link
-          .collection.with-header
+            = render partial: 'provider', collection: @grain_providers
+        .col.s6
+          .collection.with-header#bag-list
             .collection-header
               h5 = t('provider.bags-list')
-            = render partial: 'provider_link', collection: @providers_bags
+            = render partial: 'provider', collection: @bag_providers
