@@ -2,10 +2,19 @@
   .col.s6
     h4 = @provider.name
   .col.s2.offset-s4
-    = link_to t('provider.delete'), provider_path(@provider), method: :delete, class: 'waves-effect waves-light btn', confirm: 'Are you sure?'
+    = link_to t('provider.delete'), provider_path(@provider), method: :delete, class: 'waves-effect waves-light btn', data: {confirm: t('activerecord.confirm_delete')}
 
+h5 = t('provider.inputs_list')
 ul.collection.with-header
-  li.collection-header
-    h5 = t('provider.inputs_list')
-  li.collection-item
-    p = t('inputs.future_list')
+  li.collection-header.row
+    .col.s2 = t('input.date')
+    .col.s3 = t('input.provider')
+    .col.s2 = t('input.weight_fact')
+    .col.s2 = t('input.weight_doc')
+    .col.s2 = t('input.price')
+  - if @provider.grain?
+    - @provider.grain_inputs.each do |input|
+      = render partial: 'grain_inputs/grain_input', object: input
+  - if @provider.bag?
+    - @provider.bag_inputs.each do |input|
+      = render partial: 'bag_inputs/bag_input', object: input

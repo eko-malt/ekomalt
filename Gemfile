@@ -18,8 +18,6 @@ gem 'rails', '~> 5.1.4'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'slim-rails'
-gem 'sweet-alert'
-gem 'sweet-alert-confirm'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 

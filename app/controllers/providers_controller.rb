@@ -2,8 +2,8 @@ class ProvidersController < ApplicationController
   before_action :set_provider, only: %i[show edit update destroy]
 
   def index
-    @providers_grain = Provider.grain
-    @providers_bags = Provider.bags
+    @grain_providers = Provider.grain
+    @bag_providers = Provider.bag
     @provider = Provider.new
   end
 
@@ -14,8 +14,8 @@ class ProvidersController < ApplicationController
   def show; end
 
   def create
-    @provider = Provider.new(provider_params)
-    render :new unless @provider.save
+    @provider = Provider.create(provider_params)
+    # render :new unless @provider.save
   end
 
   def destroy

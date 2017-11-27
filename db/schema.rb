@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171126150447) do
+ActiveRecord::Schema.define(version: 20171126154233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bag_inputs", force: :cascade do |t|
+    t.date "date"
+    t.integer "amount"
+    t.integer "size"
+    t.bigint "provider_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["provider_id"], name: "index_bag_inputs_on_provider_id"
+  end
+
+  create_table "grain_inputs", force: :cascade do |t|
+    t.date "date"
+    t.bigint "provider_id"
+    t.decimal "weight_fact"
+    t.decimal "weight_doc"
+    t.decimal "price"
+    t.decimal "humidity"
+    t.integer "sprouting"
+    t.decimal "litter"
+    t.decimal "nature"
+    t.decimal "fall"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["provider_id"], name: "index_grain_inputs_on_provider_id"
+  end
 
   create_table "providers", force: :cascade do |t|
     t.string "name"
@@ -30,4 +56,6 @@ ActiveRecord::Schema.define(version: 20171126150447) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "bag_inputs", "providers"
+  add_foreign_key "grain_inputs", "providers"
 end

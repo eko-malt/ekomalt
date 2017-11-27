@@ -1,9 +1,3 @@
-gtype = <%= @provider.grain? %>
-console.log gtype
-if gtype
-  $("<%= j(render @provider) %>").appendTo("#providers-grain")
-else
-  $("<%= j(render @provider) %>").appendTo("#providers-bags")
-
-
-
+$("<%= j(render @provider) %>").appendTo("#<%= @provider.gtype %>-list")
+$('.simple_form')[0].reset()
+Materialize.toast("<%= t('provider.created') %>", 3000, 'rounded')
