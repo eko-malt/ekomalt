@@ -3,7 +3,11 @@
   .col.s3 = grain_input.provider.name
   .col.s2 = grain_input.weight_fact
   .col.s2 = grain_input.weight_doc
-  .col.s2 = grain_input.price
+  .col.s2
+    - if grain_input.price.blank?
+      span.price_blank = t('input.price_blank')
+    - else
+      = grain_input.price
   => link_to grain_input_path(grain_input.id), remote: true, class: 'secondary-content'
     i.material-icons send
   => link_to grain_input_path(grain_input.id), method: :delete, remote: true, class: 'secondary-content', data: {confirm: t('activerecord.confirm_delete')}

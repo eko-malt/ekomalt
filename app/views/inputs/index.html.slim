@@ -13,11 +13,11 @@ ul.collapsible
             => f.input :weight_doc, label: t('input.weight_doc')
             => f.input :price, label: t('input.price')
           .col.s6
-            => f.input :humidity, label: t('input.quality.humidity')
-            => f.input :sprouting, label: t('input.quality.sprouting')
-            => f.input :litter, label: t('input.quality.litter')
-            => f.input :nature, label: t('input.quality.nature')
-            => f.input :fall, label: t('input.quality.fall')
+            => f.input :humidity, label: t('input.quality.humidity'), placeholder: '00.0'
+            => f.input :sprouting, label: t('input.quality.sprouting'), placeholder: '1 .. 100'
+            => f.input :litter, label: t('input.quality.litter'), placeholder: '00.00'
+            => f.input :nature, label: t('input.quality.nature'), placeholder: '100 .. 999'
+            => f.input :fall, label: t('input.quality.fall'), placeholder: '0.1 .. 99.9'
         => f.submit t('form.save'), class: 'btn waves-effect waves-light'
   li
     .collapsible-header

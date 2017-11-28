@@ -46,6 +46,7 @@ uk:
     weight_fact: 'Вага факт. (т)'
     weight_doc: 'Вага по док. (т)'
     price: 'Вартість (грн)'
+    price_blank: 'Не введено'
     amount: 'Кількість'
     size: 'Розмір'
     created: 'Поставку додано'
