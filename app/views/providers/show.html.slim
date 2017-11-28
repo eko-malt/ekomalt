@@ -2,7 +2,10 @@
   .col.s6
     h4 = @provider.name
   .col.s2.offset-s4
-    = link_to t('provider.delete'), provider_path(@provider), method: :delete, class: 'waves-effect waves-light btn', data: {confirm: t('activerecord.confirm_delete')}
+    - if @provider.grain_inputs.blank? && @provider.bag_inputs.blank?
+      = link_to t('provider.delete'), provider_path(@provider), method: :delete, class: 'waves-effect waves-light btn', data: {confirm: t('activerecord.confirm_delete')}
+    - else
+      = link_to t('provider.delete'), '', class: 'waves-effect waves-light btn disabled'
 
 h5 = t('provider.inputs_list')
 ul.collection.with-header
