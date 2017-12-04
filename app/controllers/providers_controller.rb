@@ -9,7 +9,6 @@ class ProvidersController < ApplicationController
 
   def new; end
 
-
   def create
     @provider = Provider.create(provider_params)
     render :new unless @provider.save
