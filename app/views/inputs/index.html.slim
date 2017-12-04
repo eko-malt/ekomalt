@@ -1,59 +1,41 @@
-ul.collapsible
-  li
-    .collapsible-header
-      i.material-icons add_circle_outline
-      = t('input.create_grain')
-    .collapsible-body
-      = simple_form_for @grain_input, remote: true do |f|
-        .row
-          .col.s6
-            => f.input :date, as: :string, label: t('input.date'), input_html: { class: 'datepicker' }
-            => f.association :provider, label: false, collection: Provider.grain, label_method: :name, include_blank: t('provider.singular')
-            => f.input :weight_fact, label: t('input.weight_fact')
-            => f.input :weight_doc, label: t('input.weight_doc')
-            => f.input :price, label: t('input.price')
-          .col.s6
-            => f.input :humidity, label: t('input.quality.humidity'), placeholder: '00.0'
-            => f.input :sprouting, label: t('input.quality.sprouting'), placeholder: '1 .. 100'
-            => f.input :litter, label: t('input.quality.litter'), placeholder: '00.00'
-            => f.input :nature, label: t('input.quality.nature'), placeholder: '100 .. 999'
-            => f.input :fall, label: t('input.quality.fall'), placeholder: '0.1 .. 99.9'
-        => f.submit t('form.save'), class: 'btn waves-effect waves-light'
-  li
-    .collapsible-header
-      i.material-icons add_circle_outline
-      = t('input.create_bag')
-    .collapsible-body
-      = simple_form_for @bag_input, remote: true do |f|
-        .row
-          .col.s6 => f.input :date, as: :string, label: t('input.date'), input_html: { class: 'datepicker' }
-          .col.s6 => f.association :provider, label: false, collection: Provider.bag, label_method: :name, include_blank: t('provider.singular')
-        .row
-          .col.s6 => f.input :amount, label: t('input.amount')
-          .col.s6
-            br
-            => f.collection_radio_buttons :size, [['kg25', t('input.sizes.kg25')], ['kg50', t('input.sizes.kg50')]], :first, :last
-        => f.submit t('form.save'), class: 'btn waves-effect waves-light'
-
 .row
   .col.s12
     ul.tabs
       li.tab.col.s6 = link_to t('input.gtype.grain'), '#tab_grain'
       li.tab.col.s6 = link_to t('input.gtype.bags'), '#tab_bags'
-  .col.s12
-    ul.collection.with-header#tab_grain
-      li.collection-header.row
-        .col.s2 = t('input.date')
-        .col.s3 = t('input.provider')
-        .col.s2 = t('input.weight_fact')
-        .col.s2 = t('input.weight_doc')
-        .col.s2 = t('input.price')
-      = render @grain_inputs
-  .col.s12
-    ul.collection.with-header#tab_bags
-      li.collection-header.row
-        .col.s2 = t('input.date')
-        .col.s3 = t('input.provider')
-        .col.s2 = t('input.size')
-        .col.s2 = t('input.amount')
-      = render @bag_inputs
+
+  .col.s12#tab_grain
+    ul.collapsible
+      li
+        .collapsible-header
+          i.material-icons add_circle_outline
+          = t('input.create_grain')
+        .collapsible-body
+          = render partial: 'grain_inputs/form'
+    ul.collapsible
+      - @grain_inputs.each do |date, inputs|
+        li
+          .collapsible-header
+            = t("date.month.#{date.strftime('%B')}") + ' ' + date.strftime('%Y')
+          .collapsible-body
+            ul.collection.with-header
+              = render partial: 'grain_inputs/grain_collection_header'
+              = render partial: 'grain_inputs/grain_input', collection: inputs
+
+  .col.s12#tab_bags
+    ul.collapsible
+      li
+        .collapsible-header
+          i.material-icons add_circle_outline
+          = t('input.create_bag')
+        .collapsible-body
+          = render partial: 'bag_inputs/form'
+    ul.collapsible
+      - @bag_inputs.each do |date, inputs|
+        li
+          .collapsible-header
+            = t("date.month.#{date.strftime('%B')}") + ' ' + date.strftime('%Y')
+          .collapsible-body
+            ul.collection.with-header
+              = render partial: 'bag_inputs/bag_collection_header'
+              = render partial: 'bag_inputs/bag_input', collection: inputs

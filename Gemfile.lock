@@ -54,6 +54,13 @@ GEM
       xpath (~> 2.0)
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
+    client_side_validations (11.0.0)
+      jquery-rails (~> 4.3)
+      js_regex (~> 2.1)
+      rails (>= 5.0.0.1, <= 5.2.0.beta2)
+    client_side_validations-simple_form (6.5.0)
+      client_side_validations (>= 9.3.2, < 12)
+      simple_form (~> 3.5)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -81,6 +88,8 @@ GEM
     jquery-turbolinks (2.1.0)
       railties (>= 3.1.0)
       turbolinks
+    js_regex (2.1.0)
+      regexp_parser (>= 0.4.7, <= 0.5.0)
     lazybox (1.1.5)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -137,6 +146,7 @@ GEM
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    regexp_parser (0.4.7)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sass (3.5.3)
@@ -204,6 +214,8 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   byebug
   capybara (~> 2.13)
+  client_side_validations
+  client_side_validations-simple_form
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
   jquery-rails

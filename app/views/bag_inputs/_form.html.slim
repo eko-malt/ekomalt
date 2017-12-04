@@ -1,0 +1,10 @@
+= simple_form_for @bag_input, remote: true, validate: true do |f|
+  .row
+    .col.s6 => f.input :date, as: :string, label: t('input.date'), input_html: { class: 'datepicker' }
+    .col.s6 => f.association :provider, label: false, collection: Provider.bag, label_method: :name, include_blank: t('provider.singular')
+  .row
+    .col.s6 => f.input :amount, label: t('input.amount')
+    .col.s6
+      br
+      => f.collection_radio_buttons :size, [['kg25', t('input.sizes.kg25')], ['kg50', t('input.sizes.kg50')]], :first, :last
+  => f.submit t('form.save'), class: 'btn waves-effect waves-light'

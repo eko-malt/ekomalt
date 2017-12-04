@@ -1,0 +1,15 @@
+= simple_form_for @grain_input, remote: true do |f|
+  .row
+    .col.s6
+      => f.input :date, as: :string, label: t('input.date'), input_html: { class: 'datepicker' }
+      => f.association :provider, label: false, collection: Provider.grain, label_method: :name, include_blank: t('provider.singular')
+      => f.input :weight_fact, label: t('input.weight_fact')
+      => f.input :weight_doc, label: t('input.weight_doc')
+      => f.input :price, label: t('input.price')
+    .col.s6
+      => f.input :humidity, label: t('input.quality.humidity'), placeholder: '00.0', label_html: {class: 'active'}
+      => f.input :sprouting, label: t('input.quality.sprouting'), placeholder: '1 .. 100', label_html: {class: 'active'}
+      => f.input :litter, label: t('input.quality.litter'), placeholder: '00.00', label_html: {class: 'active'}
+      => f.input :nature, label: t('input.quality.nature'), placeholder: '100 .. 999', label_html: {class: 'active'}
+      => f.input :fall, label: t('input.quality.fall'), placeholder: '0.1 .. 99.9', label_html: {class: 'active'}
+  => f.submit t('form.save'), class: 'btn waves-effect waves-light'

@@ -9,15 +9,11 @@
 
 h5 = t('provider.inputs_list')
 ul.collection.with-header
-  li.collection-header.row
-    .col.s2 = t('input.date')
-    .col.s3 = t('input.provider')
-    .col.s2 = t('input.weight_fact')
-    .col.s2 = t('input.weight_doc')
-    .col.s2 = t('input.price')
   - if @provider.grain?
-    - @provider.grain_inputs.each do |input|
+    = render partial: 'grain_inputs/grain_collection_header'
+    - @provider.grain_inputs.order(:date).each do |input|
       = render partial: 'grain_inputs/grain_input', object: input
-  - if @provider.bag?
-    - @provider.bag_inputs.each do |input|
+  - else
+    = render partial: 'bag_inputs/bag_collection_header'
+    - @provider.bag_inputs.order(:date).each do |input|
       = render partial: 'bag_inputs/bag_input', object: input
