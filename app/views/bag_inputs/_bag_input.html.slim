@@ -1,9 +1,9 @@
 .row.collection-item id="bag_input_#{bag_input.id}"
-  .col.s2 = bag_input.date
-  .col.s3 = bag_input.provider.name
-  .col.s2 = t("input.sizes.#{bag_input.size}")
-  .col.s2 = bag_input.amount
-  //= link_to bag_input_path(bag_input.id), class: 'secondary-content '
-    i.material-icons send
+  .col.s2 = bag_input.date.strftime("%d.%m.%Y")
+  .col.s2 = bag_input.provider.name
+  .col.s3
+    span.right = t("input.sizes.#{bag_input.size}")
+  .col.s3
+    span.right = bag_input.amount
   = link_to bag_input_path(bag_input.id), method: :delete, remote: true, class: 'secondary-content', data: {confirm: t('activerecord.confirm_delete')}
     i.material-icons delete

@@ -4,12 +4,7 @@ ul.collapsible*{'data-collapsible'=>'expandable'}
       i.material-icons add_circle_outline
       = t('provider.create')
     .collapsible-body
-      = simple_form_for @provider, remote: true do |f|
-        => f.input :name, label: t('provider.name')
-        => f.collection_radio_buttons :gtype, [['grain', t('provider.types.grain')], ['bag', t('provider.types.bags')]], :first, :last
-        br
-        br
-        => f.submit t('form.save'), class: 'btn waves-effect waves-light'
+      = render 'form'
   li
     .collapsible-header
       i.material-icons assignment
