@@ -9,13 +9,19 @@ class ProvidersController < ApplicationController
 
   def new; end
 
-  def edit; end
-
-  def show; end
 
   def create
     @provider = Provider.create(provider_params)
-    # render :new unless @provider.save
+    render :new unless @provider.save
+  end
+
+  def show; end
+
+  def edit; end
+
+  def update
+    render :edit unless @provider.update(provider_params)
+    redirect_to provider_path(@provider)
   end
 
   def destroy

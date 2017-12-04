@@ -32,9 +32,9 @@ ready = function() {
         closeOnSelect: true
     });
     $('.modal').modal({
-            complete: function() {self.innerHTML = ''} // Callback for Modal close
-        }
-    );
+        dismissible: false,
+        complete: function() {self.innerHTML = ''} // Callback for Modal close
+    });
 };
 
 $(document).on('turbolinks:load', ready);
