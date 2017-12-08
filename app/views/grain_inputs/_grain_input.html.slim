@@ -6,7 +6,7 @@
   .col.s2
     span.right = number_with_precision(grain_input.weight_doc)
   .col.s2
-    - if grain_input.price.blank?
+    - if grain_input.price == 0
       span.right.price_blank = t('input.price_blank')
     - else
       span.right = number_with_precision(grain_input.price, precision: 2)
@@ -14,3 +14,5 @@
     i.material-icons delete
   => link_to grain_input_path(grain_input.id), remote: true, class: 'secondary-content'
     i.material-icons receipt
+  => link_to edit_grain_input_path(grain_input.id), remote: true, class: 'secondary-content'
+    i.material-icons edit

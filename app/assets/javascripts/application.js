@@ -7,12 +7,8 @@
 //= require rails.validations.simple_form
 //= require_tree .
 
-var ready;
-ready = function() {
-    $('.collapsible').collapsible();
-    $('ul.tabs').tabs();
-    $('select').material_select();
-    $('.modal').modal();
+var datepicket_init;
+datepicket_init = function() {
     $('.datepicker').pickadate({
         labelMonthNext: 'Наступний місяць',
         labelMonthPrev: 'Попередній місяць',
@@ -24,16 +20,24 @@ ready = function() {
         weekdaysFull: [ 'Неділя', 'Понеділок', 'Вівторок', 'Середа', 'Червер', "П'ятниця", 'Субота' ],
         weekdaysShort: [ 'Неділя', 'Понеділок', 'Вівторок', 'Середа', 'Червер', "П'ятниця", 'Субота'  ],
         weekdaysLetter: [ 'Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб' ],
-        format: 'dd/mm/yyyy',
+        format: 'dd.mm.yyyy',
         today: false,
         clear: 'Очистити',
         close: 'Закрити',
         firstDay: 1,
         closeOnSelect: true
     });
+}
+
+var ready;
+ready = function() {
+    $('.collapsible').collapsible();
+    $('ul.tabs').tabs();
+    $('select').material_select();
+    datepicket_init();
     $('.modal').modal({
         dismissible: false,
-        complete: function() {self.innerHTML = ''} // Callback for Modal close
+        complete: function() { $('.modal-content')[0].innerHTML = '' }
     });
 };
 

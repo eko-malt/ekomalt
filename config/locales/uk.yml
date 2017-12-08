@@ -31,7 +31,8 @@ uk:
     grain-list: 'Постачальники жита'
     bags-list: 'Постачальники мішків'
     create: 'Додати нового постачальника'
-    created: 'Ви додали постачальника'
+    created: 'Нового постачальника додано '
+    updated: 'Назву постачальника змінено'
     delete: 'Видалити'
     edit: 'Редагувати'
     inputs_list: 'Список поставок'
@@ -45,6 +46,11 @@ uk:
     date: 'Дата'
     provider: 'Постачальник'
     weight_fact: 'Вага факт. (т)'
+    weight_fact_sum: "Вага факт.: %{weight} т"
+    price_sum: "Сума: %{sum} грн"
+    bag25_count: "25кг: %{sum} шт"
+    bag50_count: "50кг: %{sum} шт"
+    inputs_amount: "Поставок: %{amount}"
     weight_doc: 'Вага по док. (т)'
     price: 'Вартість (грн)'
     price_blank: 'Не введено'
@@ -52,6 +58,7 @@ uk:
     size: 'Розмір'
     created: 'Поставку додано'
     deleted: 'Поставку видалено'
+    updated: 'Поставку оновлено'
     gtype:
       grain: 'Поставки жита'
       bags: 'Поставки мішків'

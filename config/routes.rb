@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   get '/inputs', to: 'inputs#index'
   resource :sessions, only: %i[new create destroy]
   resources :providers
-  resources :bag_inputs, only: %i[show edit create destroy]
-  resources :grain_inputs, only: %i[show edit create destroy]
+  resources :bag_inputs, only: %i[show edit update create destroy]
+  resources :grain_inputs, only: %i[show edit update create destroy]
 end
