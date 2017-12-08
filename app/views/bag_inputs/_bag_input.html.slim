@@ -7,3 +7,5 @@
     span.right = bag_input.amount
   = link_to bag_input_path(bag_input.id), method: :delete, remote: true, class: 'secondary-content', data: {confirm: t('activerecord.confirm_delete')}
     i.material-icons delete
+  = link_to edit_bag_input_path(bag_input.id), remote: true, class: 'secondary-content'
+    i.material-icons edit
