@@ -7,7 +7,7 @@
     span.right = number_with_precision(grain_input.weight_doc)
   .col.s2
     - if grain_input.price == 0
-      span.right.price_blank = t('input.price_blank')
+      span.right.red-text = t('input.price_blank')
     - else
       span.right = number_with_precision(grain_input.price, precision: 2)
   => link_to grain_input_path(grain_input.id), method: :delete, remote: true, class: 'secondary-content', data: {confirm: t('activerecord.confirm_delete')}

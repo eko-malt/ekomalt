@@ -36,6 +36,7 @@ ready = function() {
     $('select').material_select();
     datepicket_init();
     $('.modal').modal({
+        endingTop: '10%',
         dismissible: false,
         complete: function() { $('.modal-content')[0].innerHTML = '' }
     });

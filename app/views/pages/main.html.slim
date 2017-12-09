@@ -5,35 +5,38 @@
         span.card-title
           h4.center-align
             i.material-icons.small storage
-            = t("main.grain_storage")
+            = t('main.grain_storage')
         br
         h2.center-align.yellow-text = weight_in_tones(@grain.sum(:weight_fact))
       .card-action
-        = link_to t("input.gtype.grain"), inputs_path
+        = link_to t('input.gtype.grain'), inputs_path
   .col.s12.m4
     .card.hoverable.indigo.lighten-1.small
       .card-content.white-text
         span.card-title
           h4.center-align
             i.material-icons.small settings
-            = t("main.production")
+            = t('main.production')
         br
-        h2.center-align.white-text = weight_in_tones(56.500)
-      //.card-action
-        = link_to t("input.gtype.grain"), inputs_path
+        h2.center-align.yellow-text = weight_in_tones(56.500)
+      .card-action
+        = content_tag('a', t('main.maltose'))
+        = content_tag('a', t('main.old'), class: 'hover_pointer')
+        = content_tag('a', t('main.new'), class: 'hover_pointer link_to_maltose_margin')
+
   .col.s12.m4
     .card.hoverable.lime.darken-3.small
-      .card-content.white-text
+      .card-content.yellow-text
         span.card-title
           h4.center-align
             i.material-icons.small check_circle
-            = t("main.malt_storage")
+            = t('main.malt_storage')
         br
         h2.center-align.brown-text = weight_in_tones(24.800)
       .card-action
-        span.card-title.activator.grey-text.text-darken-4
+        = content_tag('a', class: 'activator hover_pointer')
+          = t('main.malt_more')
           i.material-icons.right more_vert
-          = t("main.malt_more")
       .card-reveal
         span.card-title.grey-text.text-darken-4
           i.material-icons.right close
@@ -42,49 +45,51 @@
             tr
               td.right = weight_in_tones(12.500)
               td = t('main.white')
+              td
+                div.color-marker.white
             tr
               td.right = weight_in_tones(5.100)
               td = t('main.fermented')
+              td
+                div.color-marker.brown.lighten-2
             tr
               td.right = weight_in_tones(2.500)
               td = t('main.very_fermented')
+              td
+                div.color-marker.brown.darken-2
             tr
               td.right = weight_in_tones(1.450)
               td = t('main.extra')
+              td
+                div.color-marker.black
 
-.row
-  .col.s12.m4
-    .card.hoverable.blue-grey.darken-1.small
-      .card-content.white-text
-        span.card-title
-          h4.center-align
-            i.material-icons.small storage
-            = t('main.bag_storage')
-        br
-        h4.center-align = t('input.bag25_count', sum: @bags.sum { |b| b.kg25? ? b.amount : 0 })
-        h4.center-align = t('input.bag50_count', sum: @bags.sum { |b| b.kg50? ? b.amount : 0 })
-      .card-action
-        = link_to t('input.gtype.bags'), inputs_path
-  .col.s12.m4
-    .card.hoverable.blue-grey.darken-1.small
-      .card-content.white-text
-        span.card-title
-          h4.center-align
-            i.material-icons.small attach_money
-            = t('main.capitalization')
-        br
-        h3.center-align = weight_in_tones(184.2)
-        h3.center-align = t('main.malt')
-      //.card-action
-        = link_to t('input.gtype.bags'), inputs_path
-  .col.s12.m4
-    .card.hoverable.blue-grey.darken-1.small
-      .card-content.white-text
-        span.card-title
-          h4.center-align
-            i.material-icons.small schedule
-            = t('main.finish')
-        br
-        h3.center-align 15.02.18p.
-      //.card-action
-        = link_to t('input.gtype.bags'), inputs_path
+table.bordered
+  tbody
+    tr
+      td
+        h4
+          i.material-icons.small attach_money
+          = t('main.capitalization')
+      td
+        h4.brown-text = weight_in_tones(184.2) + ' ' + t('main.malt')
+    tr
+      td
+        h4
+          i.material-icons.small schedule
+          = t('main.finish')
+      td
+        h4 15.02.18p.
+    tr
+      td
+        h5
+          i.material-icons.small hdr_weak
+          = t('main.bag25_count')
+      td
+        h5 = bag_amount(@bags.sum {|b| b.kg25? ? b.amount : 0})
+    tr
+      td
+        h5
+          i.material-icons.small hdr_strong
+          = t('main.bag50_count')
+      td
+        h5 = bag_amount(@bags.sum {|b| b.kg50? ? b.amount : 0})

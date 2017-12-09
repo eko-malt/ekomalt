@@ -8,4 +8,8 @@ module ApplicationHelper
     t('main.bag_amount', amount: amount)
   end
 
+  def price_with_uah(price)
+    t('main.price_with_uah', price: number_with_precision(price, precision: 2, delimiter: ' ', separator: ','))
+  end
+
 end

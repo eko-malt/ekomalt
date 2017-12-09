@@ -25,6 +25,7 @@ uk:
     calc: 'Калькуляція'
   main:
     weight_in_tones: '%{weight} т'
+    price_with_uah: '%{price} грн'
     bag_amount: '%{amount} шт'
     white: 'білий'
     fermented: 'ферментований'
@@ -33,12 +34,17 @@ uk:
     amount: '%{amount} т'
     grain_storage: 'Склад жита'
     production: 'Виробництво'
+    maltose: 'Солодовня: '
+    old: 'Стара'
+    new: 'Нова'
     malt_storage: 'Склад солоду'
     bag_storage: 'Склад мішків'
     malt_more: 'Докладніше'
     malt: 'солоду'
     capitalization: 'Капіталізація'
     finish: 'Кінець виробництва'
+    bag25_count: "Мішків по 25кг"
+    bag50_count: "Мішків по 50кг"
   form:
     save: 'Зберегти'
   provider:
@@ -63,11 +69,11 @@ uk:
     date: 'Дата'
     provider: 'Постачальник'
     weight_fact: 'Вага факт. (т)'
-    weight_fact_sum: "Вага факт.: %{weight} т"
-    price_sum: "Сума: %{sum} грн"
+    weight_fact_sum: "Вага факт.:"
+    price_sum: "Сума:"
     bag25_count: "25кг: %{sum} шт"
     bag50_count: "50кг: %{sum} шт"
-    inputs_amount: "Поставок: %{amount}"
+    inputs_amount: "Поставок: "
     weight_doc: 'Вага по док. (т)'
     price: 'Вартість (грн)'
     price_blank: 'Не введено'
@@ -112,3 +118,16 @@ uk:
       October: 'Жовтень'
       November: 'Листопад'
       December: 'Грудень'
+    month_num:
+      1: 'Січень'
+      2: 'Лютий'
+      3: 'Березень'
+      4: 'Квітень'
+      5: 'Травень'
+      6: 'Червень'
+      7: 'Липень'
+      8: 'Серпень'
+      9: 'Вересень'
+      10: 'Жовтень'
+      11: 'Листопад'
+      12: 'Грудень'

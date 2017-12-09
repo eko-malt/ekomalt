@@ -1,8 +1,8 @@
 .row
   .col.s12
     ul.tabs
-      li.tab.col.s6 = link_to t('input.gtype.grain'), '#tab_grain'
-      li.tab.col.s6 = link_to t('input.gtype.bags'), '#tab_bags'
+      li.tab.col.s6 = link_to t('input.gtype.grain'), '#tab_grain', class: 'text-bold'
+      li.tab.col.s6 = link_to t('input.gtype.bags'), '#tab_bags', class: 'text-bold'
 
   .col.s12#tab_grain
     ul.collapsible
@@ -16,10 +16,13 @@
       - @grain_inputs.each do |date, inputs|
         li.collapsible-with-margin
           .collapsible-header
-            span.col-title = t("date.month.#{date.strftime('%B')}") + ' ' + date.strftime('%Y')
-            span.col-title = t("input.inputs_amount", amount: inputs.size.to_s)
-            span.col-title = t("input.weight_fact_sum", weight: number_with_precision(inputs.sum(&:weight_fact)).to_s)
-            span.col-title = t("input.price_sum", sum: number_with_precision(inputs.sum(&:price), precision: 2).to_s)
+            span.col-title.text-bold = t("date.month.#{date.strftime('%B')}") + ' ' + date.strftime('%Y')
+            span.col-title-margin = t('input.inputs_amount')
+            span.col-title.text-bold = inputs.size.to_s
+            span.col-title-margin = t('input.weight_fact_sum')
+            span.col-title.text-yellow.text-bold = weight_in_tones(inputs.sum(&:weight_fact))
+            span.col-title-margin = t('input.price_sum')
+            span.col-title.text-bold = price_with_uah(inputs.sum(&:price))
           .collapsible-body
             ul.collection.with-header id="grain_month_#{date.strftime('%B')}"
               = render partial: 'grain_inputs/grain_collection_header'
@@ -39,7 +42,7 @@
           .collapsible-header
             span.col-title = t("date.month.#{date.strftime('%B')}") + ' ' + date.strftime('%Y')
             span.col-title = t("input.inputs_amount", amount: inputs.size.to_s)
-            span.col-title = t("input.bag25_count", sum: inputs.sum { |i| i.kg25? ? i.amount : 0 })
+            span.col-title = t('input.bag25_count', sum: inputs.sum { |i| i.kg25? ? i.amount : 0 })
             span.col-title = t("input.bag50_count", sum: inputs.sum { |i| i.kg50? ? i.amount : 0 })
           .collapsible-body
             ul.collection.with-header id="bag_month_#{date.strftime('%B')}"
