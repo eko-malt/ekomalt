@@ -9,6 +9,7 @@ uk:
     logout: 'Вийти'
   leftnav:
     application: ''
+    page: ''
     main: 'Головна'
     storage_raw: 'Склад сировини'
     old_maltose: 'Стара солодовня'
@@ -22,6 +23,22 @@ uk:
     plan: 'План виробництва'
     settings: 'Налаштування'
     calc: 'Калькуляція'
+  main:
+    weight_in_tones: '%{weight} т'
+    bag_amount: '%{amount} шт'
+    white: 'білий'
+    fermented: 'ферментований'
+    very_fermented: 'дуже ферментований'
+    extra: 'екстра'
+    amount: '%{amount} т'
+    grain_storage: 'Склад жита'
+    production: 'Виробництво'
+    malt_storage: 'Склад солоду'
+    bag_storage: 'Склад мішків'
+    malt_more: 'Докладніше'
+    malt: 'солоду'
+    capitalization: 'Капіталізація'
+    finish: 'Кінець виробництва'
   form:
     save: 'Зберегти'
   provider:
