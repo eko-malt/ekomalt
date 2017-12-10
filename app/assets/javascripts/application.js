@@ -7,8 +7,8 @@
 //= require rails.validations.simple_form
 //= require_tree .
 
-var datepicket_init;
-datepicket_init = function() {
+var datepicker_init;
+datepicker_init = function() {
     $('.datepicker').pickadate({
         labelMonthNext: 'Наступний місяць',
         labelMonthPrev: 'Попередній місяць',
@@ -25,16 +25,24 @@ datepicket_init = function() {
         clear: 'Очистити',
         close: 'Закрити',
         firstDay: 1,
-        closeOnSelect: true
+        closeOnSelect: true,
+        onClose: function () {
+            $(document.activeElement).blur();
+        }
     });
-}
+};
 
 var ready;
 ready = function() {
+    datepicker_init();
     $('.collapsible').collapsible();
     $('ul.tabs').tabs();
     $('select').material_select();
-    datepicket_init();
+    $('.tooltipped').tooltip({delay: 50});
+    $("#top_date").on("click", function() {
+        //$("#calendar").click();
+        console.log('show_calendar');
+    });
     $('.modal').modal({
         endingTop: '10%',
         dismissible: false,
