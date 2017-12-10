@@ -43,7 +43,7 @@
       - @bag_inputs.each do |date, inputs|
         li.collapsible-with-margin
           .collapsible-header
-            span.col-title = t("date.month.#{date.strftime('%B')}") + ' ' + date.strftime('%Y')
+            span.col-title   = t("date.month.#{date.strftime('%B')}") + ' ' + date.strftime('%Y')
             span.col-title = t('input.inputs_amount', amount: inputs.size.to_s)
             span.col-title = t('input.bag25_count', sum: inputs.sum { |i| i.kg25? ? i.amount : 0 })
             span.col-title = t('input.bag50_count', sum: inputs.sum { |i| i.kg50? ? i.amount : 0 })

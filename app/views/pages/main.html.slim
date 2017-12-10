@@ -8,6 +8,8 @@
             = t('main.grain_storage')
         br
         h2.center-align.yellow-text = weight_in_tones(@grain.sum(:weight_fact))
+        .progress.tooltipped*{'data-position' => 'bottom', 'data-delay' => '50', 'data-tooltip' => '78%'}
+          .progress-bar.progress-bar-striped.progress-bar-animated.bg-progress-yellow*{'role' => 'progressbar', 'style' => 'width: 78%', 'aria-valuenow' => '78', 'aria-valuemin' => '0', 'aria-valuemax' => '100'}
       .card-action
         = link_to t('input.gtype.grain'), inputs_path
   .col.s12.m4
@@ -15,23 +17,27 @@
       .card-content.white-text
         span.card-title
           h5.center-align
-            i.material-icons.small settings
+            i.material-icons.small landscape
             = t('main.production')
         br
         h2.center-align.yellow-text = weight_in_tones(56.500)
+        .progress.tooltipped*{'data-position' => 'bottom', 'data-delay' => '50', 'data-tooltip' => '23%'}
+          .progress-bar.progress-bar-striped.progress-bar-animated.bg-progress-yellow*{'role' => 'progressbar', 'style' => 'width: 23%', 'aria-valuenow' => '23', 'aria-valuemin' => '0', 'aria-valuemax' => '100'}
       .card-action
-        = content_tag('a', t('main.maltose'))
+        = content_tag('a', t('main.maltose'), class: 'disable-hover')
         = content_tag('a', t('main.old'), class: 'hover_pointer')
         = content_tag('a', t('main.new'), class: 'hover_pointer link_to_maltose_margin')
-
   .col.s12.m4
     .card.hoverable.lime.darken-3.small
-      .card-content.yellow-text
+      .card-content.white-text
         span.card-title
-          h4.center-align
+          h5.center-align
+            i.material-icons.small reorder
             = t('main.malt_storage')
         br
         h2.center-align.brown-text = weight_in_tones(24.800)
+        .progress.tooltipped*{'data-position' => 'bottom', 'data-delay' => '50', 'data-tooltip' => '55  %'}
+          .progress-bar.progress-bar-striped.progress-bar-animated.bg-progress-brown*{'role' => 'progressbar', 'style' => 'width: 55%', 'aria-valuenow' => '55', 'aria-valuemin' => '0', 'aria-valuemax' => '100'}
       .card-action
         = content_tag('a', class: 'activator hover_pointer')
           = t('main.malt_more')
