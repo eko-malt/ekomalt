@@ -29,7 +29,7 @@ uk:
     bag_amount: '%{amount} шт'
     white: 'білий'
     fermented: 'ферментований'
-    very_fermented: 'дуже ферментований'
+    very_fermented: 'дуже ферментов.'
     extra: 'екстра'
     amount: '%{amount} т'
     grain_storage: 'Склад жита'
