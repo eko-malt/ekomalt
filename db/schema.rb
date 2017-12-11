@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171126154233) do
+ActiveRecord::Schema.define(version: 20171211143005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20171126154233) do
     t.bigint "provider_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "remainder"
     t.index ["provider_id"], name: "index_bag_inputs_on_provider_id"
   end
 
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 20171126154233) do
     t.decimal "fall"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "remainder"
     t.index ["provider_id"], name: "index_grain_inputs_on_provider_id"
   end
 

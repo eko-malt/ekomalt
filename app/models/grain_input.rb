@@ -4,6 +4,8 @@ class GrainInput < ApplicationRecord
 
   belongs_to :provider
 
+  scope :remain, -> () { where('remainder > 0') }
+
   def default_price
     self.price ||= 0
   end
