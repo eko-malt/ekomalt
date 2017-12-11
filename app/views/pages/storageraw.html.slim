@@ -1,0 +1,76 @@
+h5 = t('storage_raw.grain')
+- if @grain.empty?
+  h4 = t('storage_raw.nograin')
+- else
+  ul.collection.with-header
+    li.collection-header.row
+      .col.s2 = t('input.date')
+      .col.s2 = t('input.provider')
+      .col.s2
+        span.right = t('input.weight_fact')
+      .col.s2
+        span.right = t('storage_raw.grain_remainder')
+      .col.s1
+      .col.s3 = t('storage_raw.quality')
+    - @grain.each do |g|
+      .row.collection-item id="grain_input_#{g.id}"
+        .col.s2 = g.date.strftime('%d.%m.%Y')
+        .col.s2 = g.provider.name
+        .col.s2
+          span.right = number_with_precision(g.weight_fact)
+        .col.s2
+          span.right = number_with_precision(g.remainder)
+        .col.s1
+        .col.s3
+          span= "#{t('input.quality.humidity')}: #{g.humidity }"
+          br
+          span= "#{t('input.quality.sprouting')}: #{g.sprouting}"
+          br
+          span= "#{t('input.quality.litter')}: #{g.litter}"
+          br
+          span= "#{t('input.quality.nature')}: #{g.nature}"
+          br
+          span= "#{t('input.quality.fall')}: #{g.fall}"
+    br
+    .row.collection-item
+      .col.s6 = t('storage_raw.total')
+      .col.s2
+        span.right = number_with_precision(@grain.sum(:remainder), precision: 3)
+hr
+h5 = t('storage_raw.bags')
+- if @bags.empty?
+  h4 = t('storage_raw.nobags')
+- else
+  ul.collection.with-header
+    li.collection-header.row
+      .col.s2 = t('input.date')
+      .col.s2 = t('input.provider')
+      .col.s2
+        span.right = t('input.size')
+      .col.s2
+        span.right = t('input.amount')
+      .col.s2
+        span.right = t('storage_raw.bags_remainder')
+    - @bags.each do |b|
+      .row.collection-item id="bag_input_#{b.id}"
+        .col.s2 = b.date.strftime('%d.%m.%Y')
+        .col.s2 = b.provider.name
+        .col.s2
+          span.right = t("input.sizes.#{b.size}")
+        .col.s2
+          span.right = b.amount
+        .col.s2
+          span.right = b.remainder
+    br
+    .row.collection-item
+      .col.s4 = t('storage_raw.total')
+      .col.s2
+        span.right = t('input.sizes.kg25')
+      .col.s2.offset-s2
+        span.right = @bags.sum { |i| i.kg25? ? i.remainder : 0 }
+    .row.collection-item
+      .col.s4 = t('storage_raw.total')
+      .col.s2
+        span.right = t('input.sizes.kg50')
+      .col.s2.offset-s2
+        span.right = @bags.sum { |i| i.kg50? ? i.remainder : 0 }

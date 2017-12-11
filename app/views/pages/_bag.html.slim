@@ -1,0 +1,11 @@
+.row.collection-item id="bag_input_#{bag_input.id}"
+  .col.s2 = bag_input.date.strftime("%d.%m.%Y")
+  .col.s2 = bag_input.provider.name
+  .col.s3
+    span.right = t("input.sizes.#{bag_input.size}")
+  .col.s3
+    span.right = bag_input.amount
+  = link_to bag_input_path(bag_input.id), method: :delete, remote: true, class: 'secondary-content', data: {confirm: t('activerecord.confirm_delete')}
+    i.material-icons delete
+  = link_to edit_bag_input_path(bag_input.id), remote: true, class: 'secondary-content'
+    i.material-icons edit

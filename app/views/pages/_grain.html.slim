@@ -1,0 +1,18 @@
+.row.collection-item id="grain_input_#{grain_input.id}"
+  .col.s2 = grain_input.date.strftime("%d.%m.%Y")
+  .col.s2 = grain_input.provider.name
+  .col.s2
+    span.right = number_with_precision(grain_input.weight_fact)
+  .col.s2
+    span.right = number_with_precision(grain_input.weight_doc)
+  .col.s2
+    - if grain_input.price == 0
+      span.right.red-text = t('input.price_blank')
+    - else
+      span.right = number_with_precision(grain_input.price, precision: 2)
+  => link_to grain_input_path(grain_input.id), method: :delete, remote: true, class: 'secondary-content', data: {confirm: t('activerecord.confirm_delete')}
+    i.material-icons delete
+  => link_to grain_input_path(grain_input.id), remote: true, class: 'secondary-content'
+    i.material-icons receipt
+  => link_to edit_grain_input_path(grain_input.id), remote: true, class: 'secondary-content'
+    i.material-icons edit

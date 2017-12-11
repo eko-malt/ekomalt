@@ -94,6 +94,15 @@ uk:
       litter: 'Засміченість (%)'
       nature: 'Натура (шт)'
       fall: 'Число падіння'
+  storage_raw:
+    grain: 'Залишки жита'
+    bags: 'Залишки мішків'
+    grain_remainder: 'Залишок (т)'
+    bags_remainder: 'Залишок (шт)'
+    quality: 'Якість'
+    total: 'Разом'
+    nograin: 'На складі немає жита'
+    nobags: 'На складі немає мішків'
   modal:
     close: 'Закрити'
   activerecord:

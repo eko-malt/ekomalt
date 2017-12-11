@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root to: 'pages#main'
+  get '/storage_raw', to: 'pages#storageraw'
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
