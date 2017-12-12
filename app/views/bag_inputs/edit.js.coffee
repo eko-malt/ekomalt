@@ -1,5 +1,5 @@
 $("<%= j(render partial: 'form', object: @bag_input) %>").appendTo("#modal .modal-content")
 Materialize.updateTextFields()
-datepicket_init()
+datepicker_init()
 $('select').material_select()
 $('#modal').modal('open')

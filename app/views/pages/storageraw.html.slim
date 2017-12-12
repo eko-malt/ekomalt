@@ -21,16 +21,26 @@ h5 = t('storage_raw.grain')
         .col.s2
           span.right = number_with_precision(g.remainder)
         .col.s1
-        .col.s3
-          span= "#{t('input.quality.humidity')}: #{g.humidity }"
+        .col.s2
+          span.right = t('input.quality.humidity')
           br
-          span= "#{t('input.quality.sprouting')}: #{g.sprouting}"
+          span.right = t('input.quality.sprouting')
           br
-          span= "#{t('input.quality.litter')}: #{g.litter}"
+          span.right = t('input.quality.litter')
           br
-          span= "#{t('input.quality.nature')}: #{g.nature}"
+          span.right = t('input.quality.nature')
           br
-          span= "#{t('input.quality.fall')}: #{g.fall}"
+          span.right = t('input.quality.fall')
+        .col.s1
+          span = g.humidity
+          br
+          span = g.sprouting
+          br
+          span = g.litter
+          br
+          span = g.nature
+          br
+          span = g.fall
     br
     .row.collection-item
       .col.s6 = t('storage_raw.total')

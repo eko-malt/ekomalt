@@ -40,8 +40,9 @@ ready = function() {
     $('select').material_select();
     $('.tooltipped').tooltip({delay: 50});
     $("#top_date").on("click", function() {
-        //$("#calendar").click();
-        console.log('show_calendar');
+        $('#')
+        //$("#calendar").trigger('click');
+        //console.log('show_calendar');
     });
     $('.modal').modal({
         endingTop: '10%',
