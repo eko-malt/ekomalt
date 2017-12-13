@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171211143005) do
+ActiveRecord::Schema.define(version: 20171213185854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,33 @@ ActiveRecord::Schema.define(version: 20171211143005) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "gtype"
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.decimal "grain_storage_capacity"
+    t.decimal "production_capacity"
+    t.decimal "malt_storage_capacity"
+    t.decimal "capital_coef"
+    t.decimal "soak1_capacity"
+    t.decimal "soak1_loading"
+    t.decimal "soak2_capacity"
+    t.decimal "soak2_loading"
+    t.decimal "thresh1_capacity"
+    t.decimal "thresh1_loading"
+    t.decimal "thresh2_capacity"
+    t.decimal "thresh2_loading"
+    t.decimal "thresh3_capacity"
+    t.decimal "thresh3_loading"
+    t.decimal "dryer_capacity"
+    t.decimal "dryer_loading"
+    t.decimal "fermenter1_capacity"
+    t.decimal "fermenter1_loading"
+    t.decimal "fermenter2_capacity"
+    t.decimal "fermenter2_loading"
+    t.decimal "fermenter3_capacity"
+    t.decimal "fermenter3_loading"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

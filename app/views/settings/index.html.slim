@@ -1,0 +1,38 @@
+= simple_form_for @settings, remote: true do |f|
+  => f.input :grain_storage_capacity, label: t('settings.grain_storage_capacity')
+  => f.input :production_capacity, label: t('settings.production_capacity')
+  => f.input :malt_storage_capacity, label: t('settings.malt_storage_capacity')
+  => f.input :capital_coef, label: t('settings.capital_coef')
+
+  p = t('settings.soak1')
+  => f.input :soak1_capacity, label: t('settings.capacity')
+  => f.input :soak1_loading, label: t('settings.loading')
+  p = t('settings.soak2')
+  => f.input :soak2_capacity, label: t('settings.capacity')
+  => f.input :soak2_loading, label: t('settings.loading')
+
+  p = t('settings.thresh1')
+  => f.input :thresh1_capacity, label: t('settings.capacity')
+  => f.input :thresh1_loading, label: t('settings.loading')
+  p = t('settings.thresh1')
+  => f.input :thresh2_capacity, label: t('settings.capacity')
+  => f.input :thresh2_loading, label: t('settings.loading')
+  p = t('settings.thresh1')
+  => f.input :thresh3_capacity, label: t('settings.capacity')
+  => f.input :thresh3_loading, label: t('settings.loading')
+
+  p = t('settings.dryer')
+  => f.input :dryer_capacity, label: t('settings.capacity')
+  => f.input :dryer_loading, label: t('settings.loading')
+
+  p = t('settings.fermenter1')
+  => f.input :fermenter1_capacity, label: t('settings.capacity')
+  => f.input :fermenter1_loading, label: t('settings.loading')
+  p = t('settings.fermenter2')
+  => f.input :fermenter2_capacity, label: t('settings.capacity')
+  => f.input :fermenter2_loading, label: t('settings.loading')
+  p = t('settings.fermenter3')
+  => f.input :fermenter3_capacity, label: t('settings.capacity')
+  => f.input :fermenter3_loading, label: t('settings.loading')
+
+  => f.submit t('form.save'), class: 'btn waves-effect waves-light'

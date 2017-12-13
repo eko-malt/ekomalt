@@ -103,6 +103,23 @@ uk:
     total: 'Разом'
     nograin: 'На складі немає жита'
     nobags: 'На складі немає мішків'
+  settings:
+    grain_storage_capacity: 'Об''єм складу жита'
+    production_capacity: 'Об''єм виробництва'
+    malt_storage_capacity: 'Об''єм складу солоду'
+    capital_coef: 'Коефіцієнт капіталізації'
+    capacity: 'Об''єм'
+    loading: 'Загрузка'
+    soak1: 'Замочний чан 1'
+    soak2: 'Замочний чан 2'
+    thresh1: 'Тік 1'
+    thresh2: 'Тік 2'
+    thresh3: 'Тік 3'
+    dryer: 'Сушка'
+    fermenter1: 'Ферментер 1'
+    fermenter2: 'Ферментер 2'
+    fermenter3: 'Ферментер 3'
+    saved: 'Налаштування збережено'
   modal:
     close: 'Закрити'
   activerecord:

@@ -1,0 +1,1 @@
+Materialize.toast("<%= t('settings.saved') %>", 3000, 'rounded')
