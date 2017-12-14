@@ -1,16 +1,15 @@
 .navbar-fixed
-  nav
+  nav.top-nav
     .nav-wrapper.row
       .col.s2.hide-on-large-only
-        = link_to '', class: 'btn-floating btn-large waves-effect waves-light gradient-shadow'
+        = content_tag('a', class: 'button-collapse', data: { activates: 'slide-out' } )
           i.material-icons menu
       .logo.hide-on-med-and-down
         = link_to t('application.title'), root_path, class:'brand-logo'
       .col.l3.offset-l3
-        h4= t("leftnav.#{controller.controller_name.singularize}")
+        h4 = t("leftnav.#{controller.controller_name.singularize}")
+      .col.l1.offset-l3.s1.offset-s3
+        span.nav-date = content_tag('a', Date.today.strftime('%d.%m.%Y'), id: 'top_date')
       ul.right
-        li
-          input.datepicker#calendar
-        li = content_tag('a', Date.today.strftime('%d.%m.%Y'), id: 'top_date')
         li = content_tag('a', current_user.name)
         li = link_to t('application.logout'), logout_path, method: :delete

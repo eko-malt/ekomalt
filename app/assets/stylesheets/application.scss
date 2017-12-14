@@ -8,6 +8,18 @@ main { margin: 10px; }
 .logo { margin-left: 10px; }
 #slide-out { top: auto; }
 
+
+
+main, footer {
+  padding-left: 250px;
+}
+
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
+}
+
 .login {
   width: 400px;
   margin: 0 auto;
@@ -35,6 +47,8 @@ input[type=number]::-webkit-inner-spin-button {
   overflow: hidden;
 }
 
+.side-nav li.active { background-color: #64B5F6; }
+.nav-date { font-size: x-large; }
 .text-bold { font-weight: bold; }
 .text-yellow { color: #fbc02d; }
 .collapsible-with-margin { margin-bottom: 5px; }

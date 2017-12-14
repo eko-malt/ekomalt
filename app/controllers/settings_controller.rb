@@ -1,5 +1,4 @@
 class SettingsController < ApplicationController
-
   def index
     @settings = Setting.first
   end
@@ -12,5 +11,4 @@ class SettingsController < ApplicationController
   def settings_params
     params.require(:setting).permit!
   end
-
 end

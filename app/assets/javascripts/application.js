@@ -39,10 +39,8 @@ ready = function() {
     $('ul.tabs').tabs();
     $('select').material_select();
     $('.tooltipped').tooltip({delay: 50});
-    $("#top_date").on("click", function() {
-        $('#')
-        //$("#calendar").trigger('click');
-        //console.log('show_calendar');
+    $('.button-collapse').sideNav({
+        menuWidth: 250,
     });
     $('.modal').modal({
         endingTop: '10%',

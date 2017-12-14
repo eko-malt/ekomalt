@@ -10,7 +10,10 @@ html
   body
     header
       = render 'nav' if current_user
-    main.row#main
+      = render 'menu' if current_user
+    main
+      = yield
+    //main.row#main
       section.col.l3.hide-on-med-and-down#leftmenu
         = render 'menu' if current_user
       section.col.m12.l9#content

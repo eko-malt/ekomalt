@@ -107,9 +107,9 @@ uk:
     grain_storage_capacity: 'Об''єм складу жита'
     production_capacity: 'Об''єм виробництва'
     malt_storage_capacity: 'Об''єм складу солоду'
-    capital_coef: 'Коефіцієнт капіталізації'
+    capital_coef: 'Коефіцієнт переробки'
     capacity: 'Об''єм'
-    loading: 'Загрузка'
+    loading: 'Обслуговування'
     soak1: 'Замочний чан 1'
     soak2: 'Замочний чан 2'
     thresh1: 'Тік 1'
@@ -120,6 +120,8 @@ uk:
     fermenter2: 'Ферментер 2'
     fermenter3: 'Ферментер 3'
     saved: 'Налаштування збережено'
+    main: 'Основні налаштування'
+    new_maltose: 'Нова солодовня  '
   modal:
     close: 'Закрити'
   activerecord:

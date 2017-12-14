@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-
   def main
     @grain = GrainInput.all
     @bags = BagInput.all
@@ -10,5 +9,4 @@ class PagesController < ApplicationController
     @grain = GrainInput.remain
     @bags = BagInput.remain
   end
-
 end

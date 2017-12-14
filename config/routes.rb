@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root to: 'pages#main'
   get '/storage_raw', to: 'pages#storageraw'
 
@@ -11,11 +10,10 @@ Rails.application.routes.draw do
   get 'inputs/new'
 
   get '/settings', to: 'settings#index'
-  #patch '/settings', to: 'settings#update'
 
-  resource :sessions, only: %i[new create destroy]
+  # resource :sessions, only: %i[new create destroy]
   resources :providers
   resources :settings, only: :update
-  resources :bag_inputs, only: %i[show edit update create destroy]
-  resources :grain_inputs, only: %i[show edit update create destroy]
+  resources :bag_inputs
+  resources :grain_inputs
 end

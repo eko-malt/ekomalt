@@ -12,7 +12,6 @@ class BagInput < ApplicationRecord
   private
 
   def set_remainders
-    self.remainder = self.amount
+    self.remainder = amount
   end
-
 end

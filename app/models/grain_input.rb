@@ -12,7 +12,6 @@ class GrainInput < ApplicationRecord
   end
 
   def set_remainders
-    self.remainder = self.weight_fact
+    self.remainder = weight_fact
   end
-
 end
