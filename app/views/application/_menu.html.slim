@@ -5,7 +5,7 @@ ul.side-nav.fixed#slide-out
       span = t('leftnav.main')
   li
     .divider
-  li
+  li class="#{active_class(:storageraw)}"
     = link_to storage_raw_path, class: 'collection-item'
       i.material-icons.secondary-content storage
       = t('leftnav.storage_raw')

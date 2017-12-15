@@ -11,8 +11,8 @@ module ApplicationHelper
     t('main.price_with_uah', price: number_with_precision(price, precision: 2, delimiter: ' ', separator: ','))
   end
 
-  def active_class(my_controller)
-    :active if controller.controller_name.to_s == my_controller.to_s
+  def active_class(item)
+    :active if controller.controller_name.to_s == item.to_s || controller.action_name.to_s == item.to_s
   end
 
 end
