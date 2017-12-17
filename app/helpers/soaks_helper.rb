@@ -1,0 +1,2 @@
+module SoaksHelper
+end
