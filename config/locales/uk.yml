@@ -21,7 +21,7 @@ uk:
     provider: 'Постачальники'
     input: 'Поставки'
     plan: 'План виробництва'
-    settings: 'Налаштування'
+    setting: 'Налаштування'
     calc: 'Калькуляція'
   main:
     weight_in_tones: '%{weight} т'
@@ -103,6 +103,17 @@ uk:
     total: 'Разом'
     nograin: 'На складі немає жита'
     nobags: 'На складі немає мішків'
+  old_maltose:
+    vat: 'Замочний чан №%{vat}'
+    start: 'Запустити'
+    load: 'Завантажити'
+    init: 'Потрібно завантажити жито'
+    empty: 'Чан порожній'
+    process: 'Процес триває'
+    finished: 'Завершено'
+    edit: 'Редагувати'
+    finish: 'Завершити'
+    next: 'На тік'
   settings:
     grain_storage_capacity: 'Об''єм складу жита'
     production_capacity: 'Об''єм виробництва'

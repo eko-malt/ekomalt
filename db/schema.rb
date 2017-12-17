@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171213185854) do
+ActiveRecord::Schema.define(version: 20171216112809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 20171213185854) do
     t.datetime "updated_at", null: false
     t.integer "remainder"
     t.index ["provider_id"], name: "index_grain_inputs_on_provider_id"
+  end
+
+  create_table "grain_to_soaks", force: :cascade do |t|
+    t.bigint "grain_input_id"
+    t.bigint "soak_id"
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["grain_input_id"], name: "index_grain_to_soaks_on_grain_input_id"
+    t.index ["soak_id"], name: "index_grain_to_soaks_on_soak_id"
   end
 
   create_table "providers", force: :cascade do |t|
@@ -77,6 +87,15 @@ ActiveRecord::Schema.define(version: 20171213185854) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "soaks", force: :cascade do |t|
+    t.integer "status", default: 0
+    t.integer "vat"
+    t.datetime "starttime"
+    t.datetime "finishtime"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "login"
@@ -87,4 +106,6 @@ ActiveRecord::Schema.define(version: 20171213185854) do
 
   add_foreign_key "bag_inputs", "providers"
   add_foreign_key "grain_inputs", "providers"
+  add_foreign_key "grain_to_soaks", "grain_inputs"
+  add_foreign_key "grain_to_soaks", "soaks"
 end

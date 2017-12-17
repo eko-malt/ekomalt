@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  grain_input: one
+  soak: one
+  amount: 1
+
+two:
+  grain_input: two
+  soak: two
+  amount: 1

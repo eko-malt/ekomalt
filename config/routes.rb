@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: 'pages#main'
+
   get '/storage_raw', to: 'pages#storageraw'
+  get '/old_maltose', to: 'pages#oldmaltose'
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
@@ -11,7 +13,6 @@ Rails.application.routes.draw do
 
   get '/settings', to: 'settings#index'
 
-  # resource :sessions, only: %i[new create destroy]
   resources :providers
   resources :settings, only: :update
   resources :bag_inputs

@@ -12,7 +12,7 @@ ul.side-nav.fixed#slide-out
   li
     .divider
   li
-    = link_to '', class: 'collection-item'
+    = link_to old_maltose_path, class: 'collection-item'
       i.material-icons.secondary-content landscape
       = t('leftnav.old_maltose')
   li
@@ -56,64 +56,10 @@ ul.side-nav.fixed#slide-out
   li class="#{active_class(:settings)}"
     = link_to settings_path, class: 'collection-item'
       i.material-icons.secondary-content settings
-      = t('leftnav.settings')
+      = t('leftnav.setting')
   li
     .divider
   li
-    = link_to '', class: 'collection-item'
-      i.material-icons.secondary-content dialpad
-      = t('leftnav.calc')
-
-//  <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-  <li><a href="#!">Second Link</a></li>
-  <li><div class="divider"></div></li>
-  <li><a class="subheader">Subheader</a></li>
-  <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-  </ul>
-  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-//ul
-  ul.collection.menu
-    = link_to root_path, class: 'collection-item'
-      i.material-icons.secondary-content dashboard span = t('leftnav.main')
-  ul.collection.menu
-    = link_to storage_raw_path, class: 'collection-item'
-      i.material-icons.secondary-content storage
-      = t('leftnav.storage_raw')
-  ul.collection.menu
-    = link_to '', class: 'collection-item'
-      i.material-icons.secondary-content landscape
-      = t('leftnav.old_maltose')
-    = link_to '', class: 'collection-item'
-      i.material-icons.secondary-content panorama
-      = t('leftnav.new_maltose')
-  ul.collection.menu
-    = link_to '', class: 'collection-item'
-      i.material-icons.secondary-content reorder
-      = t('leftnav.storage_malt')
-    = link_to '', class: 'collection-item'
-      i.material-icons.secondary-content file_upload
-      = t('leftnav.shipment')
-  ul.collection.menu
-    = link_to '', class: 'collection-item'
-      i.material-icons.secondary-content people
-      = t('leftnav.client')
-    = link_to '', class: 'collection-item'
-      i.material-icons.secondary-content shopping_cart
-      = t('leftnav.order')
-    = link_to providers_path, class: 'collection-item'
-      i.material-icons.secondary-content contacts
-      = t('leftnav.provider')
-    = link_to inputs_path, class: 'collection-item'
-      i.material-icons.secondary-content file_download
-      = t('leftnav.input')
-  ul.collection.menu
-    = link_to '', class: 'collection-item'
-      i.material-icons.secondary-content event
-      = t('leftnav.plan')
-    = link_to settings_path, class: 'collection-item'
-      i.material-icons.secondary-content settings
-      = t('leftnav.settings')
-  ul.collection.menu
     = link_to '', class: 'collection-item'
       i.material-icons.secondary-content dialpad
       = t('leftnav.calc')
