@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171216112809) do
+ActiveRecord::Schema.define(version: 20171218172307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 20171216112809) do
     t.datetime "updated_at", null: false
     t.integer "remainder"
     t.index ["provider_id"], name: "index_bag_inputs_on_provider_id"
+  end
+
+  create_table "equipment", force: :cascade do |t|
+    t.integer "eqtype"
+    t.string "name"
+    t.integer "maltose"
+    t.decimal "capacity"
+    t.decimal "service_time"
+    t.integer "status", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "grain_inputs", force: :cascade do |t|
@@ -51,6 +62,13 @@ ActiveRecord::Schema.define(version: 20171216112809) do
     t.datetime "updated_at", null: false
     t.index ["grain_input_id"], name: "index_grain_to_soaks_on_grain_input_id"
     t.index ["soak_id"], name: "index_grain_to_soaks_on_soak_id"
+  end
+
+  create_table "malts", force: :cascade do |t|
+    t.string "name"
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "providers", force: :cascade do |t|

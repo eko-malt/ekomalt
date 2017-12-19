@@ -1,0 +1,13 @@
+.row
+  .col.s2
+    = t("equipment.#{equipment.eqtype}")
+  .col.s2
+    = equipment.name
+  .col.s2
+    = t("equipment.#{equipment.maltose}")
+  .col.s2
+    = equipment.capacity
+  .col.s2
+    = equipment.service_time
+  .col.s2
+    = link_to t('form.edit'), edit_equipment_path(equipment), class: 'btn waves-effect waves-light'

@@ -1,0 +1,14 @@
+.col.s12
+  .card.blue-grey.darken
+    .card-content.white-text
+      span.card-title.center = vat.name
+      h5.center = t("old_maltose.#{vat.process1? ? 'vat_status' : vat.status}")
+      - if vat.filled? or vat.finished? or vat.process1?
+        = render partial: 'pages/timing', locals: { starttime: Time.now, finishtime: Time.now + 4.days }
+        = render partial: 'pages/progress', locals: { percent: '50', color: 'yellow' }
+    .card-action
+      = content_tag('a', t('old_maltose.enable')) if vat.broken?
+      = content_tag('a', t('old_maltose.load')) if vat.empty?
+      = content_tag('a', t('old_maltose.edit')) if vat.process1? or vat.finished?
+      = content_tag('a', t('old_maltose.finish'), class: 'right') if vat.process1?
+      = content_tag('a', t('old_maltose.next'), class: 'right') if vat.finished?

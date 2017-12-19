@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get '/settings', to: 'settings#index'
 
   resources :providers
+  resources :malts
+  resources :equipment, only: %i[edit update]
   resources :settings, only: :update
   resources :bag_inputs
   resources :grain_inputs

@@ -1,6 +1,8 @@
 class SettingsController < ApplicationController
   def index
     @settings = Setting.first
+    @malts = Malt.all
+    @equipments = Equipment.order(:maltose)
   end
 
   def update

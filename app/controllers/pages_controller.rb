@@ -11,6 +11,7 @@ class PagesController < ApplicationController
   end
 
   def oldmaltose
-    @soaks = Soak.where.not(status: :archived).order(:vat)
+    #@soaks = Soak.where.not(status: :archived).order(:vat)
+    @equipment = Equipment.oldm.order(:eqtype, :name)
   end
 end

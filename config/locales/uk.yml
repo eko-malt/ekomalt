@@ -12,8 +12,8 @@ uk:
     page: ''
     main: 'Головна'
     storage_raw: 'Склад сировини'
-    old_maltose: 'Стара солодовня'
-    new_maltose: 'Нова солодовня'
+    oldmaltose: 'Стара солодовня'
+    newmaltose: 'Нова солодовня'
     storage_malt: 'Склад солоду'
     shipment: 'Відвантаження'
     client: 'Клієнти'
@@ -23,6 +23,7 @@ uk:
     plan: 'План виробництва'
     setting: 'Налаштування'
     calc: 'Калькуляція'
+    oldmaltose: 'Стара солодовня'
   main:
     weight_in_tones: '%{weight} т'
     price_with_uah: '%{price} грн'
@@ -45,7 +46,13 @@ uk:
     finish: 'Кінець виробництва'
     bag25_count: "Мішків по 25кг"
     bag50_count: "Мішків по 50кг"
+  malt:
+    create: 'Додати вид солоду'
+    create_title: 'Створення нового типу солоду'
+    name: 'Назва'
+    color: 'Колір'
   form:
+    edit: 'Редагувати'
     save: 'Зберегти'
   provider:
     singular: 'Постачальник'
@@ -114,6 +121,13 @@ uk:
     edit: 'Редагувати'
     finish: 'Завершити'
     next: 'На тік'
+    vat_status: 'Замочка'
+    broken: 'Ремонт'
+    enable: 'Увімкнути'
+    empty: 'Пустий'
+    filled: 'Заповнений'
+    finished: 'Завершено'
+    service: 'Обслуговування'
   settings:
     grain_storage_capacity: 'Об''єм складу жита'
     production_capacity: 'Об''єм виробництва'
@@ -132,7 +146,22 @@ uk:
     fermenter3: 'Ферментер 3'
     saved: 'Налаштування збережено'
     main: 'Основні налаштування'
-    new_maltose: 'Нова солодовня  '
+    new_maltose: 'Нова солодовня'
+    malt: 'Солод'
+    equipment: 'Обладнання'
+  equipment:
+    vat: 'Замочний чан'
+    thresh: 'Тік'
+    fermenter: 'Ферментар'
+    druing: 'Сушка'
+    oldm: 'Стара'
+    newm: 'Нова'
+    header:
+      type: 'Тип'
+      name:  'Назва'
+      maltose: 'Солодовня'
+      capacity: 'Об''єм (т)'
+      service_time: 'Час обслуговування (год)'
   modal:
     close: 'Закрити'
   activerecord:

@@ -11,14 +11,14 @@ ul.side-nav.fixed#slide-out
       = t('leftnav.storage_raw')
   li
     .divider
-  li
+  li class="#{active_class(:oldmaltose)}"
     = link_to old_maltose_path, class: 'collection-item'
       i.material-icons.secondary-content landscape
-      = t('leftnav.old_maltose')
+      = t('leftnav.oldmaltose')
   li
     = link_to '', class: 'collection-item'
       i.material-icons.secondary-content panorama
-      = t('leftnav.new_maltose')
+      = t('leftnav.newmaltose')
   li
     .divider
   li

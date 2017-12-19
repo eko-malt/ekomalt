@@ -1,5 +1,21 @@
+ul.collapsible*{'data-collapsible' => 'expandable'}
+  li
+    .collapsible-header
+      = t('settings.malt')
+    .collapsible-body
+      .row
+        .col.s8
+          =  render @malts
+        .col.s4
+          = link_to t('malt.create'), new_malt_path, class: 'btn waves-effect waves-light'
+  li
+    .collapsible-header
+      = t('settings.equipment')
+    .collapsible-body
+      = render 'equipment/header'
+      = render @equipments
 
-= simple_form_for @settings, remote: true do |f|
+//= simple_form_for @settings, remote: true do |f|
   ul.collapsible*{'data-collapsible' => 'expandable'}
     li
       .collapsible-header
