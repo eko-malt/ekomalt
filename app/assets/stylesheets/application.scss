@@ -11,7 +11,7 @@ main { margin: 10px; }
 
 
 main, footer {
-  padding-left: 250px;
+  padding-left: 280px;
 }
 
 @media only screen and (max-width : 992px) {
@@ -64,6 +64,7 @@ h4 i, h5 i { margin-right: 15px; }
 li.tab-grain { background-color: #a1887f }
 li.tab-bags { background-color: #e0e0e0 }
 .disable-hover { pointer-events:none; }
+.card-action > a.right { margin-right: 0px !important; }
 
 .color-marker {
   width: 25px;

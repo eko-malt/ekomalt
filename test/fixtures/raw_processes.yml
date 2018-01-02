@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  equipment: one
+  start_time: 2017-12-21 21:51:04
+  finishtime: 2017-12-21 21:51:04
+
+two:
+  equipment: two
+  start_time: 2017-12-21 21:51:04
+  finishtime: 2017-12-21 21:51:04

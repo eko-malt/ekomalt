@@ -7,7 +7,7 @@
       .logo.hide-on-med-and-down
         = link_to t('application.title'), root_path, class:'brand-logo'
       .col.l3.offset-l3
-        h4 = t("leftnav.#{controller.controller_name.singularize}")
+        h4 = t("leftnav.#{controller.controller_name == 'pages' ? controller.action_name : controller.controller_name.singularize}")
       .col.l1.offset-l3.s1.offset-s3
         span.nav-date = content_tag('a', Date.today.strftime('%d.%m.%Y'), id: 'top_date')
       ul.right

@@ -1,0 +1,28 @@
+.col.s12
+  .card.blue-grey.darken id="equipment_#{equipment.id}"
+    .card-content.white-text
+      span.card-title.center = equipment.name
+      - if equipment.broken?
+        h5.center = t('old_maltose.status.broken')
+      - else
+        - if equipment.raw_processes.empty?
+          h5.center = t('old_maltose.status.empty')
+        - else
+          - process = equipment.raw_processes.first
+          h5.center = t("old_maltose.status.vat.#{process.status}")
+          - if process.process1?
+            = render partial: 'pages/timing', locals: { start_time: process.start_time, finish_time: process.finish_time }
+            = render partial: 'pages/progress', locals: { start_time: process.start_time, finish_time: process.finish_time, color: 'yellow' }
+          h5.center
+            = weight_in_tones(process.movements.sum(:amount))
+    .card-action
+      - if equipment.broken?
+        = link_to(t('old_maltose.enable'), equipment_path(equipment, equipment: { status: :working }), method: :put, remote: true)
+      - else
+        - if equipment.raw_processes.empty?
+          = link_to t('old_maltose.load'), new_raw_process_path(equipment: equipment.id)
+        - else
+          = link_to t('old_maltose.start'), { controller: 'raw_processes', action: 'status_update', id: process.id, status: 'process1' }, method: :put, class: 'right' if process.init?
+          = link_to t('old_maltose.edit'), raw_process_path(process) if process.process1? || process.finished? || process.init?
+          = link_to t('old_maltose.finish'), { controller: 'raw_processes', action: 'status_update', id: process.id, status: 'finished' }, method: :put, class: 'right' if process.process1?
+          = content_tag('a', t('old_maltose.next'), class: 'right') if process.finished?

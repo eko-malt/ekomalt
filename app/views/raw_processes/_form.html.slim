@@ -1,0 +1,20 @@
+
+= simple_form_for @process, remote: true do |f|
+  = simple_fields_for :dates do |o|
+    = f.hidden_field :status, value: 'init'
+    = f.hidden_field :equipment_id, value: @process.equipment_id
+    .row
+      .col.s2
+        = t('old_maltose.process.start')
+      .col.s4
+        = o.input :start_date, as: :string, label: t('old_maltose.process.start_date'), input_html: { value: @process.start_time? ? date_ukr(@process.start_time) : '', class: 'datepicker' }, label_html: { class: 'active' }
+      .col.s4
+        = o.input :start_time, as: :string, label: t('old_maltose.process.start_time'), input_html: { value: @process.start_time? ? time_ukr(@process.start_time) : '', class: 'timepicker' }, label_html: { class: 'active' }
+    .row
+      .col.s2
+        = t('old_maltose.process.finish')
+      .col.s4
+        = o.input :finish_date, as: :string, label: t('old_maltose.process.finish_date'), input_html: { value: @process.finish_time? ? date_ukr(@process.finish_time) : '', class: 'datepicker' }, label_html: { class: 'active' }
+      .col.s4
+        = o.input :finish_time, as: :string, label: t('old_maltose.process.finish_time'), input_html: { value: @process.finish_time? ? time_ukr(@process.finish_time) : '', class: 'timepicker' }, label_html: { class: 'active' }
+  = f.submit t('form.save'), class: 'btn waves-effect waves-light'

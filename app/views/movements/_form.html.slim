@@ -1,0 +1,8 @@
+= simple_form_for @movement do |f|
+  .row
+    .col.m6.s12 = f.input :sourceable_id, as: :select, collection: @inputs.map { |i| ["#{date_ukr(i.date)} | #{i.provider.name} | #{weight_in_tones(i.movements.sum(:amount) == 0 ? i.weight_fact : i.weight_fact - i.movements.sum(:amount))}", i.id, { data: {max: i.movements.sum(:amount) == 0 ? i.weight_fact : i.weight_fact - i.movements.sum(:amount)}}]}, include_blank: t('old_maltose.process.input'), label: false
+    .col.m2.s12 = f.input :amount, label: t('old_maltose.process.amount')
+    .col.m3.s12 = f.submit t('form.add'), class: 'btn waves-effect waves-light'
+  = f.hidden_field :sourceable_type, value: 'GrainInput'
+  = f.hidden_field :targetable_id, value: params[:id]
+  = f.hidden_field :targetable_type, value: 'RawProcess'

@@ -11,9 +11,9 @@ uk:
     application: ''
     page: ''
     main: 'Головна'
-    storage_raw: 'Склад сировини'
-    old_maltose: 'Стара солодовня'
-    new_maltose: 'Нова солодовня'
+    storageraw: 'Склад сировини'
+    oldmaltose: 'Стара солодовня'
+    newmaltose: 'Нова солодовня'
     storage_malt: 'Склад солоду'
     shipment: 'Відвантаження'
     client: 'Клієнти'
@@ -23,6 +23,7 @@ uk:
     plan: 'План виробництва'
     setting: 'Налаштування'
     calc: 'Калькуляція'
+    oldmaltose: 'Стара солодовня'
   main:
     weight_in_tones: '%{weight} т'
     price_with_uah: '%{price} грн'
@@ -45,8 +46,16 @@ uk:
     finish: 'Кінець виробництва'
     bag25_count: "Мішків по 25кг"
     bag50_count: "Мішків по 50кг"
+  malt:
+    create: 'Додати вид солоду'
+    create_title: 'Створення нового типу солоду'
+    name: 'Назва'
+    color: 'Колір'
   form:
+    edit: 'Редагувати'
     save: 'Зберегти'
+    add: 'Додати'
+    delete: 'Видалити'
   provider:
     singular: 'Постачальник'
     title: 'Постачальники'
@@ -103,6 +112,9 @@ uk:
     total: 'Разом'
     nograin: 'На складі немає жита'
     nobags: 'На складі немає мішків'
+  maltose:
+    oldm: 'Стара солодовня'
+    newm: 'Нова солодовня'
   old_maltose:
     vat: 'Замочний чан №%{vat}'
     start: 'Запустити'
@@ -114,6 +126,47 @@ uk:
     edit: 'Редагувати'
     finish: 'Завершити'
     next: 'На тік'
+    vat_status: 'Замочка'
+    broken: 'Ремонт'
+    enable: 'Увімкнути'
+    empty: 'Пустий'
+    filled: 'Заповнений'
+    finished: 'Завершено'
+    service: 'Обслуговування'
+    status:
+      broken: 'Зламаний'
+      empty: 'Пустий'
+      vat:
+        init: 'Запуск'
+        process1: 'Замочка'
+        finished: 'Завершено'
+      thresh:
+        process1: 'Пророщення'
+        process2: 'Ферментація'
+        finished: 'Завершено'
+      ferment:
+        process1: 'Ферментація'
+        finished: 'Завершено'
+      druing:
+        process1: 'Сушка'
+        finished: 'Завершено'
+    process:
+      start: 'Початок'
+      finish: 'Завершення'
+      start_date: 'Дата початку'
+      start_time: 'Час початку'
+      finish_date: 'Дата завершення'
+      finish_time: 'Час завершення'
+      movements: 'Жито, що обробляється (%{v} т)'
+      add_grain: 'Додати жито (максимум - %{v} т)'
+      input: 'Поставка'
+      amount: 'Об''єм (т)'
+      capacity: '(Місткість - %{v} т)'
+  process:
+    updated: 'Дані збережено'
+  movements:
+    created: 'Переміщення додано'
+    deleted: 'Переміщення видалено'
   settings:
     grain_storage_capacity: 'Об''єм складу жита'
     production_capacity: 'Об''єм виробництва'
@@ -132,7 +185,22 @@ uk:
     fermenter3: 'Ферментер 3'
     saved: 'Налаштування збережено'
     main: 'Основні налаштування'
-    new_maltose: 'Нова солодовня  '
+    new_maltose: 'Нова солодовня'
+    malt: 'Солод'
+    equipment: 'Обладнання'
+  equipment:
+    vat: 'Замочний чан'
+    thresh: 'Тік'
+    fermenter: 'Ферментар'
+    druing: 'Сушка'
+    oldm: 'Стара'
+    newm: 'Нова'
+    header:
+      type: 'Тип'
+      name:  'Назва'
+      maltose: 'Солодовня'
+      capacity: 'Об''єм (т)'
+      service_time: 'Час обслуговування (год)'
   modal:
     close: 'Закрити'
   activerecord:
@@ -170,3 +238,26 @@ uk:
       10: 'Жовтень'
       11: 'Листопад'
       12: 'Грудень'
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: 'має бути прийнятий'
+      blank: 'не може бути пустим'
+      present: 'має бути пустим'
+      confirmation: 'не збігається з підтвердженням'
+      empty: 'не може бути порожнім'
+      equal_to: 'має дорівнювати %{count}'
+      even: 'має бути парним'
+      exclusion: 'зарезервовано'
+      greater_than: 'має бути більше ніж %{count}'
+      greater_than_or_equal_to: 'має бути більше ніж або дорівнювати %{count}'
+      inclusion: 'не включено до переліку'
+      invalid: 'недійсний'
+      less_than: 'має бути менше ніж %{count}'
+      less_than_or_equal_to: 'має бути менше ніж або дорівнювати %{count}'
+      model_invalid: 'Виникли помилки: %{errors}'
+      not_a_number: 'не число'
+      not_an_integer: 'не э цілим числом'
+      odd: 'має бути непарним'
+      required: 'не може бути порожнім'
+      taken: 'вже зайнятий'

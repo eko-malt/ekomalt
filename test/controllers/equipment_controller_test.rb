@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SoakTest < ActiveSupport::TestCase
+class EquipmentControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

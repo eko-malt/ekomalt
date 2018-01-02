@@ -1,0 +1,3 @@
+- Time.now > finish_time ? percent = 100 : percent = ((Time.now - start_time)/(finish_time - start_time) * 100).round
+.progress.tooltipped*{'data-position' => 'bottom', 'data-delay' => '50', 'data-tooltip' => "#{percent}%"}
+  .progress-bar.progress-bar-striped *{class: "#{color == 'yellow' ? 'bg-progress-yellow' : 'bg-progress-brown'}"} *{'role' => 'progressbar', 'style' => "width: #{percent}%", 'aria-valuenow' => "#{percent}", 'aria-valuemin' => '0', 'aria-valuemax' => '100'}

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SoaksControllerTest < ActionDispatch::IntegrationTest
+class ToVatProcessTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

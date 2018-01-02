@@ -6,9 +6,9 @@ class BagInputsController < ApplicationController
     render :new unless @bag_input.save
   end
 
-  def edit; end
-
   def show; end
+
+  def edit; end
 
   def update
     render :edit unless @bag_input.update(input_params)
