@@ -1,2 +1,0 @@
-class SoaksController < ApplicationController
-end

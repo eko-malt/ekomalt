@@ -14,4 +14,12 @@ module ApplicationHelper
   def active_class(item)
     :active if controller.controller_name.to_s == item.to_s || controller.action_name.to_s == item.to_s
   end
+
+  def date_ukr(date)
+    date.strftime('%d.%m.%Y')
+  end
+
+  def time_ukr(time)
+    time.strftime('%H:%M')
+  end
 end

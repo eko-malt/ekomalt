@@ -1,17 +1,17 @@
 class PagesController < ApplicationController
   def main
-    @grain = GrainInput.all
+    @at_storage = GrainInput.all.sum(:weight_fact) - Movement.by_source_type('GrainInput').sum(:amount)
     @bags = BagInput.all
     @settings = Setting.first
   end
 
   def storageraw
-    @grain = GrainInput.remain
-    @bags = BagInput.remain
+    @grain = GrainInput.at_storage + GrainInput.full_at_storage
+    @grain.sort_by(&:date)
+    @bags = BagInput.all
   end
 
   def oldmaltose
-    #@soaks = Soak.where.not(status: :archived).order(:vat)
-    @equipment = Equipment.oldm.order(:eqtype, :name)
+    @equipment = Equipment.oldm.order(:eqtype, :name).includes(raw_processes: :movements)
   end
 end

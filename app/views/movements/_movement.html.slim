@@ -1,0 +1,10 @@
+.row id="movement_#{movement.id}"
+  - if movement.sourceable_type == 'GrainInput'
+    - input = GrainInput.find(movement.sourceable_id)
+    .col.s2 = input.date
+    .col.s2 = input.provider.name
+    .col.s2 = weight_in_tones(movement.amount)
+    .col.s2
+      = link_to t('form.edit'), edit_movement_path(movement.id), remote: true, class: 'btn waves-effect waves-light'
+    .col.s2
+      = link_to t('form.delete'), movement_path(movement.id), method: :delete, class: 'btn waves-effect waves-light', data: {confirm: t('activerecord.confirm_delete')}

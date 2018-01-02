@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171218172307) do
+ActiveRecord::Schema.define(version: 20171221195423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20171218172307) do
     t.bigint "provider_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "remainder"
     t.index ["provider_id"], name: "index_bag_inputs_on_provider_id"
   end
 
@@ -50,18 +49,7 @@ ActiveRecord::Schema.define(version: 20171218172307) do
     t.decimal "fall"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "remainder"
     t.index ["provider_id"], name: "index_grain_inputs_on_provider_id"
-  end
-
-  create_table "grain_to_soaks", force: :cascade do |t|
-    t.bigint "grain_input_id"
-    t.bigint "soak_id"
-    t.integer "amount"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["grain_input_id"], name: "index_grain_to_soaks_on_grain_input_id"
-    t.index ["soak_id"], name: "index_grain_to_soaks_on_soak_id"
   end
 
   create_table "malts", force: :cascade do |t|
@@ -71,11 +59,33 @@ ActiveRecord::Schema.define(version: 20171218172307) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "movements", force: :cascade do |t|
+    t.decimal "amount"
+    t.string "sourceable_type"
+    t.bigint "sourceable_id"
+    t.string "targetable_type"
+    t.bigint "targetable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sourceable_type", "sourceable_id"], name: "index_movements_on_sourceable_type_and_sourceable_id"
+    t.index ["targetable_type", "targetable_id"], name: "index_movements_on_targetable_type_and_targetable_id"
+  end
+
   create_table "providers", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "gtype"
+  end
+
+  create_table "raw_processes", force: :cascade do |t|
+    t.bigint "equipment_id"
+    t.datetime "start_time"
+    t.datetime "finish_time"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["equipment_id"], name: "index_raw_processes_on_equipment_id"
   end
 
   create_table "settings", force: :cascade do |t|
@@ -105,15 +115,6 @@ ActiveRecord::Schema.define(version: 20171218172307) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "soaks", force: :cascade do |t|
-    t.integer "status", default: 0
-    t.integer "vat"
-    t.datetime "starttime"
-    t.datetime "finishtime"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "login"
@@ -124,6 +125,5 @@ ActiveRecord::Schema.define(version: 20171218172307) do
 
   add_foreign_key "bag_inputs", "providers"
   add_foreign_key "grain_inputs", "providers"
-  add_foreign_key "grain_to_soaks", "grain_inputs"
-  add_foreign_key "grain_to_soaks", "soaks"
+  add_foreign_key "raw_processes", "equipment"
 end

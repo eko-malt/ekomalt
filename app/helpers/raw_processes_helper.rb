@@ -1,0 +1,2 @@
+module RawProcessesHelper
+end

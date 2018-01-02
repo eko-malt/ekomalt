@@ -1,0 +1,19 @@
+.row
+  .col.s12
+    h4
+      = t("maltose.#{@process.equipment.maltose}") + ' - ' + @process.equipment.name + ' ' + t('old_maltose.process.capacity', v: @process.equipment.capacity)
+      span.hidden#equipment_capacity*{'data-capacity': @process.equipment.capacity }
+
+    = render 'form'
+    br
+    #movements_list
+      h4 = t('old_maltose.process.movements', v: @process.movements.sum(:amount)) if !@process.movements.empty?
+      span.hidden#equipment_amount*{'data-amount': @process.movements.sum(:amount) }
+      - @process.movements.each do |move|
+        = render partial: 'movements/movement', object: move
+
+    br
+    - free = @process.equipment.capacity - @process.movements.sum(:amount)
+    - if free > 0
+      h4 = t('old_maltose.process.add_grain', v: free)
+      = render 'movements/form'

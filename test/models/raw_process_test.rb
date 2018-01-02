@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class GrainToSoakTest < ActiveSupport::TestCase
+class RawProcessTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

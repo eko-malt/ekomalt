@@ -2,10 +2,10 @@
 
 one:
   grain_input: one
-  soak: one
-  amount: 1
+  vat_process: one
+  amount: 9.99
 
 two:
   grain_input: two
-  soak: two
-  amount: 1
+  vat_process: two
+  amount: 9.99

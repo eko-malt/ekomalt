@@ -7,8 +7,8 @@
             i.material-icons.small storage
             = t('main.grain_storage')
         br
-        h2.center-align.yellow-text = weight_in_tones(@grain.sum(:weight_fact))
-        - perc = @grain.sum(:weight_fact) / @settings.grain_storage_capacity * 100
+        h2.center-align.yellow-text = weight_in_tones(@at_storage)
+        - perc = @at_storage / @settings.grain_storage_capacity * 100
         .progress.tooltipped*{'data-position' => 'bottom', 'data-delay' => '50', 'data-tooltip' => "#{perc}%"}
           .progress-bar.progress-bar-striped.bg-progress-yellow*{'role' => 'progressbar', 'style' => "width: #{perc}%", 'aria-valuenow' => "#{perc}", 'aria-valuemin' => '0', 'aria-valuemax' => '100'}
       .card-action

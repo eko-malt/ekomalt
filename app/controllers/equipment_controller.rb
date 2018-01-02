@@ -5,7 +5,6 @@ class EquipmentController < ApplicationController
 
   def update
     render :edit unless @equipment.update(equipment_params)
-    redirect_to settings_path
   end
 
   private

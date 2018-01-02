@@ -1,3 +1,4 @@
+/*
 BagInput.delete_all
 GrainInput.delete_all
 Provider.destroy_all
@@ -40,4 +41,4 @@ Malt.delete_all
 Malt.create(name: 'white', color: 'ffffff')
 Malt.create(name: 'fermented', color: 'a1887f')
 Malt.create(name: 'very_fermented', color: '5d4037')
-Malt.create(name: 'extra', color: '000000')
+Malt.create(name: 'extra', color: '000000')*/

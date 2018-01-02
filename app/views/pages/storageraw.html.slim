@@ -12,14 +12,18 @@ h5 = t('storage_raw.grain')
         span.right = t('storage_raw.grain_remainder')
       .col.s1
       .col.s3 = t('storage_raw.quality')
-    - @grain.each do |g|
+    - total = 0
+    - @grain.sort_by(&:date).each do |g|
+      - weight = g.weight_fact - g.movements.sum(:amount)
+      - total += weight
+      - if weight > 0
       .row.collection-item id="grain_input_#{g.id}"
         .col.s2 = g.date.strftime('%d.%m.%Y')
         .col.s2 = g.provider.name
         .col.s2
           span.right = number_with_precision(g.weight_fact)
         .col.s2
-          span.right = number_with_precision(g.remainder)
+          span.right = number_with_precision(weight)
         .col.s1
         .col.s2
           span.right = t('input.quality.humidity')
@@ -45,7 +49,7 @@ h5 = t('storage_raw.grain')
     .row.collection-item
       .col.s6 = t('storage_raw.total')
       .col.s2
-        span.right = number_with_precision(@grain.sum(:remainder), precision: 3)
+        span.right = number_with_precision(total, precision: 3)
 hr
 h5 = t('storage_raw.bags')
 - if @bags.empty?
@@ -70,17 +74,17 @@ h5 = t('storage_raw.bags')
         .col.s2
           span.right = b.amount
         .col.s2
-          span.right = b.remainder
+          span.right = b.amount
     br
     .row.collection-item
       .col.s4 = t('storage_raw.total')
       .col.s2
         span.right = t('input.sizes.kg25')
       .col.s2.offset-s2
-        span.right = @bags.sum { |i| i.kg25? ? i.remainder : 0 }
+        span.right = @bags.sum { |i| i.kg25? ? i.amount : 0 }
     .row.collection-item
       .col.s4 = t('storage_raw.total')
       .col.s2
         span.right = t('input.sizes.kg50')
       .col.s2.offset-s2
-        span.right = @bags.sum { |i| i.kg50? ? i.remainder : 0 }
+        span.right = @bags.sum { |i| i.kg50? ? i.amount : 0 }

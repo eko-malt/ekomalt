@@ -1,4 +1,4 @@
-$("<%= j(render partial: 'form', object: @grain_input) %>").appendTo("#modal .modal-content")
+$("<%= j(render partial: 'form', object: @process) %>").appendTo("#modal .modal-content")
 Materialize.updateTextFields()
 datepicker_init()
 $('select').material_select()
