@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  malt: one
+  equipment: one
+  duration: 1
+  available: 1
+
+two:
+  malt: two
+  equipment: two
+  duration: 1
+  available: 1

@@ -14,7 +14,6 @@ Provider.create(name: 'Ebay', gtype: 2)
 Provider.create(name: 'OLX', gtype: 2)
 Provider.create(name: 'Amazon', gtype: 2)
 Provider.create(name: 'Gorishni plavni', gtype: 2)
-=end
 
 Equipment.destroy_all
 Equipment.create(eqtype: 1, name: 'Замочний чан 1', maltose: 1, capacity: 10, service_time: 4, status: 1)
@@ -42,3 +41,8 @@ Malt.create(name: 'white', color: 'ffffff')
 Malt.create(name: 'fermented', color: 'a1887f')
 Malt.create(name: 'very_fermented', color: '5d4037')
 Malt.create(name: 'extra', color: '000000')
+
+@malts = Malt.all
+@equipments = Equipment.all
+@malts.each { |m| @equipments.each { |e| MaltSetting.create(malt: m, equipment: e) }}
+=end

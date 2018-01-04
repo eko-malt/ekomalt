@@ -1,0 +1,31 @@
+li
+  .collapsible-header
+    = malt_setting['oldm'][0].malt.name
+  .collapsible-body
+    ul.collapsible*{'data-collapsible': 'expandable'}
+      li
+        .collapsible-header
+          = t('settings.old_maltose')
+        .collapsible-body
+          .row.valign-wrapper
+            .col.s3
+            .col.s3
+              = t('settings.available')
+            .col.s2
+              = t('settings.duration')
+            .col.s4
+          - malt_setting['oldm'].each do |s|
+            = render partial: 'malt_settings/form', locals: { malt_setting: s }
+      li
+        .collapsible-header
+          = t('settings.new_maltose')
+        .collapsible-body
+          .row.valign-wrapper
+            .col.s3
+            .col.s3
+              = t('settings.available')
+            .col.s2
+              = t('settings.duration')
+            .col.s4
+          - malt_setting['newm'].each do |s|
+            = render partial: 'malt_settings/form', locals: { malt_setting: s }

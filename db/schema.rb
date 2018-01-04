@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171221195423) do
+ActiveRecord::Schema.define(version: 20180102230713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,17 @@ ActiveRecord::Schema.define(version: 20171221195423) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["provider_id"], name: "index_grain_inputs_on_provider_id"
+  end
+
+  create_table "malt_settings", force: :cascade do |t|
+    t.bigint "malt_id"
+    t.bigint "equipment_id"
+    t.integer "duration", default: 1
+    t.integer "available", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["equipment_id"], name: "index_malt_settings_on_equipment_id"
+    t.index ["malt_id"], name: "index_malt_settings_on_malt_id"
   end
 
   create_table "malts", force: :cascade do |t|
@@ -125,5 +136,7 @@ ActiveRecord::Schema.define(version: 20171221195423) do
 
   add_foreign_key "bag_inputs", "providers"
   add_foreign_key "grain_inputs", "providers"
+  add_foreign_key "malt_settings", "equipment"
+  add_foreign_key "malt_settings", "malts"
   add_foreign_key "raw_processes", "equipment"
 end
