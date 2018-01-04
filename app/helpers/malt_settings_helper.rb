@@ -1,0 +1,2 @@
+module MaltSettingsHelper
+end

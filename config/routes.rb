@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   resources :raw_processes, only: %i[new show create edit update destroy]
   put '/raw_processes/update/:id', to: 'raw_processes#status_update'
   resources :movements, only: %i[create edit update destroy]
+  resources :malt_settings, only: %i[edit update]
 end

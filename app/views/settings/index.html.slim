@@ -1,72 +1,29 @@
-ul.collapsible*{'data-collapsible' => 'expandable'}
+ul.collapsible*{'data-collapsible': 'expandable'}
+  li
+    .collapsible-header
+      = t('settings.main')
+    .collapsible-body
+      = simple_form_for @settings, remote: true do |f|
+        => f.input :grain_storage_capacity, label: t('settings.grain_storage_capacity'), label_html: {class: 'active'}
+        => f.input :production_capacity, label: t('settings.production_capacity'), label_html: {class: 'active'}
+        => f.input :malt_storage_capacity, label: t('settings.malt_storage_capacity'), label_html: {class: 'active'}
+        => f.submit t('form.save'), class: 'btn waves-effect waves-light'
   li
     .collapsible-header
       = t('settings.malt')
     .collapsible-body
-      .row
-        .col.s8
-          =  render @malts
-        .col.s4
-          = link_to t('malt.create'), new_malt_path, class: 'btn waves-effect waves-light'
+      ul.collapsible*{'data-collapsible': 'expandable'}
+        - @malt_s_grouped.each do |malt|
+          = render partial: 'malt_settings/malt_setting', object: malt
   li
     .collapsible-header
-      = t('settings.equipment')
+      = t('settings.old_maltose')
     .collapsible-body
       = render 'equipment/header'
-      = render @equipments
-
-//= simple_form_for @settings, remote: true do |f|
-  ul.collapsible*{'data-collapsible' => 'expandable'}
-    li
-      .collapsible-header
-        = t('settings.main')
-      .collapsible-body
-        => f.input :grain_storage_capacity, label: t('settings.grain_storage_capacity'), label_html: {class: 'active'}
-        => f.input :production_capacity, label: t('settings.production_capacity'), label_html: {class: 'active'}
-        => f.input :malt_storage_capacity, label: t('settings.malt_storage_capacity'), label_html: {class: 'active'}
-        => f.input :capital_coef, label: t('settings.capital_coef'), label_html: {class: 'active'}
-    li
-      .collapsible-header
-        = t('settings.new_maltose')
-      .collapsible-body
-        .row
-          .col.s4 => t('settings.soak1')
-          .col.s4 => f.input :soak1_capacity, label: t('settings.capacity'), label_html: {class: 'active'}
-          .col.s4 => f.input :soak1_loading, label: t('settings.loading'), label_html: {class: 'active'}
-        .row
-          .col.s4 => t('settings.soak2')
-          .col.s4 => f.input :soak2_capacity, label: t('settings.capacity'), label_html: {class: 'active'}
-          .col.s4 => f.input :soak2_loading, label: t('settings.loading'), label_html: {class: 'active'}
-
-        .row
-          .col.s4 => t('settings.thresh1')
-          .col.s4 => f.input :thresh1_capacity, label: t('settings.capacity'), label_html: {class: 'active'}
-          .col.s4 => f.input :thresh1_loading, label: t('settings.loading'), label_html: {class: 'active'}
-        .row
-          .col.s4 => t('settings.thresh2')
-          .col.s4 => f.input :thresh2_capacity, label: t('settings.capacity'), label_html: {class: 'active'}
-          .col.s4 => f.input :thresh2_loading, label: t('settings.loading'), label_html: {class: 'active'}
-        .row
-          .col.s4 => t('settings.thresh3')
-          .col.s4 => f.input :thresh3_capacity, label: t('settings.capacity'), label_html: {class: 'active'}
-          .col.s4 => f.input :thresh3_loading, label: t('settings.loading'), label_html: {class: 'active'}
-
-        .row
-          .col.s4 => t('settings.dryer')
-          .col.s4 => f.input :dryer_capacity, label: t('settings.capacity'), label_html: {class: 'active'}
-          .col.s4 => f.input :dryer_loading, label: t('settings.loading'), label_html: {class: 'active'}
-
-        .row
-          .col.s4 => t('settings.fermenter1')
-          .col.s4 => f.input :fermenter1_capacity, label: t('settings.capacity'), label_html: {class: 'active'}
-          .col.s4 => f.input :fermenter1_loading, label: t('settings.loading'), label_html: {class: 'active'}
-        .row
-          .col.s4 => t('settings.fermenter2')
-          .col.s4 => f.input :fermenter2_capacity, label: t('settings.capacity'), label_html: {class: 'active'}
-          .col.s4 => f.input :fermenter2_loading, label: t('settings.loading'), label_html: {class: 'active'}
-        .row
-          .col.s4 => t('settings.fermenter3')
-          .col.s4 => f.input :fermenter3_capacity, label: t('settings.capacity'), label_html: {class: 'active'}
-          .col.s4 => f.input :fermenter3_loading, label: t('settings.loading'), label_html: {class: 'active'}
-
-  => f.submit t('form.save'), class: 'btn waves-effect waves-light'
+      = render @equipments.oldm
+  li
+    .collapsible-header
+      = t('settings.new_maltose')
+    .collapsible-body
+      = render 'equipment/header'
+      = render @equipments.newm

@@ -1,5 +1,19 @@
-.row
-  .col.s4
-    = malt.color
-  .col.s8
-    = malt.name
+li
+  .collapsible-header
+    .color-marker style="background-color: ##{ malt.color }"
+    span = malt.name
+  .collapsible-body
+
+    - malt.malt_settings.each do |s|
+      .row
+        .col.s2
+          = s.equipment.maltose
+        .col.s2
+          = s.equipment.name
+        = simple_form_for s do |f|
+          .col.s2
+            = f.input :duration
+          .col.s2
+            = f.input :available
+          .col.s2
+            = f.submit t('form.save'), class: 'btn waves-effect waves-light'

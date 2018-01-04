@@ -1,0 +1,19 @@
+= simple_form_for malt_setting, namespace: "#{malt_setting.id}", remote: true do |f|
+  = f.hidden_field :equipment_id, value: malt_setting.equipment.id
+  .row.valign-wrapper.bottom_line
+    .col.s3
+      = malt_setting.equipment.name
+    .col.s3
+      = f.collection_radio_buttons :available, [['1', t('settings.yep')], ['0', t('settings.nope')]], :first, :last
+      //= f.check_box :available, label: false
+      //.switch
+        label
+          = t('settings.nope')
+          = check_box_tag "available_#{malt_setting.id}", '1', malt_setting.available == 1 ? true : false
+          span.lever
+          = t('settings.yep')
+    .col.s2
+      = f.input :duration, label: false
+    .col.s4
+      .right
+        = f.submit t('form.save'), class: 'btn waves-effect waves-light'
