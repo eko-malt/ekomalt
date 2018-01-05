@@ -12,6 +12,7 @@ class RawProcessesController < ApplicationController
   def show
     @movement = Movement.new
     @inputs = GrainInput.at_storage + GrainInput.full_at_storage
+    @malts = Malt.by_equipment(@process.equipment.id)
   end
 
   def edit; end
