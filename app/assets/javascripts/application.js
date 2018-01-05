@@ -54,11 +54,50 @@ var movement = function() {
     })
 };
 
+Date.prototype.addHours = function(hours) {
+    var result = new Date(this.valueOf());
+    result.setHours(result.getHours() + hours);
+    return result;
+};
+
+function formatDate(date) {
+    var day = date.getDate();
+    if (day < 10) { day = '0' + day }
+    var month = date.getMonth() + 1;
+    if (month < 10) { month = '0' + month }
+    var year = date.getFullYear();
+    return day + '.' + month + '.' + year;
+}
+
+function formatTime(date) {
+    var hours = date.getHours();
+    if (hours < 10) { hours = '0' + hours }
+    var minutes = date.getMinutes();
+    if (minutes < 10) { minutes = '0' + minutes }
+    return hours + ':' + minutes;
+}
+
+
+var set_malt = function() {
+    $('.malt_button').click(function() {
+        $('.malt_button_pink').removeClass('malt_button_pink');
+        $(this).addClass('malt_button_pink');
+        var duration = parseInt($(this).attr("data-duration"));
+        var start_date = new Date($('#dates_start_date').val().split('.').reverse().join(' ') + ' ' + $('#dates_start_time').val());
+        var finish_date = start_date.addHours(duration);
+        $('label[for="dates_finish_date"]').addClass('active');
+        $('#dates_finish_date').val(formatDate(finish_date));
+        $('label[for="dates_finish_time"]').addClass('active');
+        $('#dates_finish_time').val(formatTime(finish_date));
+    })
+};
+
 var ready;
 ready = function() {
     datepicker_init();
     timepicker_init();
     movement();
+    set_malt();
     $('.collapsible').collapsible();
     $('ul.tabs').tabs();
     $('select').material_select();

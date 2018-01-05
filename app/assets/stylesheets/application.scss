@@ -66,6 +66,21 @@ li.tab-bags { background-color: #e0e0e0 }
 .disable-hover { pointer-events:none; }
 .card-action > a.right { margin-right: 0px !important; }
 .bottom_line { border-bottom: 1px solid #000000 }
+
+.malt_button {
+  margin-right: 10px;
+  background-color: #4fc3f7;
+}
+
+.malt_button:hover {
+  background-color: #f48fb1;
+}
+
+.malt_button_pink {
+  background-color: #f06292;
+}
+
+
 .collection_radio_buttons {
   padding-left: 25px !important;
   margin-right: 20px;

@@ -1,5 +1,6 @@
 .row
   .col.s12
+    = link_to t('maltose.go'), old_maltose_path, class: 'waves-effect waves-light btn'
     h4
       = t("maltose.#{@process.equipment.maltose}") + ' - ' + @process.equipment.name + ' ' + t('old_maltose.process.capacity', v: @process.equipment.capacity)
       span.hidden#equipment_capacity*{'data-capacity': @process.equipment.capacity }

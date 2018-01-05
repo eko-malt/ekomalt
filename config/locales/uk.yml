@@ -24,6 +24,7 @@ uk:
     setting: 'Налаштування'
     calc: 'Калькуляція'
     oldmaltose: 'Стара солодовня'
+    raw_process: 'Процес'
   main:
     weight_in_tones: '%{weight} т'
     price_with_uah: '%{price} грн'
@@ -115,6 +116,7 @@ uk:
   maltose:
     oldm: 'Стара солодовня'
     newm: 'Нова солодовня'
+    go: 'До солодовні'
   old_maltose:
     vat: 'Замочний чан №%{vat}'
     start: 'Запустити'
@@ -157,7 +159,7 @@ uk:
       start_time: 'Час початку'
       finish_date: 'Дата завершення'
       finish_time: 'Час завершення'
-      movements: 'Жито, що обробляється (%{v} т)'
+      movements: 'Жито, що замочується (%{v} т)'
       add_grain: 'Додати жито (максимум - %{v} т)'
       input: 'Поставка'
       amount: 'Об''єм (т)'

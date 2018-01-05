@@ -12,7 +12,7 @@ class MovementsController < ApplicationController
   end
 
   def update
-    render :edit unless @movement.update(movement_params)
+    @movement.update(movement_params)
     redirect_to raw_process_path(@movement.targetable_id)
   end
 
