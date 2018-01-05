@@ -41,8 +41,8 @@ Malt.create(name: 'white', color: 'ffffff')
 Malt.create(name: 'fermented', color: 'a1887f')
 Malt.create(name: 'very_fermented', color: '5d4037')
 Malt.create(name: 'extra', color: '000000')
+=end
 
 @malts = Malt.all
 @equipments = Equipment.all
 @malts.each { |m| @equipments.each { |e| MaltSetting.create(malt: m, equipment: e) }}
-=end
