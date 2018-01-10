@@ -116,7 +116,6 @@ uk:
   maltose:
     oldm: 'Стара солодовня'
     newm: 'Нова солодовня'
-    go: 'До солодовні'
   old_maltose:
     vat: 'Замочний чан №%{vat}'
     start: 'Запустити'
@@ -138,34 +137,45 @@ uk:
     status:
       broken: 'Зламаний'
       empty: 'Пустий'
+      load_raw: 'Завантажте жито'
       vat:
         init: 'Запуск'
-        process1: 'Замочка'
+        process: 'Замочка'
         finished: 'Завершено'
+        archived: 'Архів'
       thresh:
-        process1: 'Пророщення'
-        process2: 'Ферментація'
+        process: 'Пророщення'
         finished: 'Завершено'
       ferment:
-        process1: 'Ферментація'
+        process: 'Ферментація'
         finished: 'Завершено'
       druing:
-        process1: 'Сушка'
+        process: 'Сушка'
         finished: 'Завершено'
-    process:
-      start: 'Початок'
-      finish: 'Завершення'
-      start_date: 'Дата початку'
-      start_time: 'Час початку'
-      finish_date: 'Дата завершення'
-      finish_time: 'Час завершення'
-      movements: 'Жито, що замочується (%{v} т)'
-      add_grain: 'Додати жито (максимум - %{v} т)'
-      input: 'Поставка'
-      amount: 'Об''єм (т)'
-      capacity: '(Місткість - %{v} т)'
   process:
+    to_maltose: 'До солодовні'
+    eq_capacity: '(Місткість - %{v} т)'
+    source: 'Оберіть джерело'
+    amount: 'Об''єм (т)'
+    start: 'Початок'
+    finish: 'Завершення'
+    start_date: 'Дата початку'
+    start_time: 'Час початку'
+    finish_date: 'Дата завершення'
+    finish_time: 'Час завершення'
+    raw_in_process:
+      vat: 'Жито, що замочується (%{v} т)'
+      thresh: 'Жито, що пророщується (%{v} т)'
+      fermenter: 'Солод, що ферментується (%{v} т)'
+      druing: 'Солод, що сушиться (%{v} т)'
+    add_raw:
+      vat: 'Додати жито (максимум - %{v} т)'
+      thresh: 'Додати жито (максимум - %{v} т)'
+      fermenter: 'Додати солод (максимум - %{v} т)'
+      druing: 'Додати солод (максимум - %{v} т)'
     updated: 'Дані збережено'
+    only_empty: 'Видалити можливо тільки пустий процес'
+    delete: 'Видалити процес'
   movements:
     created: 'Переміщення додано'
     deleted: 'Переміщення видалено'
@@ -203,11 +213,12 @@ uk:
     oldm: 'Стара'
     newm: 'Нова'
     header:
+      enable: 'В роботі'
       type: 'Тип'
       name:  'Назва'
       maltose: 'Солодовня'
       capacity: 'Об''єм (т)'
-      service_time: 'Час обслуговування (год)'
+      service_time: 'Обслуговування (год)'
   modal:
     close: 'Закрити'
   activerecord:

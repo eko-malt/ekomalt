@@ -13,5 +13,9 @@ class PagesController < ApplicationController
 
   def oldmaltose
     @equipment = Equipment.oldm.order(:eqtype, :name).includes(raw_processes: :movements)
+    @equipment.each do |eq|
+      eq.raw_processes.each &:check_time_and_statuses
+    end
   end
+
 end

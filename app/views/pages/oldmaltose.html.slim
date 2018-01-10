@@ -2,10 +2,10 @@
   .col.m4
     .row
       = render partial: 'pages/equipment', collection: @equipment.vat
-  //.col.m4
+  .col.m4
     .row
-      = render partial: 'pages/thresh', collection: @equipment.thresh
-  //.col.m4
+      = render partial: 'pages/equipment', collection: @equipment.thresh
+  .col.m4
     .row
-      = render partial: 'pages/fermenter', collection: @equipment.fermenter
-      = render partial: 'pages/druing', collection: @equipment.druing
+      = render partial: 'pages/equipment', collection: @equipment.fermenter
+      = render partial: 'pages/equipment', collection: @equipment.druing

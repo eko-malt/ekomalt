@@ -3,7 +3,7 @@ class RawProcessesController < ApplicationController
   before_action :merge_datetime_params, only: %i[create update]
 
   def new
-    @process = RawProcess.create(equipment_id: params[:equipment])
+    @process = RawProcess.create(equipment_id: params[:equipment], start_time: Time.now, finish_time: Time.now)
     redirect_to raw_process_path(@process)
   end
 
@@ -11,8 +11,15 @@ class RawProcessesController < ApplicationController
 
   def show
     @movement = Movement.new
-    @inputs = GrainInput.at_storage + GrainInput.full_at_storage
-    @malts = Malt.by_equipment(@process.equipment.id)
+    @malts = Malt.by_equipment(@process.equipment_id)
+    if @process.equipment.vat?
+      # get source from grain inputs where raw not used
+      @sources = GrainInput.at_storage + GrainInput.full_at_storage
+    else
+      # get source from processes by maltose and eqtype and finished process
+      @sources = Equipment.with_movements(Equipment.maltoses[@process.equipment.maltose], Equipment.eqtypes[@process.equipment.eqtype] - 1)
+#      binding.pry
+    end
   end
 
   def edit; end
@@ -28,6 +35,7 @@ class RawProcessesController < ApplicationController
 
   def destroy
     @process.destroy
+    redirect_to old_maltose_path
   end
 
   private

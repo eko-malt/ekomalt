@@ -2,9 +2,8 @@ class MovementsController < ApplicationController
   before_action :set_movement, only: %i[edit update destroy]
 
   def create
-    @movement = Movement.new(movement_params)
-    render :new unless @movement.save
-    redirect_to raw_process_path(@movement.targetable_id)
+    @movement = Movement.create(movement_params)
+    redirect_to raw_process_path(@movement.targetable_id) if @movement.save
   end
 
   def edit

@@ -77,7 +77,6 @@ function formatTime(date) {
     return hours + ':' + minutes;
 }
 
-
 var set_malt = function() {
     $('.malt_button').click(function() {
         $('.malt_button_pink').removeClass('malt_button_pink');
@@ -85,9 +84,9 @@ var set_malt = function() {
         var duration = parseInt($(this).attr("data-duration"));
         var start_date = new Date($('#dates_start_date').val().split('.').reverse().join(' ') + ' ' + $('#dates_start_time').val());
         var finish_date = start_date.addHours(duration);
-        $('label[for="dates_finish_date"]').addClass('active');
+        $("label[for='dates_finish_date']").addClass('active');
         $('#dates_finish_date').val(formatDate(finish_date));
-        $('label[for="dates_finish_time"]').addClass('active');
+        $("label[for='dates_finish_time']").addClass('active');
         $('#dates_finish_time').val(formatTime(finish_date));
     })
 };
