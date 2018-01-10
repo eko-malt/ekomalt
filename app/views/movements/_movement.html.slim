@@ -7,4 +7,4 @@
     .col.s2
       = link_to t('form.edit'), edit_movement_path(movement.id), remote: true, class: 'btn waves-effect waves-light'
     .col.s2
-      = link_to t('form.delete'), movement_path(movement.id), method: :delete, class: 'btn waves-effect waves-light', data: {confirm: t('activerecord.confirm_delete')}
+      = link_to t('form.delete'), movement_path(movement.id), method: :delete, class: 'btn waves-effect waves-light btn-danger', data: {confirm: t('activerecord.confirm_delete')}

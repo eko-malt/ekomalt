@@ -1,11 +1,14 @@
-.row
-  .col.s2
-    = t("equipment.#{equipment.eqtype}")
-  .col.s2
-    = equipment.name
-  .col.s2
-    span.right = equipment.capacity
-  .col.s3
-    span.right = equipment.service_time
-  .col.s2.right
-    = link_to t('form.edit'), edit_equipment_path(equipment), class: 'btn waves-effect waves-light'
+= simple_form_for equipment, namespace: "#{equipment.id}", remote: true do |f|
+  .row.valign-wrapper.bottom_line
+    .col.s2
+      span = t("equipment.#{equipment.eqtype}")
+    .col.s2
+      => f.input :name, label: false
+    .col.s2
+      => f.collection_radio_buttons :status, [['working', t('settings.yep')], ['broken', t('settings.nope')]], :first, :last
+    .col.s2
+      => f.input :capacity, label: false
+    .col.s2
+      => f.input :service_time, label: false
+    .col.s2
+      => f.submit t('form.save'), class: 'btn waves-effect waves-light'

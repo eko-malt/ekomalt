@@ -4,5 +4,5 @@ class MaltSetting < ApplicationRecord
   belongs_to :malt
   belongs_to :equipment
 
-  scope :with_equipments, -> { joins(:equipment).order(:malt_id, :equipment_id) }
+  scope :with_equipments, -> { includes(:equipment).order(:malt_id, :equipment_id) }
 end
