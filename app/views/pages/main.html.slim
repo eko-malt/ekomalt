@@ -12,7 +12,7 @@
         .progress.tooltipped*{'data-position' => 'bottom', 'data-delay' => '50', 'data-tooltip' => "#{perc}%"}
           .progress-bar.progress-bar-striped.bg-progress-yellow*{'role' => 'progressbar', 'style' => "width: #{perc}%", 'aria-valuenow' => "#{perc}", 'aria-valuemin' => '0', 'aria-valuemax' => '100'}
       .card-action
-        = link_to t('input.gtype.grain'), inputs_path
+        = link_to t('main.to_storage'), storage_raw_path
   .col.s12.m4
     .card.hoverable.indigo.lighten-1.small
       .card-content.white-text
