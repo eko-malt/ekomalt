@@ -97,6 +97,7 @@ ready = function() {
     timepicker_init();
     movement();
     set_malt();
+    Materialize.updateTextFields();
     $('.collapsible').collapsible();
     $('ul.tabs').tabs();
     $('select').material_select();

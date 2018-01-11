@@ -1,7 +1,7 @@
 .row id="movement_#{movement.id}"
   - if movement.sourceable_type == 'GrainInput'
     - input = GrainInput.find(movement.sourceable_id)
-    .col.s2 = input.date
+    .col.s2 = input.date.strftime('%d.%m.%Y')
     .col.s2 = input.provider.name
     .col.s2 = weight_in_tones(movement.amount)
     .col.s2

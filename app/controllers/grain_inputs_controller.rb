@@ -12,6 +12,7 @@ class GrainInputsController < ApplicationController
 
   def update
     render :edit unless @grain_input.update(input_params)
+    redirect_to inputs_path
   end
 
   def destroy
