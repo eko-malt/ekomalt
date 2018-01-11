@@ -177,6 +177,8 @@ uk:
     updated: 'Дані збережено'
     only_empty: 'Видалити можливо тільки пустий процес'
     delete: 'Видалити процес'
+    errors:
+      must_be_after_start: 'Час завершення має бути після часу початку'
   movements:
     created: 'Переміщення додано'
     deleted: 'Переміщення видалено'
@@ -209,7 +211,7 @@ uk:
   equipment:
     vat: 'Замочний чан'
     thresh: 'Тік'
-    fermenter: 'Ферментар'
+    fermenter: 'Ферментер'
     druing: 'Сушка'
     oldm: 'Стара'
     newm: 'Нова'

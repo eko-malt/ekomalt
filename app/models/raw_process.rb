@@ -1,5 +1,6 @@
 class RawProcess < ApplicationRecord
   validates :start_time, :finish_time, presence: true
+  validate :valid_date_range_required
 
   belongs_to :equipment
   has_many :movements, as: :sourceable
@@ -17,4 +18,9 @@ class RawProcess < ApplicationRecord
     save
   end
 
+  def valid_date_range_required
+    if (start_time && finish_time) && (finish_time < start_time)
+      errors.add(:finish_time, I18n.t('process.errors.must_be_after_start'))
+    end
+  end
 end

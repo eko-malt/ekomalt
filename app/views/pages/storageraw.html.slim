@@ -47,9 +47,9 @@ h5 = t('storage_raw.grain')
           span = g.fall
     br
     .row.collection-item
-      .col.s6 = t('storage_raw.total')
+      .col.s6.text-bold = t('storage_raw.total')
       .col.s2
-        span.right = number_with_precision(total, precision: 3)
+        span.right.text-bold = number_with_precision(total, precision: 3)
 hr
 h5 = t('storage_raw.bags')
 - if @bags.empty?
