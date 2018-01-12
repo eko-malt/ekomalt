@@ -76,13 +76,13 @@ h5 = t('storage_raw.bags')
         .col.s2
           span.right = b.amount
     br
-    .row.collection-item
+    .row.collection-item.text-bold
       .col.s4 = t('storage_raw.total')
       .col.s2
         span.right = t('input.sizes.kg25')
       .col.s2.offset-s2
         span.right = @bags.sum { |i| i.kg25? ? i.amount : 0 }
-    .row.collection-item
+    .row.collection-item.text-bold
       .col.s4 = t('storage_raw.total')
       .col.s2
         span.right = t('input.sizes.kg50')
