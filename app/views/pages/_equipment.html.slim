@@ -28,8 +28,11 @@
     - if equipment.broken?
       = link_to(t('old_maltose.enable'), equipment_path(equipment, equipment: { status: :working }), method: :put, remote: true)
     - else
-      - if equipment.raw_processes.empty? || weight == 0
+      - if equipment.raw_processes.empty?
         = link_to t('old_maltose.load'), new_raw_process_path(equipment: equipment.id)
       - else
-        = link_to t('old_maltose.edit'), raw_process_path(process)
-        = link_to t('old_maltose.finish'), { controller: 'raw_processes', action: 'status_update', id: process.id, status: 'archived' }, method: :put, class: 'right' if process.process?
+        - if weight == 0
+          = link_to t('old_maltose.load'), raw_process_path(process)
+        - else
+          = link_to t('old_maltose.edit'), raw_process_path(process)
+          = link_to t('old_maltose.finish'), { controller: 'raw_processes', action: 'status_update', id: process.id, status: 'archived' }, method: :put, class: 'right' if process.process?

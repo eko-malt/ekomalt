@@ -1,7 +1,7 @@
 = simple_form_for @process, remote: true do |f|
   = simple_fields_for :dates do |o|
-    = f.hidden_field :status, value: 'init'
-    = f.hidden_field :equipment_id, value: @process.equipment_id
+    = f.hidden_field :status
+    = f.hidden_field :equipment_id
     .row.valign-wrapper
       .col.s2
         = t('process.start')
