@@ -7,6 +7,30 @@
 //= require rails.validations.simple_form
 //= require_tree
 
+var calendar_init = function() {
+    $('.top_date').pickadate({
+        labelMonthNext: 'Наступний місяць',
+        labelMonthPrev: 'Попередній місяць',
+        labelMonthSelect: 'Оберіть місяць',
+        labelYearSelect: 'Оберіть рік',
+        monthsFull: [ 'Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересен', 'Жовтень', 'Листопад', 'Грудень' ],
+        monthsShort: [ 'Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересен', 'Жовтень', 'Листопад', 'Грудень' ],
+        weekdaysFull: [ 'Неділя', 'Понеділок', 'Вівторок', 'Середа', 'Червер', "П'ятниця", 'Субота' ],
+        weekdaysShort: [ 'Неділя', 'Понеділок', 'Вівторок', 'Середа', 'Червер', "П'ятниця", 'Субота'  ],
+        weekdaysLetter: [ 'Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб' ],
+        format: 'dd.mm.yyyy',
+        today: false,
+        clear: 'Очистити',
+        close: 'Закрити',
+        firstDay: 1,
+        closeOnSelect: false,
+        onClose: function () {
+            $('.top_date').val($('.top_date').attr('data-current'));
+            $(document.activeElement).blur();
+        }
+    });
+};
+
 var datepicker_init = function() {
     $('.datepicker').pickadate({
         labelMonthNext: 'Наступний місяць',
@@ -15,7 +39,6 @@ var datepicker_init = function() {
         labelYearSelect: 'Оберіть рік',
         monthsFull: [ 'Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересен', 'Жовтень', 'Листопад', 'Грудень' ],
         monthsShort: [ 'Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересен', 'Жовтень', 'Листопад', 'Грудень' ],
-        // monthsShort: [ 'Січ', 'Лют', 'Бер', 'Кві', 'Тра', 'Чер', 'Лип', 'Сер', 'Вер', 'Жов', 'Лис', 'Гру' ],
         weekdaysFull: [ 'Неділя', 'Понеділок', 'Вівторок', 'Середа', 'Червер', "П'ятниця", 'Субота' ],
         weekdaysShort: [ 'Неділя', 'Понеділок', 'Вівторок', 'Середа', 'Червер', "П'ятниця", 'Субота'  ],
         weekdaysLetter: [ 'Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб' ],
@@ -41,7 +64,6 @@ var timepicker_init = function() {
         canceltext: 'Закрити',
         autoclose: false,
         ampmclickable: false,
-        aftershow: function(){} //Function for after opening timepicker
     });
 }
 
@@ -95,6 +117,7 @@ var ready;
 ready = function() {
     datepicker_init();
     timepicker_init();
+    calendar_init();
     movement();
     set_malt();
     Materialize.updateTextFields();
