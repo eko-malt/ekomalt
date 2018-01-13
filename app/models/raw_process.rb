@@ -9,7 +9,7 @@ class RawProcess < ApplicationRecord
   enum status: { init: 0, process: 1, finished: 2, archived: 3 }
 
   def check_time_and_statuses
-    return unless status != ('archived' || 'finished')
+    return if %w[archived finished].include?(status)
     if finish_time < Time.now
       self.status = 'finished'
     elsif start_time < Time.now

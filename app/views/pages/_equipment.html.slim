@@ -21,7 +21,7 @@
                 span.right = l(process.finish_time, format: :short)
                 br
                 span.right = process.finish_time.strftime('%H:%M')
-            = render partial: 'pages/progress', locals: { start_time: process.start_time, finish_time: process.finish_time, color: 'yellow' }
+            = render partial: 'pages/progress', locals: { start_time: process.start_time, finish_time: process.finish_time, finished: process.finished?, color: 'yellow' }
         - else
           h5.center.text-red = t('old_maltose.status.load_raw')
   .card-action
@@ -35,4 +35,4 @@
           = link_to t('old_maltose.load'), raw_process_path(process)
         - else
           = link_to t('old_maltose.edit'), raw_process_path(process)
-          = link_to t('old_maltose.finish'), { controller: 'raw_processes', action: 'status_update', id: process.id, status: 'archived' }, method: :put, class: 'right' if process.process?
+          = link_to t('old_maltose.finish'), edit_raw_process_path(process), remote: true, class: 'right' if process.process?

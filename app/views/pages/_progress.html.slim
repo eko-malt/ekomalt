@@ -1,6 +1,6 @@
-- if Time.now < start_time
-  - percent = 0
+- if finished || Time.now > finish_time
+  - percent = 100
 - else
-  - Time.now > finish_time ? percent = 100 : percent = ((Time.now - start_time)/(finish_time - start_time) * 100).round
+  - Time.now < start_time ? percent = 0 : percent = ((Time.now - start_time)/(finish_time - start_time) * 100).round
 .progress.tooltipped*{'data-position': 'bottom', 'data-delay': '50', 'data-tooltip': "#{percent}%"} *{class: "#{'progress-over100' if percent >= 100}"}
   .progress-bar.progress-bar-striped *{class: "bg-progress-#{color}"} *{'role' => 'progressbar', 'style' => "width: #{percent}%", 'aria-valuenow' => "#{percent}", 'aria-valuemin' => '0', 'aria-valuemax' => '100'}
