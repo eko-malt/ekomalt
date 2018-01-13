@@ -8,8 +8,6 @@ main { margin: 10px; }
 .logo { margin-left: 10px; }
 #slide-out { top: auto; }
 
-
-
 main, footer {
   padding-left: 280px;
 }
@@ -40,11 +38,12 @@ input[type=number]::-webkit-inner-spin-button {
   margin: 0;
 }
 
-.hide-datepicker {
-  position: absolute;
-  left: -10000px;
-  top: auto;
-  overflow: hidden;
+.top_date {
+  border-bottom: none !important;
+  font-size: xx-large !important;
+  height: 4rem !important;
+  width: auto;
+  color: #525252; 
 }
 
 .nav-date a{
@@ -81,7 +80,6 @@ li.tab-bags { background-color: #e0e0e0 }
   margin-right: 10px;
   background-color: #4fc3f7;
 }
-
 
 .action_button:hover { background-color: #f48fb1; }
 .action_button_pink { background-color: #f06292; }

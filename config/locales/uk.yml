@@ -272,9 +272,10 @@ uk:
     abbr_day_names: [Пн, Вт, Ср, Чт, Пт, Сб, Нд]
     month_names: [~, Січень, Лютий, Березень, Квітень, Травень, Червень, Липень, Серпень, Вересень, Листопад, Грудень]
     abbr_month_names: [~, Січ, Лют, Бер, Кві, Тра, Чер, Лип, Сер, Вер, Жов, Лис, Гру]
+    formats:
+      default: "%d %B %Y"
   time:
     formats:
-      default: "%d.%m.%Y"
       short: "%d %b"
       long: "%d %B %Y"
   errors:

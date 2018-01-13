@@ -5,7 +5,7 @@ class Equipment < ApplicationRecord
   enum maltose: { oldm: 1, newm: 2 }
   enum status: { broken: 0, working: 1 }
 
-  has_many :raw_processes
+  has_many :raw_processes, dependent: :destroy
   has_many :movements, through: :raw_processes
 
   scope :in_process, ->() { includes(:raw_processes).where('equipment.raw_process.status = 3') }
