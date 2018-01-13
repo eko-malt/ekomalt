@@ -10,4 +10,4 @@
         => f.collection_radio_buttons :size, [['kg25', t('input.sizes.kg25')], ['kg50', t('input.sizes.kg50')]], :first, :last
   .modal-footer
     => f.submit t('form.save'), class: 'btn waves-effect waves-light left'
-    = button_tag t('modal.close'), class: 'modal-action modal-close waves-effect waves-green btn-flat'
+    = button_tag t('modal.close'), type: 'button', class: 'modal-action modal-close waves-effect waves-green btn-flat'

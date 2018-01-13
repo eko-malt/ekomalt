@@ -1,0 +1,14 @@
+= simple_form_for @process, remote: true do |f|
+  .modal-content
+    = f.hidden_field :status, value: 'finished'
+    = f.hidden_field :equipment_id
+    = simple_fields_for :dates do |o|
+      = t('process.start')
+      = o.input :start_date, as: :string, readonly: true,  label: t('process.start_date'), input_html: {value: @process.start_time? ? date_ukr(@process.start_time) : ''}, label_html: {class: 'active'}
+      = o.input :start_time, as: :string, readonly: true, label: t('process.start_time'), input_html: {value: @process.start_time? ? time_ukr(@process.start_time) : ''}, label_html: {class: 'active'}
+      = t('process.finish')
+      = o.input :finish_date, as: :string, label: t('process.finish_date'), input_html: { value: @process.finish_time? ? date_ukr(@process.finish_time) : '', class: 'datepicker' }, label_html: { class: 'active' }
+      = o.input :finish_time, as: :string, label: t('process.finish_time'), input_html: { value: @process.finish_time? ? time_ukr(@process.finish_time) : '', class: 'timepicker' }, label_html: { class: 'active' }
+  .modal-footer
+    = f.submit t('form.save'), class: 'btn waves-effect waves-light left'
+    = button_tag t('modal.close'), type: 'button', class: 'modal-action modal-close waves-effect waves-green btn-flat'
