@@ -18,7 +18,6 @@ class RawProcessesController < ApplicationController
     else
       # get source from processes by maltose and eqtype and finished process
       @sources = Equipment.with_movements(Equipment.maltoses[@process.equipment.maltose], Equipment.eqtypes[@process.equipment.eqtype] - 1)
-#      binding.pry
     end
   end
 

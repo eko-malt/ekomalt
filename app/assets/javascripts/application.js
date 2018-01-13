@@ -79,8 +79,8 @@ function formatTime(date) {
 
 var set_malt = function() {
     $('.malt_button').click(function() {
-        $('.malt_button_pink').removeClass('malt_button_pink');
-        $(this).addClass('malt_button_pink');
+        $('.action_button_pink').removeClass('action_button_pink');
+        $(this).addClass('action_button_pink');
         var duration = parseInt($(this).attr("data-duration"));
         var start_date = new Date($('#dates_start_date').val().split('.').reverse().join(' ') + ' ' + $('#dates_start_time').val());
         var finish_date = start_date.addHours(duration);

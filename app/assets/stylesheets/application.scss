@@ -77,14 +77,14 @@ li.tab-bags { background-color: #e0e0e0 }
 .side-nav { height: calc(100% - 64px) }
 .progress-over100 { box-shadow: 0 0 13px 5px rgb(222, 85, 85); }
 
-.malt_button {
+.action_button {
   margin-right: 10px;
   background-color: #4fc3f7;
 }
 
 
-.malt_button:hover { background-color: #f48fb1; }
-.malt_button_pink { background-color: #f06292; }
+.action_button:hover { background-color: #f48fb1; }
+.action_button_pink { background-color: #f06292; }
 
 .collection_radio_buttons {
   padding-left: 25px !important;

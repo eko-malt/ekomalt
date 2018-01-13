@@ -5,10 +5,15 @@
       = t("maltose.#{@process.equipment.maltose}") + ' - ' + @process.equipment.name + ' ' + t('process.eq_capacity', v: @process.equipment.capacity)
       span.hidden#equipment_capacity*{'data-capacity': @process.equipment.capacity }
 
+    //h4 = t('process.statuses.title')
+    //- %w[init process finished].each do |status|
+      = link_to t("process.statuses.#{status}"), raw_process_path(@process, process: { status: status }), method: :put, remote: true, class: ['waves-effect waves-light btn action_button'].concat(@process.status == status ? ['action_button_pink'] : [])
+
     = render 'form'
+
     br
     #movements_list
-      h4 = t("process.raw_in_process.#{@process.equipment.eqtype}", v: @process.movements.sum(:amount)) if !@process.movements.empty?
+      h4 = t("process.raw_in_process.#{@process.equipment.eqtype}", v: @process.movements.sum(:amount)) unless @process.movements.empty?
       span.hidden#equipment_amount*{'data-amount': @process.movements.sum(:amount) }
       - @process.movements.each do |move|
         = render partial: 'movements/movement', object: move

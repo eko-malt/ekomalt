@@ -13,7 +13,7 @@
     .row
       - @malts.each do |malt|
         - malt_settings = malt.malt_settings.where('equipment_id = ?', @process.equipment_id)[0]
-        = content_tag('a', malt.name, class: ['waves-effect waves-light btn malt_button'].concat(malt_settings.available == 0 ? ['disabled'] : []), data: { duration: malt_settings.duration } )
+        = content_tag('a', malt.name, class: ['waves-effect waves-light btn malt_button action_button'].concat(malt_settings.available == 0 ? ['disabled'] : []), data: { duration: malt_settings.duration } )
     .row.valign-wrapper
       .col.s2
         = t('process.finish')

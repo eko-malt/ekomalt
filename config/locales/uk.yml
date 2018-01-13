@@ -179,6 +179,15 @@ uk:
     delete: 'Видалити процес'
     errors:
       must_be_after_start: 'Час завершення має бути після часу початку'
+    statuses:
+      title: 'Статус виробництва'
+      init: 'Запуск'
+      process: 'Процес'
+      finished: 'Завершено'
+    change_status:
+      init: 'Запланувати'
+      process: 'Запустити'
+      finished: 'Завершити'
   movements:
     created: 'Переміщення додано'
     deleted: 'Переміщення видалено'
