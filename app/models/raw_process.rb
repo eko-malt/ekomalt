@@ -1,14 +1,15 @@
 class RawProcess < ApplicationRecord
   validates :start_time, :finish_time, presence: true
-  validate :valid_date_range_required
+  validate :valid_date_range
 
   belongs_to :equipment
+  belongs_to :malt
   has_many :movements, as: :sourceable, dependent: :destroy
   has_many :movements, as: :targetable, dependent: :destroy
 
   enum status: { init: 0, process: 1, finished: 2, archived: 3 }
 
-  scope :finished, ->(maltose, eqtype) {
+  scope :as_source, ->(maltose, eqtype) {
     joins(:equipment)
         .where('raw_processes.status = 2 AND equipment.eqtype = ? AND equipment.maltose = ?', eqtype, maltose)
         .includes(:movements)
@@ -24,7 +25,7 @@ class RawProcess < ApplicationRecord
     save
   end
 
-  def valid_date_range_required
+  def valid_date_range
     if (start_time && finish_time) && (finish_time < start_time)
       errors.add(:finish_time, I18n.t('process.errors.must_be_after_start'))
     end

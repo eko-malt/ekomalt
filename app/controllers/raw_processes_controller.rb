@@ -3,7 +3,7 @@ class RawProcessesController < ApplicationController
   before_action :merge_datetime_params, only: %i[create update]
 
   def new
-    @process = RawProcess.create(equipment_id: params[:equipment], start_time: Time.now, finish_time: Time.now)
+    @process = RawProcess.create(equipment_id: params[:equipment], start_time: Time.now, finish_time: Time.now + 10.hour , malt: Malt.first)
     redirect_to raw_process_path(@process)
   end
 
@@ -17,7 +17,7 @@ class RawProcessesController < ApplicationController
       @sources = GrainInput.at_storage + GrainInput.full_at_storage
     else
       # get source from processes by maltose and eqtype and finished process
-      @processes = RawProcess.finished(Equipment.maltoses[@process.equipment.maltose], Equipment.eqtypes[@process.equipment.eqtype] - 1)
+      @processes = RawProcess.as_source(Equipment.maltoses[@process.equipment.maltose], Equipment.eqtypes[@process.equipment.eqtype] - 1)
       @movements = Movement.where(sourceable_id: @processes.map(&:id))
       @sources = @processes.map { |p| [p.id, p.equipment.name, p.movements.sum(:amount) - @movements.select { |m| m.sourceable_id == p.id }.map { |m| m.amount }.sum ] }.delete_if { |s| s[2].zero? }
     end
