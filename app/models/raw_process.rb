@@ -8,6 +8,12 @@ class RawProcess < ApplicationRecord
 
   enum status: { init: 0, process: 1, finished: 2, archived: 3 }
 
+  scope :finished, ->(maltose, eqtype) {
+    joins(:equipment)
+        .where('raw_processes.status = 2 AND equipment.eqtype = ? AND equipment.maltose = ?', eqtype, maltose)
+        .includes(:movements)
+  }
+
   def check_time_and_statuses
     return if %w[archived finished].include?(status)
     if finish_time < Time.now

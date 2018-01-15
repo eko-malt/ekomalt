@@ -1,10 +1,15 @@
 .row id="movement_#{movement.id}"
   - if movement.sourceable_type == 'GrainInput'
-    - input = GrainInput.find(movement.sourceable_id)
-    .col.s2 = input.date.strftime('%d.%m.%Y')
-    .col.s2 = input.provider.name
-    .col.s2 = weight_in_tones(movement.amount)
+    // TODO: fix this shit
+    - source = GrainInput.find(movement.sourceable_id)
+    .col.s2 = source.date.strftime('%d.%m.%Y')
+    .col.s2 = source.provider.name
+  - else
+    - source = RawProcess.find(movement.sourceable_id)
+    .col.s2 = source.equipment.name
     .col.s2
-      = link_to t('form.edit'), edit_movement_path(movement.id), remote: true, class: 'btn waves-effect waves-light'
-    .col.s2
-      = link_to t('form.delete'), movement_path(movement.id), method: :delete, class: 'btn waves-effect waves-light btn-danger', data: {confirm: t('activerecord.confirm_delete')}
+  .col.s2 = weight_in_tones(movement.amount)
+  .col.s2
+    = link_to t('form.edit'), edit_movement_path(movement.id), remote: true, class: 'btn waves-effect waves-light'
+  .col.s2
+    = link_to t('form.delete'), movement_path(movement.id), method: :delete, class: 'btn waves-effect waves-light btn-danger', data: {confirm: t('activerecord.confirm_delete')}

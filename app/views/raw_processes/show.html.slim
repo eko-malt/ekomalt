@@ -22,7 +22,10 @@
     - free = @process.equipment.capacity - @process.movements.sum(:amount)
     - if free > 0
       h4 = t("process.add_raw.#{@process.equipment.eqtype}", v: free)
-      = render 'movements/form'
+      - if @sources.empty?
+        h5 = t('process.empty_sources')
+      - else
+        = render 'movements/form'
 
     br
       - if @process.movements.empty?

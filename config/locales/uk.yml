@@ -164,6 +164,7 @@ uk:
     start_time: 'Час початку'
     finish_date: 'Дата завершення'
     finish_time: 'Час завершення'
+    empty_sources: 'Немає сировини '
     raw_in_process:
       vat: 'Жито, що замочується (%{v} т)'
       thresh: 'Жито, що пророщується (%{v} т)'
