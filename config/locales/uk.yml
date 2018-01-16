@@ -124,9 +124,9 @@ uk:
     init: 'Потрібно завантажити жито'
     empty: 'Чан порожній'
     process: 'Процес триває'
-    finished: 'Завершено'
     edit: 'Редагувати'
     finish: 'Завершити'
+    archive: 'Архівувати'
     next: 'На тік'
     vat_status: 'Замочка'
     broken: 'Ремонт'
@@ -177,6 +177,7 @@ uk:
       druing: 'Додати солод (максимум - %{v} т)'
     updated: 'Дані збережено'
     only_empty: 'Видалити можливо тільки пустий процес'
+    movements_only_empty: 'Сировина використовується'
     delete: 'Видалити процес'
     errors:
       must_be_after_start: 'Час завершення має бути після часу початку'
@@ -236,6 +237,7 @@ uk:
     close: 'Закрити'
   activerecord:
     confirm_delete: 'Дійсно видалити?'
+    confirm_acrhive: 'Дійсно архівувати?'
     errors:
       messages:
         record_invalid: 'Виникли помилки: %{errors}'
