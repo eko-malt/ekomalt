@@ -11,4 +11,8 @@
     .col.s2
       => f.input :service_time, label: false
     .col.s2
-      => f.submit t('form.save'), class: 'btn waves-effect waves-light'
+      - if equipment.raw_processes.where.not('raw_processes.status = 3').empty?
+        => f.submit t('form.save'), class: 'btn waves-effect waves-light'
+      - else
+        .btn-tooltipped.tooltipped*{'data-position': 'bottom', 'data-delay': '50', 'data-tooltip': t('settings.active_process_present')}
+          = button_tag t('form.save'), class: 'btn disabled'

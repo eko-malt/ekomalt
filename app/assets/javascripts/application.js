@@ -7,6 +7,30 @@
 //= require rails.validations.simple_form
 //= require_tree
 
+var calendar_init = function() {
+    $('.top_date').pickadate({
+        labelMonthNext: 'Наступний місяць',
+        labelMonthPrev: 'Попередній місяць',
+        labelMonthSelect: 'Оберіть місяць',
+        labelYearSelect: 'Оберіть рік',
+        monthsFull: [ 'Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересен', 'Жовтень', 'Листопад', 'Грудень' ],
+        monthsShort: [ 'Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересен', 'Жовтень', 'Листопад', 'Грудень' ],
+        weekdaysFull: [ 'Неділя', 'Понеділок', 'Вівторок', 'Середа', 'Червер', "П'ятниця", 'Субота' ],
+        weekdaysShort: [ 'Неділя', 'Понеділок', 'Вівторок', 'Середа', 'Червер', "П'ятниця", 'Субота'  ],
+        weekdaysLetter: [ 'Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб' ],
+        format: 'dd.mm.yyyy',
+        today: false,
+        clear: 'Очистити',
+        close: 'Закрити',
+        firstDay: 1,
+        closeOnSelect: false,
+        onClose: function () {
+            $('.top_date').val($('.top_date').attr('data-current'));
+            $(document.activeElement).blur();
+        }
+    });
+};
+
 var datepicker_init = function() {
     $('.datepicker').pickadate({
         labelMonthNext: 'Наступний місяць',
@@ -15,7 +39,6 @@ var datepicker_init = function() {
         labelYearSelect: 'Оберіть рік',
         monthsFull: [ 'Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересен', 'Жовтень', 'Листопад', 'Грудень' ],
         monthsShort: [ 'Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересен', 'Жовтень', 'Листопад', 'Грудень' ],
-        // monthsShort: [ 'Січ', 'Лют', 'Бер', 'Кві', 'Тра', 'Чер', 'Лип', 'Сер', 'Вер', 'Жов', 'Лис', 'Гру' ],
         weekdaysFull: [ 'Неділя', 'Понеділок', 'Вівторок', 'Середа', 'Червер', "П'ятниця", 'Субота' ],
         weekdaysShort: [ 'Неділя', 'Понеділок', 'Вівторок', 'Середа', 'Червер', "П'ятниця", 'Субота'  ],
         weekdaysLetter: [ 'Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб' ],
@@ -41,7 +64,6 @@ var timepicker_init = function() {
         canceltext: 'Закрити',
         autoclose: false,
         ampmclickable: false,
-        aftershow: function(){} //Function for after opening timepicker
     });
 }
 
@@ -88,15 +110,37 @@ var set_malt = function() {
         $('#dates_finish_date').val(formatDate(finish_date));
         $("label[for='dates_finish_time']").addClass('active');
         $('#dates_finish_time').val(formatTime(finish_date));
+        Materialize.toast("Параметри змінено. Не забудьте зберегти", 4000)
     })
+};
+
+var set_finish_time = function() {
+    var duration = parseInt($('.action_button_pink').attr("data-duration"));
+    var start_date = new Date($('#dates_start_date').val().split('.').reverse().join(' ') + ' ' + $('#dates_start_time').val());
+    var finish_date = start_date.addHours(duration);
+    $('#dates_finish_date').val(formatDate(finish_date));
+    $('#dates_finish_time').val(formatTime(finish_date));
+    Materialize.toast("Параметри змінено. Не забудьте зберегти", 4000)
+    console.log('set_finish_time');
+};
+
+var on_change_start_time = function() {
+    $('#dates_start_date').change(function() {
+        set_finish_time()
+    });
+    $('#dates_start_time').change(function() {
+        set_finish_time()
+    });
 };
 
 var ready;
 ready = function() {
     datepicker_init();
     timepicker_init();
+    calendar_init();
     movement();
     set_malt();
+    on_change_start_time();
     Materialize.updateTextFields();
     $('.collapsible').collapsible();
     $('ul.tabs').tabs();

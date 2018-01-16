@@ -17,8 +17,13 @@ Rails.application.routes.draw do
   resources :settings, only: :update
   resources :bag_inputs
   resources :grain_inputs
-  resources :raw_processes, only: %i[new show create edit update destroy]
-  put '/raw_processes/update/:id', to: 'raw_processes#status_update'
+
+  resources :raw_processes, only: %i[new show create edit update destroy] do
+    member do
+      put :status_update
+    end
+  end
+
   resources :movements, only: %i[create edit update destroy]
   resources :malt_settings, only: %i[edit update]
 end

@@ -13,7 +13,7 @@
     .row
       - @malts.each do |malt|
         - malt_settings = malt.malt_settings.where('equipment_id = ?', @process.equipment_id)[0]
-        = content_tag('a', malt.name, class: ['waves-effect waves-light btn malt_button action_button'].concat(malt_settings.available == 0 ? ['disabled'] : []), data: { duration: malt_settings.duration } )
+        = content_tag('a', malt.name, class: ['waves-effect waves-light btn malt_button action_button'].concat(malt_settings.available == 0 ? ['disabled'] : []).concat(@process.malt == malt ? ['action_button_pink'] : []), data: { duration: malt_settings.duration } )
     .row.valign-wrapper
       .col.s2
         = t('process.finish')
@@ -22,4 +22,4 @@
       .col.s3
         = o.input :finish_time, as: :string, readonly: true, label: t('process.finish_time'), input_html: { value: @process.finish_time? ? time_ukr(@process.finish_time) : '' }, label_html: { class: 'active' }
       .col.s4
-  = f.submit t('form.save'), class: 'btn waves-effect waves-light'
+  = f.submit t('form.save'), class: 'btn waves-effect waves-light', id: 'save_process_time'

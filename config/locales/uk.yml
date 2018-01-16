@@ -93,6 +93,8 @@ uk:
     created: 'Поставку додано'
     deleted: 'Поставку видалено'
     updated: 'Поставку оновлено'
+    cant_edit: 'Жито використовується. Редагування не можливе'
+    cant_delete: 'Жито використовується. Видалення не можливе'
     gtype:
       grain: 'Поставки жита'
       bags: 'Поставки мішків'
@@ -124,9 +126,9 @@ uk:
     init: 'Потрібно завантажити жито'
     empty: 'Чан порожній'
     process: 'Процес триває'
-    finished: 'Завершено'
     edit: 'Редагувати'
     finish: 'Завершити'
+    archive: 'Архівувати'
     next: 'На тік'
     vat_status: 'Замочка'
     broken: 'Ремонт'
@@ -164,6 +166,7 @@ uk:
     start_time: 'Час початку'
     finish_date: 'Дата завершення'
     finish_time: 'Час завершення'
+    empty_sources: 'Немає сировини '
     raw_in_process:
       vat: 'Жито, що замочується (%{v} т)'
       thresh: 'Жито, що пророщується (%{v} т)'
@@ -176,6 +179,7 @@ uk:
       druing: 'Додати солод (максимум - %{v} т)'
     updated: 'Дані збережено'
     only_empty: 'Видалити можливо тільки пустий процес'
+    movements_only_empty: 'Сировина використовується'
     delete: 'Видалити процес'
     errors:
       must_be_after_start: 'Час завершення має бути після часу початку'
@@ -217,6 +221,7 @@ uk:
     available: 'Виробництво'
     yep: 'Так'
     nope: 'Ні'
+    active_process_present: 'Є активний процес. Редагування не можливе'
   equipment:
     vat: 'Замочний чан'
     thresh: 'Тік'
@@ -235,6 +240,7 @@ uk:
     close: 'Закрити'
   activerecord:
     confirm_delete: 'Дійсно видалити?'
+    confirm_acrhive: 'Дійсно архівувати?'
     errors:
       messages:
         record_invalid: 'Виникли помилки: %{errors}'
@@ -272,9 +278,10 @@ uk:
     abbr_day_names: [Пн, Вт, Ср, Чт, Пт, Сб, Нд]
     month_names: [~, Січень, Лютий, Березень, Квітень, Травень, Червень, Липень, Серпень, Вересень, Листопад, Грудень]
     abbr_month_names: [~, Січ, Лют, Бер, Кві, Тра, Чер, Лип, Сер, Вер, Жов, Лис, Гру]
+    formats:
+      default: "%d %B %Y"
   time:
     formats:
-      default: "%d.%m.%Y"
       short: "%d %b"
       long: "%d %B %Y"
   errors:

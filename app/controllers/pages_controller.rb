@@ -3,7 +3,7 @@ class PagesController < ApplicationController
     @at_storage = GrainInput.all.sum(:weight_fact) - Movement.by_source_type('GrainInput').sum(:amount)
     @bags = BagInput.all
     @settings = Setting.first
-    @in_production = Equipment.in_production.values.inject(:+)
+    @in_production = Equipment.in_production.values.sum
   end
 
   def storageraw
