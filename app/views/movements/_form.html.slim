@@ -7,7 +7,6 @@
     - else
       = f.hidden_field :sourceable_type, value: 'RawProcess'
       .col.m6.s12 = f.input :sourceable_id, as: :select, collection: @sources.map { |s| ["#{ s[1] } | #{ s[2] }", s[0], { data: {max: s[2] }}]}, include_blank: t('process.source'), label: false
-      //.col.m6.s12 = f.input :sourceable_id, as: :select, collection: @sources.map { |s| ["#{ s.name } | #{ s.movements.sum(:amount) }", s.raw_processes.first.id, { data: {max: s.movements.sum(:amount) }}]}, include_blank: t('process.source'), label: false
     = f.hidden_field :targetable_type, value: 'RawProcess'
     = f.hidden_field :targetable_id, value: params[:id]
     .col.m2.s12 = f.input :amount, label: t('process.amount')

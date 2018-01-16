@@ -10,9 +10,21 @@
       span.right.red-text = t('input.price_blank')
     - else
       span.right = number_with_precision(grain_input.price, precision: 2)
-  => link_to grain_input_path(grain_input.id), method: :delete, remote: true, class: 'secondary-content', data: {confirm: t('activerecord.confirm_delete')}
-    i.material-icons delete
-  => link_to grain_input_path(grain_input.id), remote: true, class: 'secondary-content'
-    i.material-icons receipt
-  => link_to edit_grain_input_path(grain_input.id), remote: true, class: 'secondary-content'
-    i.material-icons edit
+  - if grain_input.movements.empty?
+    //.btn-tooltipped.tooltipped*{'data-position': 'bottom', 'data-delay': '50', 'data-tooltip': t('settings.active_process_present')}
+      = button_tag t('form.save'), class: 'btn disabled'
+    => link_to grain_input_path(grain_input.id), method: :delete, remote: true, class: 'secondary-content', data: {confirm: t('activerecord.confirm_delete')}
+      i.material-icons delete
+    => link_to grain_input_path(grain_input.id), remote: true, class: 'secondary-content'
+      i.material-icons receipt
+    => link_to edit_grain_input_path(grain_input.id), remote: true, class: 'secondary-content disabled'
+      i.material-icons edit
+  - else
+    .tooltipped*{'data-position': 'bottom', 'data-delay': '50', 'data-tooltip': t('input.cant_delete')}
+      => content_tag 'i', class: 'secondary-content'
+        i.material-icons delete
+    => link_to grain_input_path(grain_input.id), remote: true, class: 'secondary-content'
+      i.material-icons receipt
+    .tooltipped*{'data-position': 'bottom', 'data-delay': '50', 'data-tooltip': t('input.cant_edit')}
+      => content_tag 'i', class: 'secondary-content'
+        i.material-icons edit
