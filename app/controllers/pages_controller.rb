@@ -19,4 +19,10 @@ class PagesController < ApplicationController
     end
   end
 
+  def newmaltose
+    @equipment = Equipment.newm.order(:eqtype, :name).includes(raw_processes: :movements)
+    @equipment.each do |eq|
+      eq.raw_processes.each &:check_time_and_statuses
+    end
+  end
 end

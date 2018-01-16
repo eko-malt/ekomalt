@@ -1,34 +1,33 @@
 .card.blue-grey.darken id="equipment_#{equipment.id}"
+  - process = equipment.raw_processes.where.not(raw_processes: { status: 3} ).first
   .card-content.white-text
     .card-title.text-bold = equipment.name
     - if equipment.broken?
       h5.center = t('old_maltose.status.broken')
     - else
-      - if !equipment.raw_processes.empty?
-        - process = equipment.raw_processes.first
+      - unless process.nil?
         - weight = process.movements.sum(:amount)
         - if weight > 0
-          - if !process.archived?
-            .row
-              .col.s4
-                span = l(process.start_time, format: :short)
-                br
-                span = process.start_time.strftime('%H:%M')
-              .col.s4
-                br
-                .center = weight_in_tones(weight)
-              .col.s4
-                span.right = l(process.finish_time, format: :short)
-                br
-                span.right = process.finish_time.strftime('%H:%M')
-            = render partial: 'pages/progress', locals: { start_time: process.start_time, finish_time: process.finish_time, finished: process.finished?, color: 'yellow' }
+          .row
+            .col.s4
+              span = l(process.start_time, format: :short)
+              br
+              span = process.start_time.strftime('%H:%M')
+            .col.s4
+              br
+              .center = weight_in_tones(weight)
+            .col.s4
+              span.right = l(process.finish_time, format: :short)
+              br
+              span.right = process.finish_time.strftime('%H:%M')
+          = render partial: 'pages/progress', locals: { start_time: process.start_time, finish_time: process.finish_time, finished: process.finished?, color: 'yellow' }
         - else
           h5.center.text-red = t('old_maltose.status.load_raw')
   .card-action
     - if equipment.broken?
       = link_to(t('old_maltose.enable'), equipment_path(equipment, equipment: { status: :working }), method: :put, remote: true)
     - else
-      - if equipment.raw_processes.empty?
+      - if process.nil?
         = link_to t('old_maltose.load'), new_raw_process_path(equipment: equipment.id)
       - else
         - if weight == 0
@@ -36,3 +35,4 @@
         - else
           = link_to t('old_maltose.edit'), raw_process_path(process)
           = link_to t('old_maltose.finish'), edit_raw_process_path(process), remote: true, class: 'right' if process.process?
+          = link_to t('old_maltose.finish'), edit_raw_process_path(process), remote: true, class: 'right' if process.finished?

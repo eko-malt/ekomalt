@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get '/storage_raw', to: 'pages#storageraw'
   get '/old_maltose', to: 'pages#oldmaltose'
+  get '/new_maltose', to: 'pages#newmaltose'
   get '/inputs',      to: 'inputs#index'
   get '/settings',    to: 'settings#index'
 
