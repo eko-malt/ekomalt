@@ -3,8 +3,10 @@ class RawProcessesController < ApplicationController
   before_action :merge_datetime_params, only: %i[create update]
 
   def new
-    @process = RawProcess.create(equipment_id: params[:equipment], start_time: Time.now, finish_time: Time.now)
-    redirect_to raw_process_path(@process)
+    head :ok and return if Equipment.find(params[:equipment]).raw_processes.where.not('raw_processes.status = 3').count > 0
+    malt = Malt.includes(:malt_settings).first
+    @process = RawProcess.create(equipment_id: params[:equipment], malt: malt, start_time: Time.now, finish_time: Time.now + malt.malt_settings.where(equipment: params[:equipment]).first.duration.hours)
+    redirect_to raw_process_path(@process) if @process.present?
   end
 
   def create; end
@@ -12,12 +14,15 @@ class RawProcessesController < ApplicationController
   def show
     @movement = Movement.new
     @malts = Malt.by_equipment(@process.equipment_id)
+    @movements = Movement.by_source(params[:id])
     if @process.equipment.vat?
       # get source from grain inputs where raw not used
       @sources = GrainInput.at_storage + GrainInput.full_at_storage
     else
       # get source from processes by maltose and eqtype and finished process
-      @sources = Equipment.with_movements(Equipment.maltoses[@process.equipment.maltose], Equipment.eqtypes[@process.equipment.eqtype] - 1)
+      @processes = RawProcess.as_source(Equipment.maltoses[@process.equipment.maltose], Equipment.eqtypes[@process.equipment.eqtype] - 1)
+      @movements = Movement.where(sourceable_id: @processes.map(&:id))
+      @sources = @processes.map { |p| [p.id, p.equipment.name, p.movements.sum(:amount) - @movements.select { |m| m.sourceable_id == p.id }.map { |m| m.amount }.sum ] }.delete_if { |s| s[2].zero? }
     end
   end
 

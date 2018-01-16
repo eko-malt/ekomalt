@@ -110,7 +110,27 @@ var set_malt = function() {
         $('#dates_finish_date').val(formatDate(finish_date));
         $("label[for='dates_finish_time']").addClass('active');
         $('#dates_finish_time').val(formatTime(finish_date));
+        Materialize.toast("Параметри змінено. Не забудьте зберегти", 4000)
     })
+};
+
+var set_finish_time = function() {
+    var duration = parseInt($('.action_button_pink').attr("data-duration"));
+    var start_date = new Date($('#dates_start_date').val().split('.').reverse().join(' ') + ' ' + $('#dates_start_time').val());
+    var finish_date = start_date.addHours(duration);
+    $('#dates_finish_date').val(formatDate(finish_date));
+    $('#dates_finish_time').val(formatTime(finish_date));
+    Materialize.toast("Параметри змінено. Не забудьте зберегти", 4000)
+    console.log('set_finish_time');
+};
+
+var on_change_start_time = function() {
+    $('#dates_start_date').change(function() {
+        set_finish_time()
+    });
+    $('#dates_start_time').change(function() {
+        set_finish_time()
+    });
 };
 
 var ready;
@@ -120,6 +140,7 @@ ready = function() {
     calendar_init();
     movement();
     set_malt();
+    on_change_start_time();
     Materialize.updateTextFields();
     $('.collapsible').collapsible();
     $('ul.tabs').tabs();

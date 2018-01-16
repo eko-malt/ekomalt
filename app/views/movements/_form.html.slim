@@ -1,11 +1,12 @@
 = simple_form_for @movement do |f|
   .row.valign-wrapper
-    - if @process.equipment.vat?
+    - source = @movement.id.nil? ? @process : @movement.sourceable
+    - if source.equipment.vat?
       = f.hidden_field :sourceable_type, value: 'GrainInput'
-      .col.m6.s12 = f.input :sourceable_id, as: :select, collection: @sources.map { |i| ["#{date_ukr(i.date)} | #{i.provider.name} | #{weight_in_tones(i.movements.sum(:amount) == 0 ? i.weight_fact : i.weight_fact - i.movements.sum(:amount))}", i.id, { data: {max: i.movements.sum(:amount) == 0 ? i.weight_fact : i.weight_fact - i.movements.sum(:amount)}}]}, include_blank: t('process.source'), label: false
+      .col.m6.s12 = f.input :sourceable_id, as: :select, collection: @sources.map { |s| ["#{date_ukr(s.date)} | #{s.provider.name} | #{weight_in_tones(s.movements.sum(:amount) == 0 ? s.weight_fact : s.weight_fact - s.movements.sum(:amount))}", s.id, { data: {max: s.movements.sum(:amount) == 0 ? s.weight_fact : s.weight_fact - s.movements.sum(:amount)}}]}, include_blank: t('process.source'), label: false
     - else
       = f.hidden_field :sourceable_type, value: 'RawProcess'
-      .col.m6.s12 = f.input :sourceable_id, as: :select, collection: @sources.map { |s| ["#{ s.name } | <weight will be here>", s.id, { data: {max: '10' }}]}, include_blank: t('process.source'), label: false
+      .col.m6.s12 = f.input :sourceable_id, as: :select, collection: @sources.map { |s| ["#{ s[1] } | #{ s[2] }", s[0], { data: {max: s[2] }}]}, include_blank: t('process.source'), label: false
     = f.hidden_field :targetable_type, value: 'RawProcess'
     = f.hidden_field :targetable_id, value: params[:id]
     .col.m2.s12 = f.input :amount, label: t('process.amount')

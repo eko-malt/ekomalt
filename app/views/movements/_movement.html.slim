@@ -1,10 +1,21 @@
 .row id="movement_#{movement.id}"
+  // TODO: fix this shit
   - if movement.sourceable_type == 'GrainInput'
-    - input = GrainInput.find(movement.sourceable_id)
-    .col.s2 = input.date.strftime('%d.%m.%Y')
-    .col.s2 = input.provider.name
-    .col.s2 = weight_in_tones(movement.amount)
+    - source = GrainInput.find(movement.sourceable_id)
+    .col.s2 = source.date.strftime('%d.%m.%Y')
+    .col.s2 = source.provider.name
+  - else
+    - source = RawProcess.find(movement.sourceable_id)
+    .col.s2 = source.equipment.name
+    .col.s2
+  .col.s2 = weight_in_tones(movement.amount)
+  - if Movement.where('sourceable_id = ?', movement.targetable_id).count == 0
     .col.s2
       = link_to t('form.edit'), edit_movement_path(movement.id), remote: true, class: 'btn waves-effect waves-light'
     .col.s2
       = link_to t('form.delete'), movement_path(movement.id), method: :delete, class: 'btn waves-effect waves-light btn-danger', data: {confirm: t('activerecord.confirm_delete')}
+  - else
+    .col.s2.btn-tooltipped.tooltipped*{'data-position': 'bottom', 'data-delay': '50', 'data-tooltip': t('process.movements_only_empty')}
+      = button_tag t('form.edit'), class: 'btn disabled'
+    .col.s2.btn-tooltipped.tooltipped*{'data-position': 'bottom', 'data-delay': '50', 'data-tooltip': t('process.movements_only_empty')}
+      = button_tag t('form.delete'), class: 'btn disabled'

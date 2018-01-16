@@ -35,4 +35,4 @@
           = link_to t('old_maltose.load'), raw_process_path(process)
         - else
           = link_to t('old_maltose.edit'), raw_process_path(process)
-          = link_to t('old_maltose.finish'), edit_raw_process_path(process), remote: true, class: 'right' if process.process?
+          = link_to t('old_maltose.finish'), status_update_raw_process_path(process, status: 'finished'), remote: true, method: :put, class: 'right' if process.process?

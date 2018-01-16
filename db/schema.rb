@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180102230713) do
+ActiveRecord::Schema.define(version: 20180115214110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,7 +96,9 @@ ActiveRecord::Schema.define(version: 20180102230713) do
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "malt_id"
     t.index ["equipment_id"], name: "index_raw_processes_on_equipment_id"
+    t.index ["malt_id"], name: "index_raw_processes_on_malt_id"
   end
 
   create_table "settings", force: :cascade do |t|
@@ -139,4 +141,5 @@ ActiveRecord::Schema.define(version: 20180102230713) do
   add_foreign_key "malt_settings", "equipment"
   add_foreign_key "malt_settings", "malts"
   add_foreign_key "raw_processes", "equipment"
+  add_foreign_key "raw_processes", "malts"
 end
