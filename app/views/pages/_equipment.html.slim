@@ -22,16 +22,17 @@
               span.right = process.finish_time.strftime('%H:%M')
           = render partial: 'pages/progress', locals: { start_time: process.start_time, finish_time: process.finish_time, finished: process.finished?, color: 'yellow' }
         - else
-          h5.center.text-red = t('old_maltose.status.load_raw')
+          h5.center.text-red = t('process.statuses.need_load')
   .card-action
     - if equipment.broken?
-      = link_to(t('old_maltose.enable'), equipment_path(equipment, equipment: { status: :working }), method: :put, remote: true)
+      = link_to(t('equipment.enable'), equipment_path(equipment, equipment: { status: :working }), method: :put, remote: true)
     - else
       - if process.nil?
-        = link_to t('old_maltose.load'), new_raw_process_path(equipment: equipment.id)
+        = link_to t('process.change_status.load'), new_raw_process_path(equipment: equipment.id)
       - else
         - if weight == 0
           = link_to t('old_maltose.load'), raw_process_path(process)
         - else
           = link_to t('old_maltose.edit'), raw_process_path(process)
-          = link_to t('old_maltose.finish'), status_update_raw_process_path(process, status: 'finished'), remote: true, method: :put, class: 'right' if process.process?
+          = link_to t('process.change_status.finish'), status_update_raw_process_path(process, status: 'finished'), remote: true, method: :put, class: 'right' if process.process?
+          //= link_to t('process.change_status.archive'), status_update_raw_process_path(process, status: 'archived'), remote: true, method: :put, class: 'right' if process.finished?

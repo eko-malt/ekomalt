@@ -166,7 +166,7 @@ uk:
     start_time: 'Час початку'
     finish_date: 'Дата завершення'
     finish_time: 'Час завершення'
-    empty_sources: 'Немає сировини '
+    empty_sources: 'Немає сировини'
     raw_in_process:
       vat: 'Жито, що замочується (%{v} т)'
       thresh: 'Жито, що пророщується (%{v} т)'
@@ -185,13 +185,16 @@ uk:
       must_be_after_start: 'Час завершення має бути після часу початку'
     statuses:
       title: 'Статус виробництва'
+      need_load: 'Завантажте жито'
       init: 'Запуск'
       process: 'Процес'
       finished: 'Завершено'
     change_status:
+      load: 'Завантажити'
       init: 'Запланувати'
       process: 'Запустити'
-      finished: 'Завершити'
+      finish: 'Завершити'
+      archive: 'Архівувати'
   movements:
     created: 'Переміщення додано'
     deleted: 'Переміщення видалено'
@@ -229,6 +232,7 @@ uk:
     druing: 'Сушка'
     oldm: 'Стара'
     newm: 'Нова'
+    enable: 'Увімкнути'
     header:
       enable: 'В роботі'
       type: 'Тип'
