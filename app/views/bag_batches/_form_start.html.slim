@@ -1,0 +1,14 @@
+= simple_form_for @batch do |f|
+  .modal-content
+    h5 = t('batch.new_bag_batch')
+    .row
+      .col.m6.s12
+        = f.input :shredded, as: :string, label: t('batch.shredded'), input_html: { class: 'datepicker' }
+        = f.input :batch, label: t('batch.name')
+      .col.m6.s12
+        = f.association :malt, label_method: :name, value_method: :id, include_blank: t('batch.malt'), label: false
+        br
+        = f.collection_radio_buttons :bag_type, [[1, t('batch.bag_type.by25')], [2, t('batch.bag_type.by50')]], :first, :last
+  .modal-footer
+    = f.submit t('form.save'), class: 'btn waves-effect waves-light left'
+    = button_tag t('modal.close'), type: 'button', class: 'modal-action modal-close waves-effect waves-green btn-flat'

@@ -11,8 +11,8 @@ class RawProcess < ApplicationRecord
 
   scope :as_source, ->(maltose, eqtype) {
     joins(:equipment)
-        .where('raw_processes.status = 2 AND equipment.eqtype = ? AND equipment.maltose = ?', eqtype, maltose)
-        .includes(:movements)
+      .where('raw_processes.status = 2 AND equipment.eqtype = ? AND equipment.maltose = ?', eqtype, maltose)
+      .includes(:movements)
   }
 
   def check_time_and_statuses

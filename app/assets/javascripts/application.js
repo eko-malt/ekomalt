@@ -69,9 +69,13 @@ var timepicker_init = function() {
 
 var movement = function() {
     $('#movement_sourceable_id').change(function() {
-        free  = $('#equipment_capacity').data("capacity") - $('#equipment_amount').data("amount");
         source = $('#movement_sourceable_id').find(":selected").data("max");
-        max = free > source ? source : free
+        if ($('#equipment_capacity').length > 0) {
+            free = $('#equipment_capacity').data("capacity") - $('#equipment_amount').data("amount");
+            max = free > source ? source : free
+        } else {
+            max = source
+        }
         $("#movement_amount").attr({ "max": max, "min": 0.001});
     })
 };
@@ -152,7 +156,9 @@ ready = function() {
     $('.modal').modal({
         endingTop: '10%',
         dismissible: false,
-        complete: function() { $('.modal-content')[0].innerHTML = '' }
+        complete: function() {
+            $('.modal-content')[0].innerHTML = '';
+            $('#modal_empty')[0].innerHTML = ''; }
     });
 };
 

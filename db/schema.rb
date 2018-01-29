@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180115214110) do
+ActiveRecord::Schema.define(version: 20180127123405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bag_batches", force: :cascade do |t|
+    t.date "shredded"
+    t.string "batch"
+    t.bigint "malt_id"
+    t.integer "bag_type"
+    t.decimal "wet"
+    t.decimal "extravagance"
+    t.decimal "color"
+    t.integer "acidity"
+    t.integer "filtration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["malt_id"], name: "index_bag_batches_on_malt_id"
+  end
 
   create_table "bag_inputs", force: :cascade do |t|
     t.date "date"
@@ -34,6 +49,23 @@ ActiveRecord::Schema.define(version: 20180115214110) do
     t.integer "status", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "grain_batches", force: :cascade do |t|
+    t.string "name"
+    t.decimal "amount"
+    t.bigint "raw_process_id"
+    t.bigint "malt_id"
+    t.decimal "correction"
+    t.decimal "wet"
+    t.decimal "extravagance"
+    t.decimal "color"
+    t.integer "acidity"
+    t.integer "filtration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["malt_id"], name: "index_grain_batches_on_malt_id"
+    t.index ["raw_process_id"], name: "index_grain_batches_on_raw_process_id"
   end
 
   create_table "grain_inputs", force: :cascade do |t|
@@ -136,7 +168,10 @@ ActiveRecord::Schema.define(version: 20180115214110) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "bag_batches", "malts"
   add_foreign_key "bag_inputs", "providers"
+  add_foreign_key "grain_batches", "malts"
+  add_foreign_key "grain_batches", "raw_processes"
   add_foreign_key "grain_inputs", "providers"
   add_foreign_key "malt_settings", "equipment"
   add_foreign_key "malt_settings", "malts"

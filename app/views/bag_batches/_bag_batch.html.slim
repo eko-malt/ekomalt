@@ -1,0 +1,44 @@
+.row.collection-item id="bag_batch_#{bag_batch.id}"
+  .col.s2 = date_ukr(bag_batch.shredded)
+  .col.s1 = bag_batch.batch
+  .col.s2
+    - weight = bag_batch.movements.sum(&:amount)
+    span.right = weight_in_tones(weight)
+  .col.s2 = bag_batch.malt.name
+  .col.s2
+    span.right = t('batch.in_bags', k: (weight / bag_batch.bag_type * 25).to_i, s: bag_batch.bag_type * 25)
+  .col.s2
+    span = "#{t('batch.w')}: #{bag_batch.wet}"
+    br
+    span
+      | &epsilon;
+      = ": #{bag_batch.extravagance}"
+    br
+    span = "#{t('batch.c')}: #{bag_batch.color}"
+    br
+    span = "#{t('batch.a')}: #{bag_batch.acidity}"
+    br
+    span = "#{t('batch.f')}: #{bag_batch.filtration}"
+    br
+  .col.s1
+    = link_to bag_batch_path(bag_batch.id), class: 'secondary-content'
+      i.material-icons description
+
+  //- if bag_batch.movements.empty?
+    //.btn-tooltipped.tooltipped*{'data-position': 'bottom', 'data-delay': '50', 'data-tooltip': t('settings.active_process_present')}
+      = button_tag t('form.save'), class: 'btn disabled'
+    => link_to bag_batch_path(bag_batch.id), method: :delete, remote: true, class: 'secondary-content', data: {confirm: t('activerecord.confirm_delete')}
+      i.material-icons delete
+    => link_to bag_batch_path(bag_batch.id), remote: true, class: 'secondary-content'
+      i.material-icons receipt
+    => link_to edit_bag_batch_path(bag_batch.id), remote: true, class: 'secondary-content disabled'
+      i.material-icons edit
+  //- else
+    .tooltipped*{'data-position': 'bottom', 'data-delay': '50', 'data-tooltip': t('input.cant_delete')}
+      => content_tag 'i', class: 'secondary-content'
+        i.material-icons delete
+    => link_to bag_batch_path(bag_batch.id), remote: true, class: 'secondary-content'
+      i.material-icons receipt
+    .tooltipped*{'data-position': 'bottom', 'data-delay': '50', 'data-tooltip': t('input.cant_edit')}
+      => content_tag 'i', class: 'secondary-content'
+        i.material-icons edit

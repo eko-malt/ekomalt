@@ -1,0 +1,30 @@
+= simple_form_for @batch do |f|
+  .modal-content
+    .row
+      .col.l6.s12
+        p = t('batch.information')
+        br
+        p = "#{t('batch.name')}: #{@batch.name}"
+        p = "#{t('batch.amount')}: #{@batch.amount}"
+        p = "#{t('batch.process')}: #{t("batch.druing.#{@batch.raw_process.equipment.maltose}")}"
+        p = "#{t('batch.malt')}: #{@batch.malt.name}"
+        //= f.input :name, readonly: true, label: t('batch.name')
+        //= f.input :amount, readonly: true, label: t('batch.amount')
+        //= f.association :raw_process, readonly: true,  label_mathod: t("batch.druing.#{@batch.raw_process.equipment.maltose}").split('*'), value_method: label: t('batch.process'),
+        //= f.association :malt, readonly: true, label: t('batch.malt')
+        = f.hidden_field :name, value: @batch.name
+        = f.hidden_field :amount, value: @batch.amount
+        = f.hidden_field :raw_process_id, value: @batch.raw_process_id
+        = f.hidden_field :malt_id, value: @batch.malt_id
+        = f.input :correction, label: t('batch.correction')
+      .col.l6.s12
+        p = t('batch.quality')
+        br
+        = f.input :wet, label: t('batch.wet')
+        = f.input :extravagance, label: t('batch.extravagance')
+        = f.input :color, label: t('batch.color')
+        = f.input :acidity, label: t('batch.acidity')
+        = f.input :filtration, label: t('batch.filtration')
+  .modal-footer
+    = f.submit t('form.save'), class: 'btn waves-effect waves-light left'
+    = button_tag t('modal.close'), type: 'button', class: 'modal-action modal-close waves-effect waves-green btn-flat'

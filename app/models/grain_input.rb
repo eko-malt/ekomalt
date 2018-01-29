@@ -10,7 +10,7 @@ class GrainInput < ApplicationRecord
   end
 
   scope :at_storage, -> {
-    joins(:movements)
+      joins(:movements)
       .group('grain_inputs.id')
       .having('sum(movements.amount) < grain_inputs.weight_fact')
   }
