@@ -43,12 +43,13 @@
       - @bag_inputs.each do |date, inputs|
         li.collapsible-with-margin
           .collapsible-header
-            span.col-title   = t("date.month.#{date.strftime('%B')}") + ' ' + date.strftime('%Y')
-            span.col-title = t('input.inputs_amount', amount: inputs.size.to_s)
+            span.col-title.text-bold = t("date.month.#{date.strftime('%B')}") + ' ' + date.strftime('%Y')
+            span.col-title-margin = t('input.inputs_amount')
+            span.col-title.text-bold = inputs.size.to_s
             span.col-title = t('input.bag25_count', sum: inputs.sum { |i| i.kg25? ? i.amount : 0 })
             span.col-title = t('input.bag50_count', sum: inputs.sum { |i| i.kg50? ? i.amount : 0 })
           .collapsible-body
             ul.collection.with-header id="bag_month_#{date.strftime('%B')}"
               = render partial: 'bag_inputs/bag_collection_header'
               = render partial: 'bag_inputs/bag_input', collection: inputs
-.modal.modal-fixed-footer#modal_edit_inputs
+.modal.modal-fixed-footer#modal_empty

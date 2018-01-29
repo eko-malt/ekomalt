@@ -1,6 +1,10 @@
 class GrainInputsController < ApplicationController
   before_action :set_input, only: %i[show edit update destroy]
 
+  def new
+    @grain_input = GrainInput.new(input_params)
+  end
+
   def create
     @grain_input = GrainInput.new(input_params)
     render :new unless @grain_input.save

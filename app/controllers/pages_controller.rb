@@ -25,4 +25,10 @@ class PagesController < ApplicationController
       eq.raw_processes.each &:check_time_and_statuses
     end
   end
+
+  def storagemalt
+    @batch = BagBatch.new
+    @grain_batches = GrainBatch.order(:created_at).group_by { |m| m.name[2..3] }
+    @bag_batches = BagBatch.order(:batch).group_by { |m| m.shredded.beginning_of_month }
+  end
 end
