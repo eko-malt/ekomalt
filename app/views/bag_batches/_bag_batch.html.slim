@@ -6,7 +6,9 @@
     span.right = weight_in_tones(weight)
   .col.s2 = bag_batch.malt.name
   .col.s2
-    span.right = t('batch.in_bags', k: (weight / bag_batch.bag_type * 25).to_i, s: bag_batch.bag_type * 25)
+    span.right = t('batch.bags_count', k: (weight / bag_batch.bag_type * 25).to_i )
+    br
+    span.right = t("batch.bag_type.#{bag_batch.bag_type == 1 ? 'by25' : 'by50'}")
   .col.s2
     span = "#{t('batch.w')}: #{bag_batch.wet}"
     br

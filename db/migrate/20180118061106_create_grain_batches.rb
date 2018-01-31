@@ -5,7 +5,7 @@ class CreateGrainBatches < ActiveRecord::Migration[5.1]
       t.decimal :amount
       t.references :raw_process, foreign_key: true
       t.references :malt, foreign_key: true
-      t.decimal :correction
+      t.decimal :correction, default: 0
       t.decimal :wet
       t.decimal :extravagance
       t.decimal :color

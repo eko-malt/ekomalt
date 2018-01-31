@@ -10,17 +10,18 @@
         li.collapsible-with-margin
           .collapsible-header
             span.col-title.text-bold = t('date.month_names')[month.to_i]
-            span.col-title-margin = "#{t('storage_malt.made')}: #{weight_in_tones(batches.sum(&:amount))}"
+            span.col-title-margin.text-brown.text-bold = "#{t('storage_malt.made')}: #{weight_in_tones(batches.sum(&:amount))}"
           .collapsible-body
             ul.collection.with-header id="batch_month_#{month}"
               li.collection-header.row
                 .col.s2 = t('batch.name')
+                .col.s2 = t('batch.type')
                 .col.s2
                   span.right = t('batch.amount')
-                .col.s3 = t('batch.type')
                 .col.s2
                   span.right = t('batch.remain')
                 .col.s3 = t('batch.quality')
+                .col.s1
               = render partial: 'grain_batches/grain_batch', collection: batches
 
   .col.s12#tab_malt_in_bags
@@ -33,8 +34,8 @@
         li.collapsible-with-margin
           .collapsible-header
             span.col-title.text-bold = t("date.month.#{month.strftime('%B')}") + ' ' + month.strftime('%Y')
-            span.col-title-margin = t('batch.shredded')
-            span.col-title.text-bold = weight_in_tones(batches.map {|b| b.movements.sum(&:amount)}[0])
+            span.col-title-margin.text-brown = t('batch.shredded')
+            span.col-title.text-brown.text-bold = weight_in_tones(batches.map {|b| b.movements.sum(&:amount)}[0])
           .collapsible-body
             ul.collection.with-header id="bag_batch_month_#{month.strftime('%B')}"
               li.collection-header.row
