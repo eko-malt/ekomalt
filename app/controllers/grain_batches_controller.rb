@@ -20,6 +20,7 @@ class GrainBatchesController < ApplicationController
 
   def update
     render :edit unless @batch.update(batch_params)
+    redirect_to storage_malt_path
   end
 
   def destroy

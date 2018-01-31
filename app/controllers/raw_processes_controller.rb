@@ -25,9 +25,9 @@ class RawProcessesController < ApplicationController
       @movements = @movements = Movement.where(sourceable_type: 'RawProcess', sourceable_id: @processes.map { |p| p.id })
       # get amount in process, subtract amount, that moved to next equipment, remove zero values, collect other to array
       @sources = @processes.map { |p| [p.id, p.equipment.name, p.movements.sum(:amount) - @movements.select { |m| m.sourceable_id == p.id }.map { |m| m.amount }.sum ] }.delete_if { |s| s[2].zero? }
-      # check if process can be archived
-      @empty = @process.movements.sum(&:amount) == Movement.where(sourceable_type: 'RawProcess', sourceable_id: @process.id).sum(&:amount)
     end
+    # check if process can be archived
+    @empty = @process.movements.sum(&:amount) == Movement.where(sourceable_type: 'RawProcess', sourceable_id: @process.id).sum(&:amount)
   end
 
   def edit; end
@@ -38,12 +38,12 @@ class RawProcessesController < ApplicationController
 
   def status_update
     @process.update(status: params[:status])
-    redirect_to old_maltose_path
+    redirect_to @process.equipment.oldm? ? old_maltose_path : new_maltose_path
   end
 
   def destroy
     @process.destroy
-    redirect_to old_maltose_path
+    redirect_to @process.equipment.oldm? ? old_maltose_path : new_maltose_path
   end
 
   private

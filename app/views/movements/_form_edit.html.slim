@@ -1,0 +1,8 @@
+= simple_form_for @movement do |f|
+  .row.valign-wrapper
+    = f.hidden_field :sourceable_type
+    = f.hidden_field :sourceable_id
+    = f.hidden_field :targetable_type
+    = f.hidden_field :targetable_id
+    .col.m2.s12 = f.input :amount, label: t('process.amount'), input_html: { max: @max }
+    .col.m4.s12 = f.submit t('form.add'), class: 'btn waves-effect waves-light'

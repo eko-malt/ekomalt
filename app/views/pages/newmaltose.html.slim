@@ -1,0 +1,12 @@
+.row
+  .col.m4
+    .row
+      = render partial: 'pages/equipment', collection: @equipment.vat
+  .col.m4
+    .row
+      = render partial: 'pages/equipment', collection: @equipment.thresh
+  .col.m4
+    .row
+      = render partial: 'pages/equipment', collection: @equipment.fermenter
+      = render partial: 'pages/equipment', collection: @equipment.druing
+.modal.modal-fixed-footer#modal_edit

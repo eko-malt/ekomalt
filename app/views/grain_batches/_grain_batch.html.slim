@@ -1,11 +1,15 @@
 .row.collection-item id="grain_batch_#{grain_batch.id}"
   .col.s2 = grain_batch.name
-  .col.s2
-    span.right = weight_in_tones(grain_batch.amount)
-  .col.s3 = grain_batch.malt.name
-  .col.s2
-    // TODO: replace with remainder value
-    span.right = weight_in_tones(grain_batch.amount)
+  .col.s2 = grain_batch.malt.name
+  .col.s2.text-right
+    = weight_in_tones(grain_batch.amount)
+    br
+    - if grain_batch.correction > 0
+      = "(+#{weight_in_tones(grain_batch.correction)})"
+    - elsif grain_batch.correction < 0
+      = "(#{weight_in_tones(grain_batch.correction)})"
+  .col.s2.text-right
+    = weight_in_tones(grain_batch.amount + grain_batch.correction - grain_batch.movements.sum(:amount))
   .col.s3
     span = "#{t('batch.w')}: #{grain_batch.wet}"
     br
@@ -19,6 +23,9 @@
     br
     span = "#{t('batch.f')}: #{grain_batch.filtration}"
     br
+  .col.s1
+    = link_to edit_grain_batch_path(grain_batch.id), remote: true, class: 'secondary-content'
+      i.material-icons edit
 
   //- if grain_batch.movements.empty?
     //.btn-tooltipped.tooltipped*{'data-position': 'bottom', 'data-delay': '50', 'data-tooltip': t('settings.active_process_present')}

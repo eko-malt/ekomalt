@@ -76,7 +76,8 @@ var movement = function() {
         } else {
             max = source
         }
-        $("#movement_amount").attr({ "max": max, "min": 0.001});
+        $("#movement_amount").attr({ "max": max, "min": 0.001}).val(max);
+        Materialize.updateTextFields();
     })
 };
 

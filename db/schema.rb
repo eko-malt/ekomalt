@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20180127123405) do
     t.decimal "amount"
     t.bigint "raw_process_id"
     t.bigint "malt_id"
-    t.decimal "correction"
+    t.decimal "correction", default: "0.0"
     t.decimal "wet"
     t.decimal "extravagance"
     t.decimal "color"

@@ -260,7 +260,7 @@ uk:
     malt: 'Тип солоду'
     choise_malt: 'Оберіть тип солоду'
     shredded: 'Змелено: '
-    in_bags: "%{k} мішків по %{s} кг"
+    bags_count: "%{k} мішків"
     bag_type:
       title: 'В мішках'
       by25: 'по 25 кг'
