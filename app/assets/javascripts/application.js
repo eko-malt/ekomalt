@@ -67,6 +67,7 @@ var timepicker_init = function() {
     });
 }
 
+// raw_process show page, movement form, onChange source set max value for input field
 var movement = function() {
     $('#movement_sourceable_id').change(function() {
         source = $('#movement_sourceable_id').find(":selected").data("max");
@@ -104,6 +105,7 @@ function formatTime(date) {
     return hours + ':' + minutes;
 }
 
+// raw_process show page, process form, onChange malt set finish time
 var set_malt = function() {
     $('.malt_button').click(function() {
         $('.action_button_pink').removeClass('action_button_pink');
@@ -115,6 +117,7 @@ var set_malt = function() {
         $('#dates_finish_date').val(formatDate(finish_date));
         $("label[for='dates_finish_time']").addClass('active');
         $('#dates_finish_time').val(formatTime(finish_date));
+        $('#raw_process_malt_id').val($(this).attr('id'));
         Materialize.toast("Параметри змінено. Не забудьте зберегти", 4000)
     })
 };
