@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
   root to: 'pages#main'
 
-  get    '/login',    to: 'sessions#new'
-  post   '/login',    to: 'sessions#create'
-  delete '/logout',   to: 'sessions#destroy'
+  get    '/login',     to: 'sessions#new'
+  post   '/login',     to: 'sessions#create'
+  delete '/logout',    to: 'sessions#destroy'
 
-  get '/storage_raw', to: 'pages#storageraw'
-  get '/old_maltose', to: 'pages#oldmaltose'
-  get '/new_maltose', to: 'pages#newmaltose'
-  get '/inputs',      to: 'inputs#index'
-  get '/settings',    to: 'settings#index'
+  get '/storage_raw',  to: 'pages#storageraw'
+  get '/old_maltose',  to: 'pages#oldmaltose'
+  get '/new_maltose',  to: 'pages#newmaltose'
+  get '/storage_malt', to: 'pages#storagemalt'
+  get '/inputs',       to: 'inputs#index'
+  get '/settings',     to: 'settings#index'
 
   resources :providers
   resources :malts
@@ -27,4 +28,6 @@ Rails.application.routes.draw do
   resources :movements, only: %i[create edit update destroy]
   resources :malt_settings, only: %i[edit update]
   resources :clients
+  resources :grain_batches, only: %i[new create edit update destroy]
+  resources :bag_batches, only: %i[new create show edit update destroy]
 end

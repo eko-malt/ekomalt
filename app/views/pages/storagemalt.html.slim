@@ -1,0 +1,52 @@
+.row
+  .col.s12
+    ul.tabs
+      li.tab.col.s6 = link_to t('storage_malt.in_grain'), '#tab_malt_in_grain', class: 'text-bold'
+      li.tab.col.s6 = link_to t('storage_malt.in_bags'), '#tab_malt_in_bags', class: 'text-bold'
+
+  .col.s12#tab_malt_in_grain
+    ul.collapsible#data_grain
+      - @grain_batches.each do |month, batches|
+        li.collapsible-with-margin
+          .collapsible-header
+            span.col-title.text-bold = t('date.month_names')[month.to_i]
+            span.col-title-margin.text-brown.text-bold = "#{t('storage_malt.made')}: #{weight_in_tones(batches.sum(&:amount))}"
+          .collapsible-body
+            ul.collection.with-header id="batch_month_#{month}"
+              li.collection-header.row
+                .col.s2 = t('batch.name')
+                .col.s2 = t('batch.type')
+                .col.s2
+                  span.right = t('batch.amount')
+                .col.s2
+                  span.right = t('batch.remain')
+                .col.s3 = t('batch.quality')
+                .col.s1
+              = render partial: 'grain_batches/grain_batch', collection: batches
+
+  .col.s12#tab_malt_in_bags
+    br
+    .right = link_to t('batch.create_bag_batch'), new_bag_batch_path, remote: true, class: 'btn waves-effect waves-light'
+    br
+    br
+    ul.collapsible#data_bags
+      - @bag_batches.each do |month, batches|
+        li.collapsible-with-margin
+          .collapsible-header
+            span.col-title.text-bold = t("date.month.#{month.strftime('%B')}") + ' ' + month.strftime('%Y')
+            span.col-title-margin.text-brown = t('batch.shredded')
+            span.col-title.text-brown.text-bold = weight_in_tones(batches.map {|b| b.movements.sum(&:amount)}[0])
+          .collapsible-body
+            ul.collection.with-header id="bag_batch_month_#{month.strftime('%B')}"
+              li.collection-header.row
+                .col.s2 = t('batch.shredded')
+                .col.s1 = t('batch.batch')
+                .col.s2
+                  span.right = t('batch.amount')
+                .col.s2 = t('batch.type')
+                .col.s2
+                  span.right = t('batch.bags')
+                .col.s2 = t('batch.quality')
+                .col.s1
+              = render partial: 'bag_batches/bag_batch', collection: batches
+.modal.modal-fixed-footer#modal_empty

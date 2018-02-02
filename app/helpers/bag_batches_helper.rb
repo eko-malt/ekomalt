@@ -1,0 +1,2 @@
+module BagBatchesHelper
+end

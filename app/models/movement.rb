@@ -5,6 +5,7 @@ class Movement < ApplicationRecord
   belongs_to :sourceable, polymorphic: true
   belongs_to :targetable, polymorphic: true
 
+  # TODO: fix scopes - search by id AND type
   scope :by_source, ->(source) { where('sourceable_id = ?', source) }
   scope :by_source_type, ->(type) { where('sourceable_type = ?', type) }
   scope :by_target, ->(target) { where('targetable_id = ?', target) }

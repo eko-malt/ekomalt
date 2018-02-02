@@ -1,0 +1,15 @@
+.row id="movement_#{movement.id}"
+  .col.s2 = movement.sourceable.name
+  .col.s2 = movement.sourceable.malt.name
+  .col.s2 = weight_in_tones(movement.amount)
+  // TODO: search by id AND type
+  - if Movement.where('sourceable_type = ? AND sourceable_id = ?', 'BagBatch', movement.targetable_id).count == 0
+    .col.s2
+      = link_to t('form.edit'), edit_movement_path(movement.id), remote: true, class: 'btn waves-effect waves-light'
+    .col.s2
+      = link_to t('form.delete'), movement_path(movement.id), method: :delete, class: 'btn waves-effect waves-light btn-danger', data: {confirm: t('activerecord.confirm_delete')}
+  - else
+    .col.s2.btn-tooltipped.tooltipped*{'data-position': 'bottom', 'data-delay': '50', 'data-tooltip': t('process.movements_only_empty')}
+      = button_tag t('form.edit'), class: 'btn disabled'
+    .col.s2.btn-tooltipped.tooltipped*{'data-position': 'bottom', 'data-delay': '50', 'data-tooltip': t('process.movements_only_empty')}
+      = button_tag t('form.delete'), class: 'btn disabled'

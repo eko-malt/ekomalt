@@ -2,6 +2,7 @@
   = simple_fields_for :dates do |o|
     = f.hidden_field :status
     = f.hidden_field :equipment_id
+    = f.hidden_field :malt_id
     .row.valign-wrapper
       .col.s2
         = t('process.start')
@@ -13,7 +14,7 @@
     .row
       - @malts.each do |malt|
         - malt_settings = malt.malt_settings.where('equipment_id = ?', @process.equipment_id)[0]
-        = content_tag('a', malt.name, class: ['waves-effect waves-light btn malt_button action_button'].concat(malt_settings.available == 0 ? ['disabled'] : []).concat(@process.malt == malt ? ['action_button_pink'] : []), data: { duration: malt_settings.duration } )
+        = content_tag('a', malt.name, class: ['waves-effect waves-light btn malt_button action_button'].concat(malt_settings.available == 0 ? ['disabled'] : []).concat(@process.malt == malt ? ['action_button_pink'] : []), id: malt.id, data: { duration: malt_settings.duration } )
     .row.valign-wrapper
       .col.s2
         = t('process.finish')

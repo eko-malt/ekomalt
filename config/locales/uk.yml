@@ -14,7 +14,7 @@ uk:
     storageraw: 'Склад сировини'
     oldmaltose: 'Стара солодовня'
     newmaltose: 'Нова солодовня'
-    storage_malt: 'Склад солоду'
+    storagemalt: 'Склад солоду'
     shipment: 'Відвантаження'
     client: 'Клієнти'
     order: 'Замовлення'
@@ -25,6 +25,7 @@ uk:
     calc: 'Калькуляція'
     oldmaltose: 'Стара солодовня'
     raw_process: 'Процес'
+    bag_batch: 'Партія кінцева'
   main:
     weight_in_tones: '%{weight} т'
     price_with_uah: '%{price} грн'
@@ -95,7 +96,7 @@ uk:
     price_sum: "Сума:"
     bag25_count: "25кг: %{sum} шт"
     bag50_count: "50кг: %{sum} шт"
-    inputs_amount: "Поставок: "
+    inputs_amount: 'Поставок: '
     weight_doc: 'Вага по док. (т)'
     price: 'Вартість (грн)'
     price_blank: 'Не введено'
@@ -192,6 +193,7 @@ uk:
     only_empty: 'Видалити можливо тільки пустий процес'
     movements_only_empty: 'Сировина використовується'
     delete: 'Видалити процес'
+    create_batch: 'Перенести на склад'
     errors:
       must_be_after_start: 'Час завершення має бути після часу початку'
     statuses:
@@ -251,6 +253,54 @@ uk:
       maltose: 'Солодовня'
       capacity: 'Об''єм (т)'
       service_time: 'Обслуговування (год)'
+  batch:
+    information: 'Інформація про партію'
+    create_bag_batch: 'Створити кінцеву партію солоду'
+    new_bag_batch: 'Нова кінцева партія солоду'
+    empty_sources: 'На складі немає зернового солоду'
+    source: 'Партія зернового солоду'
+    choise_batch: 'Оберіть партію'
+    malt_in_batch: "Солод в партії (%{v})"
+    add_malt_to_bag_batch: 'Додати солод'
+    params: 'Параметри партії'
+    name: 'Шифр партії'
+    batch: 'Партія кінцева'
+    bags: 'Пакування'
+    amount: 'Кількість'
+    process: 'Звідки'
+    malt: 'Тип солоду'
+    choise_malt: 'Оберіть тип солоду'
+    shredded: 'Змелено: '
+    bags_count: "%{k} мішків"
+    bag_type:
+      title: 'В мішках'
+      by25: 'по 25 кг'
+      by50: 'по 50 кг'
+    type: 'Тип'
+    remain: 'Залишок'
+    correction: 'Корекція'
+    quality: 'Якісні показники'
+    wet: 'Масова частка вологи'
+    extravagance: 'Екстрактивність'
+    color: 'Колірність'
+    acidity: 'Кислотність'
+    filtration: 'Фільтрація'
+    w: 'W'
+    e: 'E'
+    c: 'K'
+    a: 'k'
+    f: 'Ф'
+    maltose:
+      oldm: 'С'
+      newm: 'Н'
+    druing:
+      oldm: 'Сушка (Стара солодовня)'
+      newm: 'Сушка (Нова солодовня)'
+  storage_malt:
+    in_grain: 'Солод зерновий'
+    in_bags: 'Солод в мішках'
+    made: 'Виготовлено'
+    shredded: 'Змелено'
   modal:
     close: 'Закрити'
   activerecord:
@@ -276,19 +326,6 @@ uk:
       October: 'Жовтень'
       November: 'Листопад'
       December: 'Грудень'
-    month_num:
-      1: 'Січень'
-      2: 'Лютий'
-      3: 'Березень'
-      4: 'Квітень'
-      5: 'Травень'
-      6: 'Червень'
-      7: 'Липень'
-      8: 'Серпень'
-      9: 'Вересень'
-      10: 'Жовтень'
-      11: 'Листопад'
-      12: 'Грудень'
     day_names: [Понеділок, Вівторок, Середа, Четвер, П'ятниця, Субота, Неділя]
     abbr_day_names: [Пн, Вт, Ср, Чт, Пт, Сб, Нд]
     month_names: [~, Січень, Лютий, Березень, Квітень, Травень, Червень, Липень, Серпень, Вересень, Листопад, Грудень]

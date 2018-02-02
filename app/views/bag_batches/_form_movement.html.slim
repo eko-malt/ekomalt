@@ -1,0 +1,8 @@
+= simple_form_for @movement do |f|
+  .row.valign-wrapper
+    = f.hidden_field :sourceable_type, value: 'GrainBatch'
+    .col.m6.s12 = f.input :sourceable_id, as: :select, collection: @sources.map { |s| ["#{s.name} | #{s.malt.name} | #{weight_in_tones(s.amount)}", s.id, { data: { max: s.amount } }]}, include_blank: t('batch.choise_batch'), label: t('batch.source')
+    = f.hidden_field :targetable_type, value: 'BagBatch'
+    = f.hidden_field :targetable_id, value: params[:id]
+    .col.m2.s12 = f.input :amount, label: t('process.amount')
+    .col.m4.s12 = f.submit t('form.add'), class: 'btn waves-effect waves-light'

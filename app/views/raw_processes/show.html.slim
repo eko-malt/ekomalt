@@ -1,34 +1,38 @@
 .row
-  .col.s12
-    = link_to t('process.to_maltose'), @process.equipment.maltose == 'oldm' ? old_maltose_path : new_maltose_path, class: 'waves-effect waves-light btn'
-    h4
-      = t("maltose.#{@process.equipment.maltose}") + ' - ' + @process.equipment.name + ' ' + t('process.eq_capacity', v: @process.equipment.capacity)
-      span.hidden#equipment_capacity*{'data-capacity': @process.equipment.capacity }
-    = render 'form'
+  .col.s6
+    = link_to t('process.to_maltose'), @process.equipment.oldm? ? old_maltose_path : new_maltose_path, class: 'waves-effect waves-light btn'
+  .col.s3.offset-s1
+    - if @process.equipment.druing? && @process.finished?
+      = link_to t('process.create_batch'), new_grain_batch_path(raw_process: @process.id), remote: true, class: 'btn waves-effect right'
 
-    br
-    #movements_list
-      h4 = t("process.raw_in_process.#{@process.equipment.eqtype}", v: @process.movements.sum(:amount)) unless @process.movements.empty?
-      span.hidden#equipment_amount*{'data-amount': @process.movements.sum(:amount) }
-      - @process.movements.each do |move|
-        = render partial: 'movements/movement', object: move
+.row
+  h4
+    = t("maltose.#{@process.equipment.maltose}") + ' - ' + @process.equipment.name + ' ' + t('process.eq_capacity', v: @process.equipment.capacity)
+  span.hidden#equipment_capacity*{'data-capacity': @process.equipment.capacity }
+  = render 'form'
 
-    br
-    - free = @process.equipment.capacity - @process.movements.sum(:amount)
-    - if free > 0
-      h4 = t("process.add_raw.#{@process.equipment.eqtype}", v: free)
-      - if @sources.empty?
-        h5 = t('process.empty_sources')
-      - else
-        = render 'movements/form'
+  br
+  #movements_list
+    h4 = t("process.raw_in_process.#{@process.equipment.eqtype}", v: @process.movements.sum(:amount)) unless @process.movements.empty?
+    span.hidden#equipment_amount*{'data-amount': @process.movements.sum(:amount) }
+    - @process.movements.each do |move|
+      = render partial: 'movements/movement', object: move
 
+  - free = @process.equipment.capacity - @process.movements.sum(:amount)
+  - if free > 0
     br
-    - if @process.movements.empty?
-      = link_to t('process.delete'), raw_process_path(@process), method: :delete, class: ['waves-effect waves-light btn btn-danger'], data: { confirm: t('activerecord.confirm_delete') }
+    h4 = t("process.add_raw.#{@process.equipment.eqtype}", v: free)
+    - if @sources.empty?
+      h5 = t('process.empty_sources')
     - else
-      .btn-tooltipped.tooltipped*{'data-position': 'bottom', 'data-delay': '50', 'data-tooltip': t('process.only_empty') }
-        = button_tag t('process.delete'), class: 'btn disabled'
+      = render 'movements/form'
 
+  br
+  - if @process.movements.empty?
+    = link_to t('process.delete'), raw_process_path(@process), method: :delete, class: ['waves-effect waves-light btn btn-danger'], data: { confirm: t('activerecord.confirm_delete') }
+  - else
+    .btn-tooltipped.tooltipped*{'data-position': 'bottom', 'data-delay': '50', 'data-tooltip': t('process.only_empty') }
+      = button_tag t('process.delete'), class: 'btn disabled'
+  - if @process.movements.sum(:amount) > 0 && @process.finished? && @empty
     br
-    - if @movements.sum(:amount) == @process.movements.sum(:amount) && @process.status == 'finished'
-      = link_to t('old_maltose.archive'), status_update_raw_process_path(@process, status: 'archived'), method: :put, class: 'btn waves-effect waves-light btn-danger', data: { confirm: t('activerecord.confirm_acrhive') }
+    = link_to t('old_maltose.archive'), status_update_raw_process_path(@process, status: 'archived'), method: :put, class: 'btn waves-effect waves-light btn-danger', data: { confirm: t('activerecord.confirm_acrhive') }

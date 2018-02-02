@@ -15,16 +15,16 @@ ul.side-nav.fixed#slide-out
     = link_to old_maltose_path, class: 'collection-item'
       i.material-icons.secondary-content landscape
       = t('leftnav.oldmaltose')
-  li
-    = link_to '', class: 'collection-item'
+  li class="#{active_class(:newmaltose)}"
+    = link_to new_maltose_path, class: 'collection-item'
       i.material-icons.secondary-content panorama
       = t('leftnav.newmaltose')
   li
     .divider
-  li
-    = link_to '', class: 'collection-item'
+  li class="#{active_class(:storagemalt)}"
+    = link_to storage_malt_path, class: 'collection-item'
       i.material-icons.secondary-content reorder
-      = t('leftnav.storage_malt')
+      = t('leftnav.storagemalt')
   li
     = link_to '', class: 'collection-item'
       i.material-icons.secondary-content file_upload

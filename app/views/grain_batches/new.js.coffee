@@ -1,0 +1,5 @@
+$("<%= j(render partial: 'form_create', object: @batch) %>").appendTo("#modal_empty")
+Materialize.updateTextFields()
+datepicker_init()
+$('select').material_select()
+$('#modal_empty').modal('open')
