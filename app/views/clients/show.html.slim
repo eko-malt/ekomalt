@@ -1,0 +1,26 @@
+.row
+  .col.s6
+    h4 = @client.name
+  .col.s6
+    = link_to t('client.edit'), edit_client_path(@client), remote: true, class: 'waves-effect waves-light btn right'
+    br
+    br
+    //- if @client.orders.blank?
+    = link_to t('client.delete'), client_path(@client), method: :delete, class: 'waves-effect waves-light btn btn-danger right', data: {confirm: t('activerecord.confirm_delete')}
+    //- else
+      = link_to t('client.delete'), '', class: 'waves-effect waves-light btn disabled'
+
+h5 = t('client.orders')
+//ul.collection.with-header
+  li.collection-header.row
+    .col.s2 = t('order.date')
+    .col.s2 = t('order.provider')
+    .col.s2
+      span.right = t('order.weight_fact')
+    .col.s2
+      span.right = t('order.weight_doc')
+    .col.s2
+      span.right = t('order.price')
+  - @client.orders.order(:date).each do |order|
+    = render partial: 'orders/order', object: order
+

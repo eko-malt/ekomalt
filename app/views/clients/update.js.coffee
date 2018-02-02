@@ -1,0 +1,1 @@
+Turbolinks.visit("<%= client_path(@client) %>")

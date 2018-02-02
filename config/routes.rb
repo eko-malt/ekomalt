@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   resources :movements, only: %i[create edit update destroy]
   resources :malt_settings, only: %i[edit update]
+  resources :clients
   resources :grain_batches, only: %i[new create edit update destroy]
   resources :bag_batches, only: %i[new create show edit update destroy]
 end
