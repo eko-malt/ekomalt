@@ -73,6 +73,17 @@ uk:
     types:
       grain: 'Жито'
       bags: 'Мішки'
+  client:
+    name: 'Назва'
+    singular: 'Клієнт'
+    title: 'Клієнти'
+    name: 'Назва'
+    create: 'Додати нового клієнта'
+    created: 'Нового клієнта додано'
+    updated: 'Дані оновлено'
+    delete: 'Видалити'
+    edit: 'Редагувати'
+    orders: 'Список замовлень'
   input:
     create_grain: 'Додати нову поставку жита'
     create_bag: 'Додати нову поставку мішків'

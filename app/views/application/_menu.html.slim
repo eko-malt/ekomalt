@@ -31,8 +31,8 @@ ul.side-nav.fixed#slide-out
       = t('leftnav.shipment')
   li
     .divider
-  li
-    = link_to '', class: 'collection-item'
+  li class="#{active_class(:clients)}"
+    = link_to clients_path, class: 'collection-item'
       i.material-icons.secondary-content people
       = t('leftnav.client')
   li

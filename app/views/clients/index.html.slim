@@ -1,0 +1,14 @@
+ul.collapsible*{'data-collapsible'=>'expandable'}
+  li
+    .collapsible-header
+      i.material-icons add_circle_outline
+      = t('client.create')
+    .collapsible-body
+      = render 'form'
+  li
+    .collapsible-header
+      i.material-icons assignment
+      = t('client.title')
+    .collapsible-body
+      .collection#clients
+        = render @clients

@@ -1,0 +1,5 @@
+.row
+  .col.s12
+    = simple_form_for @client, remote: true, validate: true do |f|
+      => f.input :name, label: t('client.name')
+      => f.submit t('form.save'), class: 'btn waves-effect waves-light'
