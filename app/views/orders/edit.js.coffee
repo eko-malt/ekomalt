@@ -1,0 +1,6 @@
+$("<%= j(render partial: 'form') %>").appendTo("#modal .modal-content")
+$('#order_deadline').val("<%= date_ukr(@order.deadline) %>")
+Materialize.updateTextFields()
+datepicker_init()
+$('select').material_select()
+$('#modal').modal('open')

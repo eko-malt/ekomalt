@@ -1,0 +1,15 @@
+= simple_form_for @order_item, remote: true do |f|
+  .modal-content
+    = f.hidden_field :order_id
+    .row
+      .col.s12
+        = f.association :malt, collection: Malt.all, label_method: :name, include_blank: t('order_item.set_malt')
+    .row
+      .col.s6
+        = f.input :amount, label: t('order_item.amount')
+      .col.s6
+        br
+        = f.collection_radio_buttons :bag, [['1', t('order_item.bag_25')], ['2', t('order_item.bag_50')]], :first, :last
+  .modal-footer
+    = f.submit t('form.save'), class: 'btn waves-effect waves-light left'
+    = button_tag t('modal.close'), type: 'button', class: 'modal-action modal-close waves-effect waves-green btn-flat'
