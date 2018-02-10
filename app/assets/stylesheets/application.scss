@@ -46,7 +46,7 @@ input[type=number]::-webkit-inner-spin-button {
   color: #525252;
 }
 
-.nav-date a{
+.nav-date a {
   font-size: x-large;
   color: black;
 }
@@ -101,7 +101,6 @@ li.tab-bags { background-color: #e0e0e0 }
 #calendar { visibility: hidden; }
 
 // bootstrap progress start
-
 @-webkit-keyframes progress-bar-stripes {
   from { background-position: 1rem 0; }
   to { background-position: 0 0; }
@@ -145,5 +144,4 @@ li.tab-bags { background-color: #e0e0e0 }
 
 .bg-progress-yellow { background-color: #f3b00b; }
 .bg-progress-brown { background-color: #795548; }
-
 // bootstrap progress finish

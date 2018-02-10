@@ -98,6 +98,13 @@ uk:
     set_client: 'Оберіть клієнта'
     deadline: 'Кінцева дата доставки'
     item_list: 'Замовлений солод'
+    active: 'Активні'
+    finished: 'Виконані'
+    finish: 'Відмітити як виконане'
+    duedate: 'Виконати до'
+    status:
+      active: 'Активне'
+      finished: 'Виконане'
   order_item:
     malt: 'Тип солоду'
     amount: 'Кількість'
