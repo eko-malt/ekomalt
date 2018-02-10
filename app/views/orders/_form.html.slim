@@ -1,0 +1,7 @@
+.row
+  = simple_form_for @order, remote: true do |f|
+    .col.s6
+      = f.association :client, label: t('order.client'), label_method: :name, include_blank: t('order.set_client')
+    .col.s6
+      = f.input  :deadline, as: :string, label: t('order.deadline'), input_html: { class: 'datepicker' }
+    = f.submit t('form.save'), class: 'btn waves-effect waves-light'

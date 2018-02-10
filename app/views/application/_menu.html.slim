@@ -35,8 +35,8 @@ ul.side-nav.fixed#slide-out
     = link_to clients_path, class: 'collection-item'
       i.material-icons.secondary-content people
       = t('leftnav.client')
-  li
-    = link_to '', class: 'collection-item'
+  li class="#{active_class(:orders)}"
+    = link_to orders_path, class: 'collection-item'
       i.material-icons.secondary-content shopping_cart
       = t('leftnav.order')
   li class="#{active_class(:providers)}"

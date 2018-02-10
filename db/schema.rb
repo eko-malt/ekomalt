@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180202031934) do
+ActiveRecord::Schema.define(version: 20180202183223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,25 @@ ActiveRecord::Schema.define(version: 20180202031934) do
     t.index ["targetable_type", "targetable_id"], name: "index_movements_on_targetable_type_and_targetable_id"
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "malt_id"
+    t.integer "bag"
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["malt_id"], name: "index_order_items_on_malt_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "client_id"
+    t.date "deadline"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_orders_on_client_id"
+  end
+
   create_table "providers", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -181,6 +200,9 @@ ActiveRecord::Schema.define(version: 20180202031934) do
   add_foreign_key "grain_inputs", "providers"
   add_foreign_key "malt_settings", "equipment"
   add_foreign_key "malt_settings", "malts"
+  add_foreign_key "order_items", "malts"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "orders", "clients"
   add_foreign_key "raw_processes", "equipment"
   add_foreign_key "raw_processes", "malts"
 end
