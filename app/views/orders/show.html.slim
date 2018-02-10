@@ -1,12 +1,13 @@
 .row
   .col.s6
     h4 = @order.client.name
-    h4 = date_ukr(@order.deadline)
+    h5 = "(#{t('order.duedate')} #{date_ukr(@order.deadline)})" if @order.active?
+    h5 = t("order.status.#{@order.status}")
   .col.s6
     = link_to t('order.edit'), edit_order_path(@order), remote: true, class: 'btn waves-effect waves-light right'
     br
     br
-    = link_to t('order.delete'), order_path(@order), method: :delete, class: 'btn waves-effect waves-light right btn-danger', data: { confirm: t('activerecord.confirm_delete') }
+    = link_to t('order.finish'), status_update_order_path(@order, status: 'finished'), method: :put, remote: true, class: 'btn waves-effect waves-light right' if @order.active?
 
 ul.collection.with-header#order_items
   li.collection-header
@@ -22,3 +23,4 @@ ul.collection.with-header#order_items
   - @order.order_items.each do |i|
     = render partial: 'order_items/order_item', object: i
 = link_to t('order_item.create'), new_order_item_path(order: params[:id]), remote: true, class: 'btn waves-effect waves-light'
+= link_to t('order.delete'), order_path(@order), method: :delete, class: 'btn waves-effect waves-light right btn-danger', data: { confirm: t('activerecord.confirm_delete') }

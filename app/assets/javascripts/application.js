@@ -162,7 +162,8 @@ ready = function() {
         dismissible: false,
         complete: function() {
             $('.modal-content')[0].innerHTML = '';
-            $('#modal_empty')[0].innerHTML = ''; }
+            $('#modal_empty')[0].innerHTML = '';
+        }
     });
 };
 

@@ -6,6 +6,16 @@ ul.collapsible*{'data-collapsible'=>'expandable'}
     .collapsible-body
       = render 'form'
 
+.row
+  .col.s12
+    ul.tabs
+      li.tab.col.s6 = link_to t('order.active'), '#tab_active', class: 'text-bold'
+      li.tab.col.s6 = link_to t('order.finished'), '#tab_finished', class: 'text-bold'
 
-ul.collection#orders
-  = render @orders
+  .col.s12#tab_active
+    ul.collection#active_orders
+      = render @orders_active if @orders_active
+
+  .col.s12#tab_finished
+    ul.collection
+      = render @orders_finished if @orders_finished

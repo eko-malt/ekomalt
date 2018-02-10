@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
-  validates :deadline, presence: true
+  validates :deadline, :status, presence: true
+  enum status: { active: 1, finished: 2 }
 
   belongs_to :client
   has_many :order_items, dependent: :destroy

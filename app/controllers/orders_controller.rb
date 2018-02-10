@@ -1,8 +1,9 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[show edit update destroy]
+  before_action :set_order, only: %i[show edit update status_update destroy]
 
   def index
-    @orders = Order.order(:deadline)
+    @orders_active = Order.active.order(:deadline)
+    @orders_finihed = Order.finished.order(:deadline)
     @order = Order.new
   end
 
@@ -27,6 +28,11 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     redirect_to orders_path
+  end
+
+  def status_update
+    @order.update(status: params[:status])
+    redirect_to order_path(@order)
   end
 
   private
