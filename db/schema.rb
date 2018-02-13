@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180208101714) do
+ActiveRecord::Schema.define(version: 20180210090205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -184,6 +184,19 @@ ActiveRecord::Schema.define(version: 20180208101714) do
     t.decimal "fermenter3_loading"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "shipments", force: :cascade do |t|
+    t.date "date"
+    t.bigint "client_id"
+    t.bigint "order_id"
+    t.bigint "bag_batch_id"
+    t.decimal "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bag_batch_id"], name: "index_shipments_on_bag_batch_id"
+    t.index ["client_id"], name: "index_shipments_on_client_id"
+    t.index ["order_id"], name: "index_shipments_on_order_id"
   end
 
   create_table "users", force: :cascade do |t|

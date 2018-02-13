@@ -4,7 +4,7 @@ class GrainBatchesController < ApplicationController
   def new
     process = RawProcess.find(params[:raw_process])
     process.finish_time.hour < 8 || process.finish_time.hour > 20 ? change = '2' : change = '1'
-    name = "#{process.finish_time.strftime('%d')}#{process.finish_time.strftime('%m')}#{change}#{process.equipment.maltose == 'oldm' ? t('batch.maltose.oldm') : t('batch.maltose.newm')}"
+    name = "#{process.finish_time.strftime('%d')}#{process.finish_time.strftime('%m')}-#{change}#{process.equipment.maltose == 'oldm' ? t('batch.maltose.oldm') : t('batch.maltose.newm')}"
     @batch = GrainBatch.new(name: name, amount: process.movements.sum(:amount), raw_process: process, malt: process.malt)
   end
 
