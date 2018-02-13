@@ -6,23 +6,24 @@
       h5.center = t('old_maltose.status.broken')
     - else
       - unless process.nil?
-        - weight = process.movements.sum(:amount)
-        - if weight > 0
-          .row
-            .col.s4
-              span = l(process.start_time, format: :short)
-              br
-              span = process.start_time.strftime('%H:%M')
-            .col.s4
-              br
-              .center = weight_in_tones(weight)
-            .col.s4
-              span.right = l(process.finish_time, format: :short)
-              br
-              span.right = process.finish_time.strftime('%H:%M')
-          = render partial: 'pages/progress', locals: { start_time: process.start_time, finish_time: process.finish_time, finished: process.finished?, color: 'yellow' }
+        - if process.can_archive?
+          h5.center.text-red = t('process.can_archive')
         - else
-          h5.center.text-red = t('process.statuses.need_load')
+          - weight = process.amount
+          - if weight > 0
+            .row
+              .col.s4
+                p = l(process.start_time, format: :short)
+                p = process.start_time.strftime('%H:%M')
+              .col.s4
+                .center = "#{ t('process.raw_residual') }:" if process.finished?
+                .center = weight_in_tones(weight)
+              .col.s4
+                p.right = l(process.finish_time, format: :short)
+                p.right = process.finish_time.strftime('%H:%M')
+            = render partial: 'pages/progress', locals: { start_time: process.start_time, finish_time: process.finish_time, finished: process.finished?, color: 'yellow' }
+          - else
+            h5.center.text-red = t('process.statuses.need_load')
   .card-action
     - if equipment.working?
       - if process.nil?
@@ -33,3 +34,4 @@
         - else
           = link_to t('old_maltose.edit'), raw_process_path(process)
           = link_to t('process.change_status.finish'), status_update_raw_process_path(process, status: 'finished'), remote: true, method: :put, class: 'right' if process.process?
+          = link_to t('process.change_status.archive'), status_update_raw_process_path(process, status: 'archived'), remote: true, method: :put, class: 'right' if process.can_archive?

@@ -7,7 +7,7 @@ class RawProcess < ApplicationRecord
   has_many :movements, as: :sourceable, dependent: :destroy
   has_many :movements, as: :targetable, dependent: :destroy
 
-  enum status: { init: 0, process: 1, finished: 2, archived: 3 }
+  enum status: { init: 0, process: 1, finished: 2, archived: 3, can_archive: 4 }
 
   scope :as_source, ->(maltose, eqtype) {
     joins(:equipment)
@@ -21,12 +21,19 @@ class RawProcess < ApplicationRecord
         .includes(:movements)
   }
 
-  def check_time_and_statuses
-    return if %w[archived finished].include?(status)
-    if finish_time < Time.now
-      self.status = 'finished'
-    elsif start_time < Time.now
-      self.status = 'process'
+  def check_and_update_status
+    return if %w[can_archive archived].include?(status)
+    output = Movement.where(sourceable: self).sum(:amount)
+    input = self.movements.sum(:amount)
+    self.amount = input - output
+    if self.finished?
+      self.can_archive! if input == output
+    else
+      if finish_time < Time.now
+        self.finished!
+      elsif start_time < Time.now
+        self.process!
+      end
     end
     save
   end

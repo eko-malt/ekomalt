@@ -15,15 +15,16 @@ class PagesController < ApplicationController
 
   def oldmaltose
     @equipment = Equipment.oldm.order(:eqtype, :name).includes(raw_processes: :movements)
+    #binding.pry
     @equipment.each do |eq|
-      eq.raw_processes.each &:check_time_and_statuses
+      eq.raw_processes.each &:check_and_update_status
     end
   end
 
   def newmaltose
     @equipment = Equipment.newm.order(:eqtype, :name).includes(raw_processes: :movements)
     @equipment.each do |eq|
-      eq.raw_processes.each &:check_time_and_statuses
+      eq.raw_processes.each &:check_and_update_status
     end
   end
 

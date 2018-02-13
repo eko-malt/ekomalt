@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  validates :deadline, :status, presence: true
+  validates :status, presence: true
   enum status: { active: 1, finished: 2 }
 
   belongs_to :client
