@@ -155,7 +155,7 @@ ActiveRecord::Schema.define(version: 20180213202910) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "malt_id"
-    t.decimal "amount"
+    t.decimal "current_weight"
     t.index ["equipment_id"], name: "index_raw_processes_on_equipment_id"
     t.index ["malt_id"], name: "index_raw_processes_on_malt_id"
   end

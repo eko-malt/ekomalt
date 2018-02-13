@@ -25,7 +25,7 @@ class RawProcess < ApplicationRecord
     return if %w[can_archive archived].include?(status)
     output = Movement.where(sourceable: self).sum(:amount)
     input = self.movements.sum(:amount)
-    self.amount = input - output
+    self.current_weight = input - output
     if self.finished?
       self.can_archive! if input == output
     else
