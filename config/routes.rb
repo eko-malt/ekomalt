@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   resources :grain_batches, only: %i[new create edit update destroy]
   resources :bag_batches, only: %i[new create show edit update destroy]
   resources :clients
+  resources :shipments
   resources :orders do
     member do
       put :status_update

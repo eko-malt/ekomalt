@@ -3,7 +3,7 @@
     .col.m6.s12
       = f.input :shredded, as: :string, label: t('batch.shredded'), input_html: { value: date_ukr(@batch.shredded), class: 'datepicker' }
       = f.input :batch, label: t('batch.name')
-      = f.association :malt, label_method: :name, value_method: :id, include_blank: t('batch.choise_malt'), label: t('batch.malt')
+      = f.association :malt, label_method: :name, value_method: :id, include_blank: t('batch.select_malt'), label: t('batch.malt')
       br
       = f.collection_radio_buttons :bag_type, [['1', t('batch.bag_type.by25')], ['2', t('batch.bag_type.by50')]], :first, :last
     .col.m6.s12

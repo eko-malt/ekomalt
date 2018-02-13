@@ -25,8 +25,8 @@ ul.side-nav.fixed#slide-out
     = link_to storage_malt_path, class: 'collection-item'
       i.material-icons.secondary-content reorder
       = t('leftnav.storagemalt')
-  li
-    = link_to '', class: 'collection-item'
+  li class="#{active_class(:shipment)}"
+    = link_to shipments_path, class: 'collection-item'
       i.material-icons.secondary-content file_upload
       = t('leftnav.shipment')
   li
