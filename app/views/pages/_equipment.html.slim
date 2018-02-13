@@ -1,5 +1,5 @@
 .card.blue-grey.darken id="equipment_#{equipment.id}"
-  - process = equipment.raw_processes.where.not(raw_processes: { status: 3} ).first
+  - process = equipment.raw_processes.where.not(raw_processes: { status: 3 }).first
   .card-content.white-text
     .card-title.text-bold = equipment.name
     - if equipment.broken?
@@ -24,9 +24,7 @@
         - else
           h5.center.text-red = t('process.statuses.need_load')
   .card-action
-    - if equipment.broken?
-      = link_to(t('equipment.enable'), equipment_path(equipment, equipment: { status: :working }), method: :put, remote: true)
-    - else
+    - if equipment.working?
       - if process.nil?
         = link_to t('process.change_status.load'), new_raw_process_path(equipment: equipment.id)
       - else
@@ -35,4 +33,3 @@
         - else
           = link_to t('old_maltose.edit'), raw_process_path(process)
           = link_to t('process.change_status.finish'), status_update_raw_process_path(process, status: 'finished'), remote: true, method: :put, class: 'right' if process.process?
-          //= link_to t('process.change_status.archive'), status_update_raw_process_path(process, status: 'archived'), remote: true, method: :put, class: 'right' if process.finished?

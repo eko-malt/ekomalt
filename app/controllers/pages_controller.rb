@@ -4,6 +4,7 @@ class PagesController < ApplicationController
     @bags = BagInput.all
     @settings = Setting.first
     @in_production = Equipment.in_production.values.sum
+    @malt_storage = GrainBatch.all.sum(:amount) - Shipment.all.sum(:amount)
   end
 
   def storageraw
