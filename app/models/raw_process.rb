@@ -15,6 +15,12 @@ class RawProcess < ApplicationRecord
       .includes(:movements)
   }
 
+  scope :as_multi_source, ->(maltose, eqtype) {
+    joins(:equipment)
+        .where('raw_processes.status = 2 AND equipment.eqtype IN (?) AND equipment.maltose = ?', eqtype, maltose)
+        .includes(:movements)
+  }
+
   def check_time_and_statuses
     return if %w[archived finished].include?(status)
     if finish_time < Time.now

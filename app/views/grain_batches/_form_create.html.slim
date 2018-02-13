@@ -7,15 +7,13 @@
         p = "#{t('batch.name')}: #{ @batch.name }"
         p = "#{t('batch.amount')}: #{ weight_in_tones(@batch.amount) }"
         p = "#{t('batch.process')}: #{t("batch.druing.#{ @batch.raw_process.equipment.maltose }")}"
-        p = "#{t('batch.malt')}: #{   @batch.malt.name }"
-        //= f.input :name, readonly: true, label: t('batch.name')
-        //= f.input :amount, readonly: true, label: t('batch.amount')
-        //= f.association :raw_process, readonly: true,  label_mathod: t("batch.druing.#{@batch.raw_process.equipment.maltose}").split('*'), value_method: label: t('batch.process'),
-        //= f.association :malt, readonly: true, label: t('batch.malt')
+        //p = "#{t('batch.malt')}: #{ @batch.malt.name }"
         = f.hidden_field :name, value: @batch.name
         = f.hidden_field :amount, value: @batch.amount
         = f.hidden_field :raw_process_id, value: @batch.raw_process_id
         = f.hidden_field :malt_id, value: @batch.malt_id
+        br
+        = f.association :malt, label: t('batch.malt'), include_blank: false
         br
         = f.input :correction, label: t('batch.correction')
       .col.l6.s12

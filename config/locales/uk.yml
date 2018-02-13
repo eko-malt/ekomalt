@@ -114,6 +114,9 @@ uk:
     created: 'Додано позицію до замовлення'
     bag_25: 'по 25 кг'
     bag_50: 'по 50 кг'
+  shipment:
+    create: 'Відвантажити солод'
+    finished_orders: 'Виконані замовлення'
   input:
     create_grain: 'Додати нову поставку жита'
     create_bag: 'Додати нову поставку мішків'
@@ -298,7 +301,7 @@ uk:
     amount: 'Кількість'
     process: 'Звідки'
     malt: 'Тип солоду'
-    choise_malt: 'Оберіть тип солоду'
+    select_malt: 'Оберіть тип солоду'
     shredded: 'Змелено: '
     bags_count: "%{k} мішків"
     bag_type:
