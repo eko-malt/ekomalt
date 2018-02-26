@@ -228,6 +228,7 @@ uk:
     movements_only_empty: 'Сировина використовується'
     delete: 'Видалити процес'
     create_batch: 'Перенести на склад'
+    create_batch_from_equipment: 'На склад'
     errors:
       must_be_after_start: 'Час завершення має бути після часу початку'
     statuses:
@@ -266,6 +267,10 @@ uk:
     old_maltose: 'Стара солодовня'
     new_maltose: 'Нова солодовня'
     malt: 'Солод'
+    malt_koef: 'Коефіцієнти'
+    koef_label: 'Коефіцієнт'
+    name_label: 'Назва'
+    color_label: 'Колір'
     equipment: 'Обладнання'
     duration: 'Тривалість (год)'
     available: 'Виробництво'
@@ -300,7 +305,7 @@ uk:
     name: 'Шифр партії'
     batch: 'Партія кінцева'
     bags: 'Пакування'
-    amount: 'Кількість'
+    amount: "Кількість (об'єм з сушки / коефіцієнт), т"
     process: 'Звідки'
     malt: 'Тип солоду'
     select_malt: 'Оберіть тип солоду'
@@ -373,6 +378,7 @@ uk:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      past_date: 'дата не може бути майбутньою'
       accepted: 'має бути прийнятий'
       blank: 'не може бути пустим'
       present: 'має бути пустим'

@@ -10,7 +10,7 @@
         li.collapsible-with-margin
           .collapsible-header
             span.col-title.text-bold = t('date.month_names')[month.to_i]
-            span.col-title-margin.text-brown.text-bold = "#{t('storage_malt.made')}: #{weight_in_tones(batches.sum(&:amount))}"
+            span.col-title-margin.text-brown.text-bold = "#{ t('storage_malt.made') }: #{ weight_in_tones(batches.sum(&:amount) + batches.sum(&:correction)) }"
           .collapsible-body
             ul.collection.with-header id="batch_month_#{month}"
               li.collection-header.row

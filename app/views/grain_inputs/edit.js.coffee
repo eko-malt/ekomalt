@@ -1,5 +1,6 @@
-$("<%= j(render partial: 'form_edit', object: @process) %>").appendTo("#modal_edit_inputs")
+$("<%= j(render partial: 'form_edit') %>").appendTo("#modal_empty")
 Materialize.updateTextFields()
 datepicker_init()
+$('.modal-content input.datepicker').val("<%= date_ukr(@grain_input.date) %>")
 $('select').material_select()
-$('#modal_edit_inputs ').modal('open')
+$('#modal_empty').modal('open')

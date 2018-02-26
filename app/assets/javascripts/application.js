@@ -65,7 +65,7 @@ var timepicker_init = function() {
         autoclose: false,
         ampmclickable: false,
     });
-}
+};
 
 // raw_process show page, movement form, onChange source set max value for input field
 var movement = function() {
@@ -79,6 +79,17 @@ var movement = function() {
         }
         $("#movement_amount").attr({ "max": max, "min": 0.001}).val(max);
         Materialize.updateTextFields();
+    })
+};
+
+var on_change_grain_batch_malt_id = function() {
+    $('#grain_batch_malt_id').change(function() {
+        koef = $('#grain_batch_malt_id').find(":selected").data("koef");
+        console.log(koef);
+        on_druing = $('#grain_batch_amount').data("amount-on-druing");
+        console.log(on_druing);
+        $('#grain_batch_amount').val(Math.round(on_druing / koef * 100) / 100);
+        console.log(Math.round(on_druing / koef * 100) / 100);
     })
 };
 

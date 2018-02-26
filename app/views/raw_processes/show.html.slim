@@ -1,7 +1,7 @@
 .row
   .col.s6
     = link_to t('process.to_maltose'), @process.equipment.oldm? ? old_maltose_path : new_maltose_path, class: 'waves-effect waves-light btn'
-  .col.s3.offset-s1
+  .col.s4
     - if @process.equipment.druing? && @process.finished?
       = link_to t('process.create_batch'), new_grain_batch_path(raw_process: @process.id), remote: true, class: 'btn waves-effect right'
 

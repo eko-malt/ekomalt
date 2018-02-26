@@ -29,6 +29,8 @@
         = link_to t('process.change_status.load'), new_raw_process_path(equipment: equipment.id)
       - else
         = link_to t('old_maltose.edit'), raw_process_path(process)
+        - if process.equipment.druing? && process.finished?
+          = link_to t('process.create_batch_from_equipment'), new_grain_batch_path(raw_process: process.id), remote: true, class: 'right'
         - if process.current_weight == 0
           = link_to t('process.change_status.archive'), status_update_raw_process_path(process, status: 'archived'), remote: true, method: :put, class: 'right' if process.can_archive?
         - else
