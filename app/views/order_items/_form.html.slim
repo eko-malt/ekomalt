@@ -3,7 +3,7 @@
     = f.hidden_field :order_id
     .row
       .col.s12
-        = f.association :malt, collection: Malt.all, label_method: :name, include_blank: t('order_item.set_malt')
+        = f.association :malt, collection: Malt.all, label_method: :name, include_blank: t('order_item.set_malt'), label: false
     .row
       .col.s6
         = f.input :amount, label: t('order_item.amount')

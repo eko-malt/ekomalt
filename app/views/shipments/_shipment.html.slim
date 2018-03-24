@@ -1,0 +1,5 @@
+= link_to shipment_path(shipment), class: 'collection-item' do
+  | #{date_ukr(shipment.date)} / #{shipment.client.name}
+  //- shipment.each do |i|
+    br
+    = "#{i.malt.name}: #{weight_in_tones(i.amount)} #{t('shipment.bag_at_title')} #{ i.bag == 1 ? t('shipment.bag_25') : t('shipment.bag_50') }"

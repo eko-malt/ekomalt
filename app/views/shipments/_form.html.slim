@@ -1,0 +1,5 @@
+.row
+  = simple_form_for @shipment, remote: true do |f|
+    .col.s6 = f.input :date, as: :string, label: t('shipment.date'), input_html: { class: 'datepicker' }
+    .col.s6 = f.input :client_id, collection: Client.all, label: t('shipment.client'), prompt: t('order.set_client')
+    = f.submit t('form.save'), class: 'btn waves-effect waves-light'

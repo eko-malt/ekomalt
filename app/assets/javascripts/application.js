@@ -1,8 +1,10 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/widgets/sortable
 //= require jquery.turbolinks
 //= require turbolinks
 //= require materialize
+//= require rails_sortable
 //= require rails.validations
 //= require rails.validations.simple_form
 //= require_tree
@@ -165,6 +167,7 @@ ready = function() {
     $('ul.tabs').tabs();
     $('select').material_select();
     $('.tooltipped').tooltip({delay: 50});
+    $('.sortable').railsSortable();
     $('.button-collapse').sideNav({
         menuWidth: 280,
     });

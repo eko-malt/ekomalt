@@ -1,5 +1,7 @@
-= link_to order_path(order), class: 'collection-item' do
-  | #{date_ukr(order.deadline)} / #{order.client.name}
-  - order.order_items.each do |i|
-    br
-    = "#{i.malt.name}: #{weight_in_tones(i.amount)} #{t('order_item.bag_at_title')} #{ i.bag == 1 ? t('order_item.bag_25') : t('order_item.bag_50') }"
+= link_to order_path(order), class: 'collection-item', id: order.sort do
+  .inline_block_50
+    p = order.client.name
+    p = order.deadline? ? date_ukr(order.deadline) : t('order.no_deadline')
+  .inline_block_50
+    - order.order_items.each do |i|
+      p = "#{i.malt.name}: #{weight_in_tones(i.amount)} #{t('order_item.bag_at_title')} #{ i.bag == 1 ? t('order_item.bag_25') : t('order_item.bag_50') }"

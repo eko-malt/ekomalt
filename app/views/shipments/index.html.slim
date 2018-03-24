@@ -4,9 +4,12 @@ ul.collapsible*{'data-collapsible'=>'expandable'}
       i.material-icons add_circle_outline
       = t('shipment.create')
     .collapsible-body
-      = render partial: 'order', collection: @orders
+      = render 'form'
   li
     .collapsible-header
       i.material-icons list
-      = t('shipment.finished_orders')
+      = t('shipment.shipments')
     .collapsible-body
+      .col.s12
+        ul.collection#shipments
+          = render @shipments

@@ -97,17 +97,18 @@ uk:
     client: 'Клієнт'
     set_client: 'Оберіть клієнта'
     deadline: 'Кінцева дата доставки'
+    no_deadline: 'Без терміну'
     item_list: 'Замовлений солод'
     active: 'Активні'
     finished: 'Виконані'
-    finish: 'Відмітити як виконане'
+    finish: 'Відвантажено'
     duedate: 'Виконати до'
     status:
       active: 'Активне'
       finished: 'Виконане'
   order_item:
     malt: 'Тип солоду'
-    amount: 'Кількість'
+    amount: 'Кількість (т)'
     bag: 'В мішках'
     bag_at_title: 'в мішках '
     create: 'Додати солод до замовлення'
@@ -117,7 +118,12 @@ uk:
     bag_50: 'по 50 кг'
   shipment:
     create: 'Відвантажити солод'
+    created: 'Відвантаження додано'
+    shipments: 'Відвантаження'
     finished_orders: 'Виконані замовлення'
+    date: 'Дата'
+    client: 'Клієнт'
+    order: 'Замовлення'
   input:
     create_grain: 'Додати нову поставку жита'
     create_bag: 'Додати нову поставку мішків'

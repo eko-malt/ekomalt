@@ -1,5 +1,5 @@
 class Shipment < ApplicationRecord
-  validates :amount, numericality: { greather_than: 0 }
+  validates :date, :client_id, presence: true
 
-  has_many :bag_batches
+  belongs_to :client
 end
