@@ -2,7 +2,7 @@ class BagBatchesController < ApplicationController
   before_action :set_batch, only: %i[show edit update destroy]
 
   def new
-    @batch = BagBatch.new
+    @batch = BagBatch.new(shredded: Date.today, batch: BagBatch.maximum('batch').to_i + 1)
   end
 
   def create

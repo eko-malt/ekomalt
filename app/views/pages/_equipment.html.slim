@@ -17,9 +17,9 @@
               .col.s4
                 .center = "#{ t('process.raw_residual') }:" if process.finished?
                 .center = weight_in_tones(process.current_weight)
-              .col.s4
-                p.right = l(process.finish_time, format: :short)
-                p.right = process.finish_time.strftime('%H:%M')
+              .col.s4.text-right
+                p = l(process.finish_time, format: :short)
+                p = process.finish_time.strftime('%H:%M')
             = render partial: 'pages/progress', locals: { start_time: process.start_time, finish_time: process.finish_time, finished: process.finished?, color: 'yellow' }
           - else
             h5.center.text-red = t('process.statuses.need_load')

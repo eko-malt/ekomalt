@@ -3,7 +3,7 @@
     h5 = t('batch.new_bag_batch')
     .row
       .col.m6.s12
-        = f.input :shredded, as: :string, label: t('batch.shredded'), input_html: { class: 'datepicker' }
+        = f.input :shredded, as: :string, label: t('batch.shredded'), input_html: { value: date_ukr(@batch.shredded), class: 'datepicker' }
         = f.input :batch, label: t('batch.name')
       .col.m6.s12
         = f.association :malt, label_method: :name, value_method: :id, include_blank: t('batch.malt'), label: false

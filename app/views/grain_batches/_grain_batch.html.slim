@@ -3,7 +3,7 @@
   .col.s2 = grain_batch.malt.name
   .col.s2.text-right
     = weight_in_tones(grain_batch.amount)
-    br
+  //  br
     - if grain_batch.correction > 0
       = "(+#{weight_in_tones(grain_batch.correction)})"
     - elsif grain_batch.correction < 0
@@ -26,22 +26,3 @@
   .col.s1
     = link_to edit_grain_batch_path(grain_batch.id), remote: true, class: 'secondary-content'
       i.material-icons edit
-
-  //- if grain_batch.movements.empty?
-    //.btn-tooltipped.tooltipped*{'data-position': 'bottom', 'data-delay': '50', 'data-tooltip': t('settings.active_process_present')}
-      = button_tag t('form.save'), class: 'btn disabled'
-    => link_to grain_batch_path(grain_batch.id), method: :delete, remote: true, class: 'secondary-content', data: {confirm: t('activerecord.confirm_delete')}
-      i.material-icons delete
-    => link_to grain_batch_path(grain_batch.id), remote: true, class: 'secondary-content'
-      i.material-icons receipt
-    => link_to edit_grain_batch_path(grain_batch.id), remote: true, class: 'secondary-content disabled'
-      i.material-icons edit
-  //- else
-    .tooltipped*{'data-position': 'bottom', 'data-delay': '50', 'data-tooltip': t('input.cant_delete')}
-      => content_tag 'i', class: 'secondary-content'
-        i.material-icons delete
-    => link_to grain_batch_path(grain_batch.id), remote: true, class: 'secondary-content'
-      i.material-icons receipt
-    .tooltipped*{'data-position': 'bottom', 'data-delay': '50', 'data-tooltip': t('input.cant_edit')}
-      => content_tag 'i', class: 'secondary-content'
-        i.material-icons edit

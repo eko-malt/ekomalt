@@ -12,9 +12,8 @@
         = f.association :malt, collection: Malt.all.map { |m| [m.name, m.id, { data: {koef: m.koef }}]}, label: t('batch.malt'), include_blank: false
         br
         = f.input :amount, label: t('batch.amount'), input_html: { data: { amount_on_druing: @amount} }
-        br
-        = f.input :correction, label: t('batch.correction')
-
+        //br
+        //= f.input :correction, label: t('batch.correction')
       .col.l6.s12
         p = t('batch.quality')
         br

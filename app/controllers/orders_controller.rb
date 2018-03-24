@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders_active = Order.active.order(:deadline)
-    @orders_finihed = Order.finished.order(:deadline)
+    @orders_finished = Order.finished.order(:deadline)
     @order = Order.new
   end
 
