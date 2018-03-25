@@ -10,7 +10,8 @@
         li.collapsible-with-margin
           .collapsible-header
             span.col-title.text-bold = t('date.month_names')[month.to_i]
-            span.col-title-margin.text-brown.text-bold = "#{ t('storage_malt.made') }: #{ weight_in_tones(batches.sum(&:amount)) }"
+            span.col-title-margin.text-brown = t('batch.made')
+            span.col-title-margin.text-brown.text-bold = weight_in_tones(batches.sum(&:amount))
           .collapsible-body
             ul.collection.with-header id="batch_month_#{month}"
               li.collection-header.row
@@ -25,15 +26,11 @@
               = render partial: 'grain_batches/grain_batch', collection: batches
 
   .col.s12#tab_malt_in_bags
-    br
-    .right = link_to t('batch.create_bag_batch'), new_bag_batch_path, remote: true, class: 'btn waves-effect waves-light'
-    br
-    br
     ul.collapsible#data_bags
       - @bag_batches.each do |month, batches|
         li.collapsible-with-margin
           .collapsible-header
-            span.col-title.text-bold = t("date.month.#{month.strftime('%B')}") + ' ' + month.strftime('%Y')
+            span.col-title.text-bold = t("date.month.#{month.strftime('%B')}")
             span.col-title-margin.text-brown = t('batch.shredded')
             span.col-title.text-brown.text-bold = weight_in_tones(batches.map {|b| b.movements.sum(&:amount) }.sum)
           .collapsible-body
@@ -49,4 +46,5 @@
                 .col.s2 = t('batch.quality')
                 .col.s1
               = render partial: 'bag_batches/bag_batch', collection: batches
+    .right = link_to t('batch.create_bag_batch'), new_bag_batch_path, remote: true, class: 'btn waves-effect waves-light'
 .modal.modal-fixed-footer#modal_empty

@@ -46,8 +46,8 @@
             span.col-title.text-bold = t("date.month.#{date.strftime('%B')}") + ' ' + date.strftime('%Y')
             span.col-title-margin = t('input.inputs_amount')
             span.col-title.text-bold = inputs.size.to_s
-            span.col-title = t('input.bag25_count', sum: inputs.sum { |i| i.kg25? ? i.amount : 0 })
-            span.col-title = t('input.bag50_count', sum: inputs.sum { |i| i.kg50? ? i.amount : 0 })
+            span.col-title = t('input.bag25_count', sum: number_with_precision(inputs.sum { |i| i.kg25? ? i.amount : 0 }, precision: 0, delimiter: ' ', separator: ','))
+            span.col-title = t('input.bag50_count', sum: number_with_precision(inputs.sum { |i| i.kg50? ? i.amount : 0 }, precision: 0, delimiter: ' ', separator: ','))
           .collapsible-body
             ul.collection.with-header id="bag_month_#{date.strftime('%B')}"
               = render partial: 'bag_inputs/bag_collection_header'

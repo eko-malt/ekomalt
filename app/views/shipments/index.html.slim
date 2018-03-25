@@ -1,15 +1,11 @@
 ul.collapsible*{'data-collapsible'=>'expandable'}
   li
-    .collapsible-header.active
+    .collapsible-header
       i.material-icons add_circle_outline
       = t('shipment.create')
     .collapsible-body
       = render 'form'
-  li
-    .collapsible-header
-      i.material-icons list
-      = t('shipment.shipments')
-    .collapsible-body
-      .col.s12
-        ul.collection#shipments
-          = render @shipments
+.row
+  .col.s12
+    ul.collection#shipments
+      = render @shipments

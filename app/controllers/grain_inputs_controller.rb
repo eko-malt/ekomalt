@@ -1,5 +1,5 @@
 class GrainInputsController < ApplicationController
-  before_action :set_input, only: %i[show edit update destroy]
+  before_action :set_input, only: %i[show edit edit_quality update destroy]
 
   def new
     @grain_input = GrainInput.new(input_params)
@@ -13,6 +13,8 @@ class GrainInputsController < ApplicationController
   def show; end
 
   def edit; end
+
+  def edit_quality; end
 
   def update
     render :edit unless @grain_input.update(input_params)

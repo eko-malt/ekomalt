@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   resources :equipment, only: %i[edit update]
   resources :settings, only: :update
   resources :bag_inputs
-  resources :grain_inputs
+  resources :grain_inputs do
+    member do
+      get :edit_quality
+    end
+  end
 
   resources :raw_processes, only: %i[new show create edit update destroy] do
     member do

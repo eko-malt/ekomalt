@@ -1,3 +1,4 @@
+= link_to t('batch.to_storage_malt'), storage_malt_path, class: 'waves-effect waves-light btn'
 ul.collapsible
   li
     .collapsible-header
@@ -19,15 +20,3 @@ ul.collapsible
     h5 = t('batch.empty_sources')
   - else
     = render 'bag_batches/form_movement'
-
-//
-  br
-  - if @process.movements.empty?
-    = link_to t('process.delete'), raw_process_path(@process), method: :delete, class: ['waves-effect waves-light btn btn-danger'], data: { confirm: t('activerecord.confirm_delete') }
-  - else
-    .btn-tooltipped.tooltipped*{'data-position': 'bottom', 'data-delay': '50', 'data-tooltip': t('process.only_empty') }
-      = button_tag t('process.delete'), class: 'btn disabled'
-
-  - if @movements.sum(:amount) == @process.movements.sum(:amount) && @process.finished?
-    br
-    = link_to t('old_maltose.archive'), status_update_raw_process_path(@process, status: 'archived'), method: :put, class: 'btn waves-effect waves-light btn-danger', data: { confirm: t('activerecord.confirm_acrhive') }

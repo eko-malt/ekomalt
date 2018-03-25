@@ -74,7 +74,7 @@ var movement = function() {
     $('#movement_sourceable_id').change(function() {
         source = $('#movement_sourceable_id').find(":selected").data("max");
         if ($('#equipment_capacity').length > 0) {
-            free = $('#equipment_capacity').data("capacity") - $('#equipment_amount').data("amount");
+            var free = ($('#equipment_capacity').data("capacity")*1000 - $('#equipment_amount').data("amount")*1000)/1000;
             max = free > source ? source : free
         } else {
             max = source

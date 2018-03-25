@@ -1,0 +1,15 @@
+= simple_form_for @grain_input, remote: true do |f|
+  .modal-content
+    .container
+      h5 = t('input.editing_quality')
+      br
+      .row
+        .col.s12
+          => f.input :humidity, label: t('input.quality.humidity'), placeholder: '00.0', label_html: {class: 'active'}
+          => f.input :sprouting, label: t('input.quality.sprouting'), placeholder: '1 .. 100', label_html: {class: 'active'}
+          => f.input :litter, label: t('input.quality.litter'), placeholder: '00.00', label_html: {class: 'active'}
+          => f.input :nature, label: t('input.quality.nature'), placeholder: '100 .. 999', label_html: {class: 'active'}
+          => f.input :fall, label: t('input.quality.fall'), placeholder: '0.1 .. 99.9', label_html: {class: 'active'}
+  .modal-footer
+    => f.submit t('form.save'), class: 'btn waves-effect waves-light left'
+    = button_tag t('modal.close'), type: 'button', class: 'modal-action modal-close waves-effect waves-green btn-flat'

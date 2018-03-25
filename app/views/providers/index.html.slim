@@ -5,19 +5,14 @@ ul.collapsible*{'data-collapsible'=>'expandable'}
       = t('provider.create')
     .collapsible-body
       = render 'form'
-  li
-    .collapsible-header
-      i.material-icons assignment
-      = t('provider.title')
-    .collapsible-body
-      .row
-        .col.s6
-          .collection.with-header#grain-list
-            .collection-header
-              h5 = t('provider.grain-list')
-            = render partial: 'provider', collection: @grain_providers
-        .col.s6
-          .collection.with-header#bag-list
-            .collection-header
-              h5 = t('provider.bags-list')
-            = render partial: 'provider', collection: @bag_providers
+.row
+  .col.s6
+    .collection.with-header#grain-list
+      .collection-header
+        h5 = t('provider.grain-list')
+      = render partial: 'provider', collection: @grain_providers
+  .col.s6
+    .collection.with-header#bag-list
+      .collection-header
+        h5 = t('provider.bags-list')
+      = render partial: 'provider', collection: @bag_providers

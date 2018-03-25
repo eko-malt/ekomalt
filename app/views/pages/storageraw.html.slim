@@ -21,9 +21,9 @@ h5 = t('storage_raw.grain')
         .col.s2 = g.date.strftime('%d.%m.%Y')
         .col.s2 = g.provider.name
         .col.s2
-          span.right = number_with_precision(g.weight_fact)
+          span.right = number_with_precision(g.weight_fact, delimiter: ' ', separator: ',')
         .col.s2
-          span.right = number_with_precision(weight)
+          span.right = number_with_precision(weight, delimiter: ' ', separator: ',')
         .col.s1
         .col.s2
           span.right = t('input.quality.humidity')
@@ -49,7 +49,7 @@ h5 = t('storage_raw.grain')
     .row.collection-item
       .col.s6.text-bold = t('storage_raw.total')
       .col.s2
-        span.right.text-bold = number_with_precision(total, precision: 3)
+        span.right.text-bold = number_with_precision(total, delimiter: ' ', separator: ',')
 hr
 h5 = t('storage_raw.bags')
 - if @bags.empty?
@@ -72,19 +72,19 @@ h5 = t('storage_raw.bags')
         .col.s2
           span.right = t("input.sizes.#{b.size}")
         .col.s2
-          span.right = b.amount
+          span.right = number_with_delimiter(b.amount, delimiter: ' ', separator: ',')
         .col.s2
-          span.right = b.amount
+          span.right = number_with_delimiter(b.amount, delimiter: ' ', separator: ',')
     br
     .row.collection-item.text-bold
       .col.s4 = t('storage_raw.total')
       .col.s2
         span.right = t('input.sizes.kg25')
       .col.s2.offset-s2
-        span.right = @bags.sum { |i| i.kg25? ? i.amount : 0 }
+        span.right = number_with_delimiter(@bags.sum { |i| i.kg25? ? i.amount : 0 }, delimiter: ' ', separator: ',')
     .row.collection-item.text-bold
       .col.s4 = t('storage_raw.total')
       .col.s2
         span.right = t('input.sizes.kg50')
       .col.s2.offset-s2
-        span.right = @bags.sum { |i| i.kg50? ? i.amount : 0 }
+        span.right = number_with_delimiter(@bags.sum { |i| i.kg50? ? i.amount : 0 }, delimiter: ' ', separator: ',')
