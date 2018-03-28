@@ -1,13 +1,10 @@
 class CreateShipments < ActiveRecord::Migration[5.1]
   def change
     create_table :shipments do |t|
-      t.date :date
-      t.references :client
-      t.references :order
+      t.references :order_item
       t.references :bag_batch
+      t.date :date
       t.decimal :amount
-
-      t.timestamps
     end
   end
 end

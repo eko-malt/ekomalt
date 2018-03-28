@@ -1,5 +1,5 @@
 ul.collapsible*{'data-collapsible'=>'expandable'}
-  li
+//  li
     .collapsible-header
       i.material-icons add_circle_outline
       = t('shipment.create')
@@ -8,4 +8,10 @@ ul.collapsible*{'data-collapsible'=>'expandable'}
 .row
   .col.s12
     ul.collection#shipments
-      = render @shipments
+      - @shipments.each do |group|
+        li.collection-item
+          h5
+            = "#{date_ukr(group[0][0])} #{group[1][0].order_item.order.client.name}"
+            = link_to order_path(group[1][0].order_item.order.id) do
+              i.material-icons call_made
+          = render partial: 'shipments/shipment', collection: group[1]

@@ -1,13 +1,26 @@
-.row.collection-item id="order_item_#{order_item.id}"
-  .col.s3
-    = order_item.malt.name
-  .col.s3.text-right
-    = weight_in_tones(order_item.amount)
-  .col.s1
-  .col.s3
-    = order_item.bag == 1 ? t('order_item.bag_25') : t('order_item.bag_50')
-  .col.s2
-    = link_to order_item_path(order_item.id), remote: true, method: :delete, class: 'secondary-content', data: { confirm: t('activerecord.confirm_delete') }
-      i.material-icons delete
-    = link_to edit_order_item_path(order_item.id), remote: true, class: 'secondary-content'
-      i.material-icons edit
+.collection-item id="order_item_#{order_item.id}"
+  .row.valign-wrapper
+    .col.s3
+      .color-marker{ style="background-color: ##{order_item.malt.color};" }
+      span = order_item.malt.name
+    .col.s2.text-right
+      = weight_in_tones(order_item.amount)
+    .col.s2
+      = order_item.bag == 1 ? t('order_item.bag_25') : t('order_item.bag_50')
+    .col.s3
+      = link_to t('order_item.ship'), new_shipment_path(order_item: order_item), remote: true, class: 'waves-effect waves-light btn'
+    .col.s1.tooltipped*{'data-position': 'bottom', 'data-delay': '50', 'data-tooltip': t('order_item.edit_tooltip')}
+      = link_to edit_order_item_path(order_item.id), remote: true, class: 'secondary-content'
+        i.material-icons edit
+    .col.s1.tooltipped*{'data-position': 'bottom', 'data-delay': '50', 'data-tooltip': t('order_item.delete_tooltip')}
+      = link_to order_item_path(order_item.id), remote: true, method: :delete, class: 'secondary-content', data: { confirm: t('activerecord.confirm_delete') }
+        i.material-icons delete
+  - if !order_item.shipments.empty?
+    ul.collection
+      - order_item.shipments.each do |s|
+        li.collection-item
+          = "#{date_ukr(s.date)} #{t('order_item.shipped')} #{weight_in_tones(s.amount)} #{t('order_item.from_batch')}#{s.bag_batch.batch}"
+          = link_to edit_shipment_path(s.id), remote: true
+            i.material-icons edit
+          = link_to shipment_path(s.id), remote: true, method: :delete, data: {confirm: t('activerecord.confirm_delete')}
+            i.material-icons delete

@@ -53,6 +53,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 .side-nav li.active { background-color: #64B5F6; }
 .text-bold { font-weight: 700 !important; }
+.text-italic { font-style: italic; }
 .text-yellow { color: #fbc02d; }
 .text-brown { color: #792400; }
 .text-red { color: #f44336; }
@@ -78,6 +79,11 @@ li.tab-bags { background-color: #e0e0e0 }
 .side-nav { height: calc(100% - 64px) }
 .progress-over100 { box-shadow: 0 0 13px 5px rgb(222, 85, 85); }
 
+
+.order-item-shipments p {
+  margin: 0;
+
+}
 .action_button {
   margin-right: 10px;
   background-color: #4fc3f7;
@@ -99,6 +105,7 @@ li.tab-bags { background-color: #e0e0e0 }
 }
 
 .color-marker {
+  display: inline-block;
   width: 25px;
   height: 25px;
   border-radius: 50%;

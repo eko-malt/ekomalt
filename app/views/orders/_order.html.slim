@@ -1,4 +1,4 @@
-= link_to order_path(order), class: 'collection-item', id: order.sort do
+= link_to order_path(order), class: 'collection-item', id: "Order_#{order.id}" do
   .inline_block_50
     p = order.client.name
     p = order.deadline? ? date_ukr(order.deadline) : t('order.no_deadline')

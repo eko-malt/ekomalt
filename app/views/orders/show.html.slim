@@ -25,12 +25,12 @@ ul.collection.with-header#order_items
   .row.collection-item.text-bold
     .col.s3
       = t('order_item.malt')
-    .col.s3.text-right
+    .col.s2.text-right
       = t('order_item.amount')
-    .col.s1
-    .col.s3
-      = t('order_item.bag')
     .col.s2
-  - @order.order_items.each do |i|
-    = render partial: 'order_items/order_item', object: i
+      = t('order_item.bag')
+    .col.s3
+    .col.s2
+  - @order.order_items.each do |item|
+    = render partial: 'order_items/order_item', object: item
 = link_to t('order_item.create'), new_order_item_path(order: params[:id]), remote: true, class: 'btn waves-effect waves-light'

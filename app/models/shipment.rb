@@ -1,5 +1,6 @@
 class Shipment < ApplicationRecord
-  validates :date, :client_id, presence: true
+  validates :date, :amount, presence: true
 
-  belongs_to :client
+  belongs_to :order_item
+  belongs_to :bag_batch
 end
