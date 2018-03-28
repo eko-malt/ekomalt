@@ -5,6 +5,7 @@
       .col.s4 = f.input :date, as: :string, label: t('shipment.date'), input_html: { value: date_ukr(@shipment.date), class: 'datepicker' }
       .col.s4 = f.input :bag_batch_id, collection: @bag_batches, label_method: :batch, value_method: :id, label: t('shipment.bag_batch'), prompt: t('shipment.set_bag_batch')
       .col.s4 = f.input :amount, label: t('shipment.amount')
+      - binding.pry
   .modal-footer
     = f.submit t('form.save'), class: 'btn waves-effect waves-light left'
     = button_tag t('modal.close'), type: 'button', class: 'modal-action modal-close waves-effect waves-green btn-flat'

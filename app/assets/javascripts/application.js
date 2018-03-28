@@ -1,6 +1,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui/widgets/sortable
+//= require jquery.minicolors
+//= require jquery.minicolors.simple_form
 //= require jquery.turbolinks
 //= require turbolinks
 //= require materialize
@@ -8,6 +10,11 @@
 //= require rails.validations
 //= require rails.validations.simple_form
 //= require_tree
+
+$.minicolors.defaults.theme = 'bootstrap';
+$.minicolors.defaults.control = 'wheel';
+$.minicolors.defaults.position = 'bottom right';
+$.minicolors.defaults.letterCase = 'uppercase';
 
 var calendar_init = function() {
     $('.top_date').pickadate({
@@ -163,6 +170,7 @@ ready = function() {
     set_malt();
     on_change_start_time();
     Materialize.updateTextFields();
+    $('.colorpicker').minicolors();
     $('.collapsible').collapsible();
     $('ul.tabs').tabs();
     $('select').material_select();

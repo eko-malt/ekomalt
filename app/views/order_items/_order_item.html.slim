@@ -1,8 +1,8 @@
 .collection-item id="order_item_#{order_item.id}"
   .row.valign-wrapper
+    .color-marker{ style="background-color: #{order_item.malt.color};" }
     .col.s3
-      .color-marker{ style="background-color: ##{order_item.malt.color};" }
-      span = order_item.malt.name
+      = order_item.malt.name
     .col.s2.text-right
       = weight_in_tones(order_item.amount)
     .col.s2

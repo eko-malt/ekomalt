@@ -50,26 +50,12 @@
           i.material-icons.right close
         table.bordered
           tbody
-            tr
-              td.right = weight_in_tones(0)
-              td = t('main.white')
-              td
-                div.color-marker.white
-            tr
-              td.right = weight_in_tones(0)
-              td = t('main.fermented')
-              td
-                div.color-marker.brown.lighten-2
-            tr
-              td.right = weight_in_tones(0)
-              td = t('main.very_fermented')
-              td
-                div.color-marker.brown.darken-2
-            tr
-              td.right = weight_in_tones(0)
-              td = t('main.extra')
-              td
-                div.color-marker.black
+            - @malts.each do |malt|
+              tr
+                td
+                  .color-marker{ style="background-color: #{malt.color}" }
+                td = malt.name
+                td.text-right = weight_in_tones(0)
 
 table.bordered
   tbody

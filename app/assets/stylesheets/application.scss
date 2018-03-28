@@ -2,6 +2,7 @@
 $primary-color: color('blue', 'lighten-2') !default;
 $secondary-color: color('teal', 'lighten-2') !default;
 @import 'materialize';
+@import 'jquery.minicolors';
 
 body { background-image: url('/background.jpg'); }
 main { margin: 10px; }
@@ -78,7 +79,8 @@ li.tab-bags { background-color: #e0e0e0 }
 .progress { margin: 0 0 0 0}
 .side-nav { height: calc(100% - 64px) }
 .progress-over100 { box-shadow: 0 0 13px 5px rgb(222, 85, 85); }
-
+.minicolors-input { padding: 0 !important; }
+.collection-item .row { margin-bottom: 0; }
 
 .order-item-shipments p {
   margin: 0;

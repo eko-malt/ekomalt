@@ -1,12 +1,12 @@
 li
   .collapsible-header
-    .color-marker{ style="background-color: ##{malt_setting['oldm'][0].malt.color}" }
+    .color-marker{ style="background-color: #{malt_setting['oldm'][0].malt.color}" }
     .span.margin-left = malt_setting['oldm'][0].malt.name
   .collapsible-body
     = simple_form_for malt_setting['oldm'][0].malt, remote: true do |f|
       .row
         .col.s3 = f.input :name, label: t('settings.name_label')
-        .col.s3 = f.input :color, label: t('settings.color_label')
+        .col.s3 = f.input :color, as: :minicolors, label: t('settings.color_label'), input_html: { class: 'colorpicker' }
         .col.s3 = f.input :koef, label: t('settings.koef_label')
         .col.s3 = f.submit t('form.save'), class: 'btn waves-effect waves-light'
 

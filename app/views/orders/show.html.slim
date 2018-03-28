@@ -19,18 +19,19 @@
     br
     = link_to t('order.delete'), order_path(@order), method: :delete, class: 'btn waves-effect waves-light right btn-danger', data: { confirm: t('activerecord.confirm_delete') }
 
-ul.collection.with-header#order_items
-  li.collection-header
-    h5 = t('order.item_list')
-  .row.collection-item.text-bold
-    .col.s3
-      = t('order_item.malt')
-    .col.s2.text-right
-      = t('order_item.amount')
-    .col.s2
-      = t('order_item.bag')
-    .col.s3
-    .col.s2
-  - @order.order_items.each do |item|
-    = render partial: 'order_items/order_item', object: item
+- if !@order.order_items.empty?
+  ul.collection.with-header#order_items
+    li.collection-header
+      h5 = t('order.item_list')
+    .row.collection-item.text-bold
+      .col.s3
+        = t('order_item.malt')
+      .col.s2.text-right
+        = t('order_item.amount')
+      .col.s2
+        = t('order_item.bag')
+      .col.s3
+      .col.s2
+    - @order.order_items.each do |item|
+      = render partial: 'order_items/order_item', object: item
 = link_to t('order_item.create'), new_order_item_path(order: params[:id]), remote: true, class: 'btn waves-effect waves-light'
