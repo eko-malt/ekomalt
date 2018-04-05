@@ -12,8 +12,7 @@ ul.collapsible*{'data-collapsible': 'expandable'}
     .collapsible-header
       = t('settings.malt')
     .collapsible-body
-
-      ul.collapsible*{'data-collapsible': 'expandable'}
+      ul.collapsible.sortable*{'data-collapsible': 'expandable'}
         - @malt_s_grouped.each do |malt|
           = render partial: 'malt_settings/malt_setting', object: malt
   li
