@@ -67,7 +67,7 @@ h4 i, h5 i { margin-right: 15px; }
 li.tab-grain { background-color: #a1887f }
 li.tab-bags { background-color: #e0e0e0 }
 .disable-hover { pointer-events:none; }
-.card-action > a.right { margin-right: 0px !important; }
+.card-action > a.right { margin-right: 0 !important; }
 .bottom_line { border-bottom: 1px solid #000000 }
 .margin-left { margin-left: 10px; }
 .text-right { text-align: right; }
@@ -81,11 +81,15 @@ li.tab-bags { background-color: #e0e0e0 }
 .progress-over100 { box-shadow: 0 0 13px 5px rgb(222, 85, 85); }
 .minicolors-input { padding: 0 !important; }
 .collection-item .row { margin-bottom: 0; }
+.card-action {
+  font-size: 14px;
+  padding: 16px 16px !important;
+}
 
 .order-item-shipments p {
   margin: 0;
-
 }
+
 .action_button {
   margin-right: 10px;
   background-color: #4fc3f7;

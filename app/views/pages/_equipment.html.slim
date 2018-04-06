@@ -1,7 +1,7 @@
 .card.blue-grey.darken id="equipment_#{equipment.id}"
   - process = equipment.raw_processes.where.not(raw_processes: { status: 3 }).first
   .card-content.white-text
-    .card-title.text-bold = equipment.name
+    .card-title.card-title-small.text-bold = equipment.name
     - if equipment.broken?
       h5.center = t('old_maltose.status.broken')
     - else

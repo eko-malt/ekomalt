@@ -15,10 +15,10 @@ class RawProcessesController < ApplicationController
     @movement = Movement.new
     @malts = Malt.by_equipment(@process.equipment_id)
     if @process.equipment.vat?
-      # get source from grain inputs where raw not used
+      # get sources from grain inputs where raw not used
       @sources = GrainInput.at_storage + GrainInput.full_at_storage
     else
-      # get source from processes by maltose and eqtype and finished process
+      # get sources from processes by maltose and eqtype and finished process
       # processes - all processes, that can be source
       if @process.equipment.thresh?
         # to thresh we can move raw only from vat
@@ -26,11 +26,15 @@ class RawProcessesController < ApplicationController
       else
         # to fermenter or druing we can move raw from thresh OR fermenter
         @processes = RawProcess.as_multi_source(Equipment.maltoses[@process.equipment.maltose], [2, 3])
+        # as_source(1,4) -> druing (4) at old maltose (1). To bottom druing we can load raw from top druing
+        @processes += RawProcess.as_source(1, 4) if @process.equipment.druing?
       end
       # movements - where source is one of the @processes
       @movements = Movement.where(sourceable_type: 'RawProcess', sourceable_id: @processes.map { |p| p.id })
       # get amount in process, subtract amount, that moved to next equipment, remove zero values, collect to array
       @sources = @processes.map { |p| [p.id, p.equipment.name, p.movements.sum(:amount) - @movements.select { |m| m.sourceable_id == p.id }.map { |m| m.amount }.sum ] }.delete_if { |s| s[2].zero? }
+      # remove current process from sources
+      @sources.delete_if { |x| x[0] == @process.id }
     end
     # check if process can be archived
     @empty = @process.movements.sum(&:amount) == Movement.where(sourceable_type: 'RawProcess', sourceable_id: @process.id).sum(&:amount)
