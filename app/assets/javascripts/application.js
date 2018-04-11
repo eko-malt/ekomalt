@@ -91,16 +91,31 @@ var movement = function() {
     })
 };
 
+// on create grain batch, when change malt set amount of malt
 var on_change_grain_batch_malt_id = function() {
+    console.log('change grain malt');
     $('#grain_batch_malt_id').change(function() {
         koef = $('#grain_batch_malt_id').find(":selected").data("koef");
-        console.log(koef);
         on_druing = $('#grain_batch_amount').data("amount-on-druing");
-        console.log(on_druing);
+        on_druing_other = $('#other_druing').data("amount-on-other-druing");
         $('#grain_batch_amount').val(Math.round(on_druing / koef * 100) / 100);
-        console.log(Math.round(on_druing / koef * 100) / 100);
+        $('#other_druing').val(Math.round(on_druing_other / koef * 100) / 100);
     })
 };
+
+// on create grain batch when change checkbox 'another duing'
+var on_change_grain_batch_other_druing = function() {
+    console.log('change grain other druing');
+    $('#add_other_druing').change(function() {
+        if ($('#add_other_druing').prop('checked') == true) {
+            $('#other_druing').prop('disabled', false);
+            $('#other_druing_adding').val('1');
+        } else {
+            $('#other_druing').prop('disabled', true);
+            $('#other_druing_adding').val('0');
+        }
+    });
+}
 
 Date.prototype.addHours = function(hours) {
     var result = new Date(this.valueOf());

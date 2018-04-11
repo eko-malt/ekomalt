@@ -1,6 +1,6 @@
 class Equipment < ApplicationRecord
   validates :eqtype, :name, :maltose, :capacity, :service_time, :status, presence: true
-  after_save :create_malt_settings
+  after_create :create_malt_settings
 
   enum eqtype: { vat: 1, thresh: 2, fermenter: 3, druing: 4 }
   enum maltose: { oldm: 1, newm: 2 }

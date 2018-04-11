@@ -4,7 +4,7 @@
       .col.l6.s12
         p = t('batch.information')
         br
-        p = "#{t('batch.process')}: #{t("batch.druing.#{ @batch.raw_process.equipment.maltose }")}"
+        p = "#{t('batch.process')}: #{@process.equipment.name} (#{t("batch.druing.#{ @batch.raw_process.equipment.maltose }")})"
         p = "#{t('batch.name')}: #{ @batch.name }"
         = f.hidden_field :name, value: @batch.name
         = f.hidden_field :raw_process_id, value: @batch.raw_process_id
@@ -12,8 +12,18 @@
         = f.association :malt, collection: Malt.all.map { |m| [m.name, m.id, { data: {koef: m.koef }}]}, label: t('batch.malt'), include_blank: false
         br
         = f.input :amount, label: t('batch.amount'), input_html: { data: { amount_on_druing: @amount} }
-        //br
-        //= f.input :correction, label: t('batch.correction')
+
+        br
+
+        input#add_other_druing type="checkbox"
+        label for="add_other_druing"
+          = t('batch.add_from', d: @other_druing.equipment.name)
+        .input-field.druing_other_value
+          = text_field_tag 'other_druing', (@other_druing_amount / @process.malt.koef).round(3), data: { amount_on_other_druing: @other_druing_amount }, disabled: true
+          label for="other_druing" = t('batch.amount')
+        = hidden_field_tag 'other_druing_adding'
+
+
       .col.l6.s12
         p = t('batch.quality')
         br
